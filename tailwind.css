@@ -1,0 +1,256 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@zayne-labs/ui-react/css/preset.css";
+
+/* ------------------*/
+/* App Theme         */
+/*-------------------*/
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+	--color-twin-primary-main: #dfba00;
+	--color-twin-primary-darker: #b39500;
+	--color-twin-primary-lighter: #f7d23d;
+	--color-twin-primary-subtle: #fcf4cf;
+
+	--color-twin-secondary-main: #002366;
+	--color-twin-secondary-darker: #001336;
+	--color-twin-secondary-lighter: #1a56db;
+	--color-twin-secondary-subtle: #e0e9ff;
+
+	--color-twin-light-1: #f8fafc;
+	--color-twin-light-2: #f1f5f9;
+	--color-twin-light-3: #e2e8f0;
+	--color-twin-light-4: #ffffff;
+
+	--color-twin-dark-1: #001336;
+	--color-twin-dark-2: #001f54;
+	--color-twin-dark-3: #1e293b;
+	--color-twin-dark-4: #334155;
+
+	--color-twin-state-success-main: #10b981;
+	--color-twin-state-success-darker: #059669;
+	--color-twin-state-success-lighter: #34d399;
+	--color-twin-state-success-subtle: #d1fae5;
+
+	--color-twin-state-warning-main: #f59e0b;
+	--color-twin-state-warning-darker: #d97706;
+	--color-twin-state-warning-lighter: #fbbf24;
+	--color-twin-state-warning-subtle: #fef3c7;
+
+	--color-twin-state-info-main: #3b82f6;
+	--color-twin-state-info-darker: #2563eb;
+	--color-twin-state-info-lighter: #60a5fa;
+	--color-twin-state-info-subtle: #dbeafe;
+
+	--color-twin-state-error-main: #ef4444;
+	--color-twin-state-error-darker: #dc2626;
+	--color-twin-state-error-lighter: #f87171;
+	--color-twin-state-error-subtle: #fee2e2;
+
+	--color-twin-disabled-fill: #f3f4f6;
+	--color-twin-body-color: #e2e8f0;
+}
+
+/* ------------------*/
+/* Custom Properties */
+/*-------------------*/
+@layer base {
+}
+
+/* ------------------*/
+/* Fonts */
+/*-------------------*/
+@theme inline {
+	--font-heading: var(--font-poppins);
+	--font-body: var(--font-inter);
+}
+
+/* ------------------*/
+/* Main Theme        */
+/*-------------------*/
+@theme {
+	--breakpoint-*: initial;
+	--breakpoint-sm: 480px;
+	--breakpoint-md: 780px;
+	--breakpoint-lg: 1000px;
+	--breakpoint-xl: 1280px;
+}
+
+/* ------------------*/
+/* Shadcn Theme      */
+/*-------------------*/
+@theme {
+	--color-shadcn-background: hsl(0, 0%, 100%);
+	--color-shadcn-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-primary: hsl(222.2, 47.4%, 11.2%);
+	--color-shadcn-primary-foreground: hsl(210, 40%, 98%);
+
+	--color-shadcn-secondary: hsl(210, 40%, 96.1%);
+	--color-shadcn-secondary-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-popover: hsl(0, 0%, 100%);
+	--color-shadcn-popover-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-accent: hsl(210, 40%, 96.1%);
+	--color-shadcn-accent-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-muted: hsl(210, 40%, 96.1%);
+	--color-shadcn-muted-foreground: hsl(215.4, 16.3%, 46.9%);
+
+	--color-shadcn-input: hsl(214.3, 31.8%, 91.4%);
+	--color-shadcn-border: hsl(214.3, 31.8%, 91.4%);
+	--color-shadcn-ring: hsl(215, 20.2%, 65.1%);
+
+	--color-shadcn-destructive: hsl(0 100% 50%);
+	--color-shadcn-destructive-foreground: hsl(210 40% 98%);
+
+	--color-sonner-success-bg: hsl(150, 100%, 6%);
+	--color-sonner-success-text: hsl(150, 100%, 90%);
+	--color-sonner-success-border: hsl(147, 100%, 12%);
+
+	--color-sonner-error-bg: hsl(358, 76%, 10%);
+	--color-sonner-error-text: hsl(358, 100%, 81%);
+	--color-sonner-error-border: hsl(357, 89%, 16%);
+
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
+	}
+	@keyframes accordion-up {
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}
+
+/* ------------------*/
+/* Animated Theme      */
+/*-------------------*/
+@theme inline {
+	--animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear
+		infinite;
+
+	@keyframes scroll {
+		to {
+			transform: translate(calc(-50% - 0.5rem));
+		}
+	}
+
+	--animate-marquee: marquee var(--animation-duration, 40s) linear infinite;
+
+	@keyframes marquee {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(calc(-100% - var(--gap, 1rem)));
+		}
+	}
+}
+
+/* ------------------*/
+/* General CSS Reset */
+/*-------------------*/
+@layer base {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		height: 100%;
+	}
+
+	body {
+		min-height: 100%;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-tap-highlight-color: transparent;
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	input:focus-visible {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+	}
+
+	img {
+		width: 100%;
+		max-inline-size: 100%;
+		max-width: unset;
+	}
+
+	button {
+		outline: transparent;
+	}
+
+	button:not(:disabled) {
+		cursor: pointer;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
+	}
+
+	body {
+		line-height: 1.625;
+		font-size: 18px;
+		font-family: var(--font-body);
+		color: var(--color-webdev-body-color);
+	}
+}
+
+/* ------------------*/
+/* Custom Utilities */
+/*-------------------*/
+@utility custom-scrollbar {
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: hsl(0, 0%, 76%);
+		border-radius: 10px 10px 0 0;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--color-webdev-primary-main);
+		border: 1px solid hsl(0, 0%, 76%);
+		border-radius: 10px;
+	}
+}
+
+
+@utility scrollbar-hidden {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+
+
+
+

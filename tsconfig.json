@@ -1,0 +1,12 @@
+{
+	"extends": "@zayne-labs/tsconfig/bundler/next",
+
+	"compilerOptions": {
+		"paths": {
+			"@/*": ["./*"]
+		}
+	},
+
+	"include": ["**/*.ts", "**/*.tsx", "public/**/*.ts", "next-env.d.ts"],
+	"exclude": ["node_modules/**", ".next/**"]
+}
