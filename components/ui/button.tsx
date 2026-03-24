@@ -22,26 +22,32 @@ export const buttonVariants = tv({
 
 	compoundVariants: [
 		{
-			className: "hover:bg-webdev-primary-darker active:bg-webdev-primary-lighter",
+			className: "hover:bg-twin-primary-darker active:bg-twin-primary-lighter",
 			isDisabled: false,
 			theme: "primary",
 			withInteractions: true,
 		},
 		{
-			className: "hover:shadow-[0_0_36px_--theme(--color-webdev-primary-main/30%)] active:opacity-90",
+			className: "hover:shadow-[0_0_36px_--theme(--color-twin-primary-main/30%)] active:opacity-90",
 			isDisabled: false,
 			theme: "primary-gradient",
 			withInteractions: true,
 		},
 		{
-			className: `hover:border-webdev-primary-darker active:border-webdev-primary-lighter
-			active:text-webdev-primary-lighter`,
+			className: `hover:border-twin-primary-darker active:border-twin-primary-lighter
+			active:text-twin-primary-lighter`,
 			isDisabled: false,
 			theme: "primary-ghost",
 			withInteractions: true,
 		},
 		{
-			className: "border-2 border-webdev-dark-4 bg-webdev-disabled-fill text-webdev-dark-4",
+			className: "hover:shadow-[0_0_36px_theme(--color-twin-accent-main/30%)] active:opacity-90",
+			isDisabled: false,
+			theme: "accent-gradient",
+			withInteractions: true,
+		},
+		{
+			className: "border-2 border-twin-dark-4 bg-twin-disabled-fill text-twin-dark-4",
 			isDisabled: true,
 			isLoading: false,
 		},
@@ -63,8 +69,7 @@ export const buttonVariants = tv({
 		},
 
 		isDisabled: {
-			true: `cursor-not-allowed border-2 border-webdev-dark-4 bg-webdev-disabled-fill
-			text-webdev-dark-4`,
+			true: "cursor-not-allowed border-2 border-twin-dark-4 bg-twin-disabled-fill text-twin-dark-4",
 		},
 
 		isLoading: {
@@ -84,25 +89,29 @@ export const buttonVariants = tv({
 		},
 
 		theme: {
+			"accent-gradient": `bg-linear-to-r from-twin-accent-lighter via-twin-accent-main
+			to-twin-accent-darker font-bold text-twin-primary-main
+			shadow-[0_0_24px_--theme(--color-twin-accent-main/18%)] transition-shadow`,
+
 			"ghost-dark": `border border-white/12 bg-transparent text-white/70 transition-colors
 			hover:border-white/25 hover:bg-white/5 hover:text-white`,
 
-			"ghost-light": `border border-webdev-dark-1/12 bg-transparent text-webdev-dark-1/70
-			transition-colors hover:border-webdev-dark-1/25 hover:bg-webdev-dark-1/5 hover:text-webdev-dark-1`,
+			"ghost-light": `border border-twin-dark-1/12 bg-transparent text-twin-dark-1/70 transition-colors
+			hover:border-twin-dark-1/25 hover:bg-twin-dark-1/5 hover:text-twin-dark-1`,
 
-			primary: "bg-webdev-primary-main text-webdev-dark-deep font-bold",
+			primary: "bg-twin-primary-main font-bold text-twin-white",
 
-			"primary-ghost": "border-2 border-webdev-primary-main bg-white text-webdev-primary-main",
+			"primary-ghost": "border-2 border-twin-primary-main bg-white text-twin-primary-main",
 
-			"primary-gradient": `bg-linear-to-r from-webdev-primary-lighter via-webdev-primary-main
-			to-webdev-primary-darker text-webdev-dark-deep font-bold shadow-[0_0_24px_--theme(--color-webdev-primary-main/18%)]
-			transition-shadow`,
+			"primary-gradient": `bg-linear-to-r from-twin-primary-lighter via-twin-primary-main
+			to-twin-primary-darker font-bold text-twin-white
+			shadow-[0_0_24px_--theme(--color-twin-primary-main/18%)] transition-shadow`,
 
-			"secondary-dark": `border border-webdev-secondary-main/22 bg-webdev-secondary-main/8
-			text-webdev-secondary-lighter transition-colors hover:bg-webdev-secondary-main/18`,
+			"secondary-dark": `border border-twin-secondary-main/22 bg-twin-secondary-main/8
+			text-twin-secondary-lighter transition-colors hover:bg-twin-secondary-main/18`,
 
 			"secondary-ghost":
-				"border-2 border-webdev-secondary-lighter bg-transparent text-webdev-secondary-lighter",
+				"border-2 border-twin-secondary-lighter bg-transparent text-twin-secondary-lighter",
 		},
 
 		withInteractions: {

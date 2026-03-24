@@ -5,11 +5,6 @@ import type { InferProps } from "@zayne-labs/toolkit-react/utils";
 import { isString, type AnyString } from "@zayne-labs/toolkit-type-helpers";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cnMerge } from "@/lib/utils/cn";
-
-const isRelativeLink = (value: string | UrlObject | null | undefined): value is string => {
-	return isString(value) && !value.startsWith("/");
-};
 
 export type MainAppRoutes<TAppRoutes extends string = AnyString> =
 	TAppRoutes extends `${infer TPrefix}/[${string}]` ? `${TPrefix}/${string}` : TAppRoutes;
@@ -20,34 +15,16 @@ function NavLink(
 	props: Omit<InferProps<typeof Link>, "href"> & {
 		href: ModifiedHref;
 		relative?: boolean;
-		transitionType?: "navbar" | "no-transition" | "regular";
 	}
 ) {
-	const { children, className, href, transitionType = "no-transition", ...restOfProps } = props;
+	const { children, className, href, ...restOfProps } = props;
 
 	const pathname = usePathname();
 
-	if (!isString(href) && isRelativeLink(href.pathname)) {
-		Reflect.set(href, "pathname", `${pathname}/${href.pathname}`);
-	}
-
-	const resolvedHref =
-		isString(href) && isRelativeLink(href) ? `${pathname}/${href.replaceAll(" ", "")}` : href;
-
-	const isActive =
-		isString(resolvedHref) ? pathname === resolvedHref : pathname === resolvedHref.pathname;
+	const isActive = isString(href) ? pathname === href : pathname === href.pathname;
 
 	return (
-		<Link
-			href={resolvedHref}
-			data-active={isActive}
-			className={cnMerge(
-				transitionType !== "no-transition" && "nav-link-transition relative",
-				transitionType === "navbar" && "nav-mobile",
-				className
-			)}
-			{...restOfProps}
-		>
+		<Link href={href} data-active={isActive} className={className} {...restOfProps}>
 			{children}
 		</Link>
 	);

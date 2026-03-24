@@ -8,25 +8,35 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-	--color-twin-primary-main: #dfba00;
-	--color-twin-primary-darker: #b39500;
-	--color-twin-primary-lighter: #f7d23d;
-	--color-twin-primary-subtle: #fcf4cf;
+	--color-twin-primary-main: #073654;
+	--color-twin-primary-darker: #052740;
+	--color-twin-primary-lighter: #0a4a6e;
+	--color-twin-primary-subtle: #e6eef3;
 
-	--color-twin-secondary-main: #002366;
-	--color-twin-secondary-darker: #001336;
-	--color-twin-secondary-lighter: #1a56db;
-	--color-twin-secondary-subtle: #e0e9ff;
+	--color-twin-secondary-main: #144766;
+	--color-twin-secondary-darker: #0f3550;
+	--color-twin-secondary-lighter: #1a5a82;
+	--color-twin-secondary-subtle: #e8f0f5;
 
+	--color-twin-accent-main: #60d8de;
+	--color-twin-accent-darker: #4db3b8;
+	--color-twin-accent-lighter: #8ee3e7;
+	--color-twin-accent-subtle: #e6f9fa;
+
+	--color-twin-white: #fdfdfd;
 	--color-twin-light-1: #f8fafc;
 	--color-twin-light-2: #f1f5f9;
 	--color-twin-light-3: #e2e8f0;
 	--color-twin-light-4: #ffffff;
 
-	--color-twin-dark-1: #001336;
-	--color-twin-dark-2: #001f54;
+	--color-twin-dark-1: #073654;
+	--color-twin-dark-2: #144766;
 	--color-twin-dark-3: #1e293b;
 	--color-twin-dark-4: #334155;
+
+	--color-twin-disabled-fill: #f3f4f6;
+
+	--color-twin-body-color: #1e293b;
 
 	--color-twin-state-success-main: #10b981;
 	--color-twin-state-success-darker: #059669;
@@ -47,9 +57,6 @@
 	--color-twin-state-error-darker: #dc2626;
 	--color-twin-state-error-lighter: #f87171;
 	--color-twin-state-error-subtle: #fee2e2;
-
-	--color-twin-disabled-fill: #f3f4f6;
-	--color-twin-body-color: #e2e8f0;
 }
 
 /* ------------------*/
@@ -219,13 +226,14 @@
 		line-height: 1.625;
 		font-size: 18px;
 		font-family: var(--font-body);
-		color: var(--color-webdev-body-color);
+		color: var(--color-twin-body-color);
 	}
 }
 
 /* ------------------*/
 /* Custom Utilities */
 /*-------------------*/
+
 @utility custom-scrollbar {
 	&::-webkit-scrollbar {
 		width: 6px;
@@ -237,20 +245,14 @@
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background-color: var(--color-webdev-primary-main);
+		background-color: var(--color-twin-accent-main);
 		border: 1px solid hsl(0, 0%, 76%);
 		border-radius: 10px;
 	}
 }
-
 
 @utility scrollbar-hidden {
 	&::-webkit-scrollbar {
 		display: none;
 	}
 }
-
-
-
-
-

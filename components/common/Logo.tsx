@@ -18,8 +18,8 @@ export function Logo(props: LogoProps) {
 				style={{ height: iconSize, width: iconSize }}
 			>
 				<Image
-					src="/Logo1.png"
-					alt="Obsidian Digital logo"
+					src="/logo.png"
+					alt="Twins Language Services logo"
 					width={iconSize}
 					height={iconSize}
 					className="size-full object-contain"
@@ -30,8 +30,8 @@ export function Logo(props: LogoProps) {
 
 			{shouldShowText && (
 				<span className="text-xl font-bold tracking-tight text-white md:text-2xl">
-					<span className="text-webdev-secondary-lighter">Obsidian</span>{" "}
-					<span className="text-webdev-primary-main">Digital</span>
+					<span className="text-twin-accent-lighter">Twins</span>{" "}
+					<span className="text-white/90">Language Services</span>
 				</span>
 			)}
 		</NavLink>
