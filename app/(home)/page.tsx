@@ -26,7 +26,7 @@ const TRUST_CARDS = [
 		icon: "lucide:lock",
 		stat: "100%",
 		statLabel: "Private",
-		title: "Ironclad Confidentiality",
+		title: "Trustworthy Partnership",
 	},
 	{
 		description:
@@ -34,7 +34,7 @@ const TRUST_CARDS = [
 		icon: "lucide:layers",
 		stat: "6",
 		statLabel: "Services",
-		title: "End-to-End Coverage",
+		title: "Professional Excellence",
 	},
 ] as const;
 
@@ -116,6 +116,27 @@ const PROCESS_STEPS = [
 	},
 ] as const;
 
+const REVIEWS = [
+	{
+		date: "March 2024",
+		name: "Sarah M.",
+		rating: 5,
+		text: "Excellent interpretation services for our medical appointment. The interpreter was professional, punctual, and very clear. A truly dependable partner for our family.",
+	},
+	{
+		date: "February 2024",
+		name: "James R., Esq.",
+		rating: 5,
+		text: "Twins Language Services helped us with a complex legal document translation. The precision and attention to detail were exceptional. Highly recommend for any legal professional.",
+	},
+	{
+		date: "January 2024",
+		name: "Maria L.",
+		rating: 5,
+		text: "Very dependable transcription for our business meetings. We've been using them for months now in Lancaster, and they never miss a beat. Professional and efficient.",
+	},
+] as const;
+
 export default function HomePage() {
 	return (
 		<Main>
@@ -123,6 +144,7 @@ export default function HomePage() {
 			<TrustCardsSection />
 			<ServicesOverviewSection />
 			<ProcessStepsSection />
+			<ReviewsSection />
 			<CTASection />
 		</Main>
 	);
@@ -209,7 +231,7 @@ function HeroSection() {
 
 					<motion.h1
 						variants={fadeUp}
-						className="max-w-[1200px] text-[clamp(3rem,9.5vw,9rem)] leading-[0.9] font-black
+						className="max-w-300 text-[clamp(3rem,9.5vw,9rem)] leading-[0.9] font-black
 							tracking-[-0.04em] text-twin-white"
 					>
 						<span className="block">Breaking</span>
@@ -238,7 +260,7 @@ function HeroSection() {
 					>
 						<motion.p
 							variants={fadeUp}
-							className="max-w-[480px] text-[17px] leading-[1.7] font-light text-twin-white/80"
+							className="max-w-120 text-[17px] leading-[1.7] font-light text-twin-white/80"
 						>
 							Expert interpretation, document translation, and transcription services—engineered for
 							healthcare, legal, business, and community organizations throughout Lancaster County.
@@ -317,7 +339,7 @@ function TrustCardsSection() {
 							</motion.div>
 							<motion.h2
 								variants={fadeUp}
-								className="max-w-[700px] text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.02] font-black
+								className="max-w-175 text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.02] font-black
 									tracking-[-0.03em] text-twin-primary-main"
 							>
 								Precision is not optional—
@@ -368,7 +390,7 @@ function TrustCardsSection() {
 						initial="hidden"
 						whileInView="show"
 						viewport={VP}
-						className="relative min-h-[400px] w-full overflow-hidden rounded-3xl lg:w-[45%]"
+						className="relative min-h-100 w-full overflow-hidden rounded-3xl lg:w-[45%]"
 					>
 						<Image
 							src="/hero-interpreter.png"
@@ -378,9 +400,7 @@ function TrustCardsSection() {
 							sizes="(max-width: 1024px) 100vw, 45vw"
 						/>
 
-						<div
-							className="absolute inset-0 bg-gradient-to-t from-twin-primary-main/30 to-transparent"
-						/>
+						<div className="absolute inset-0 bg-linear-to-t from-twin-primary-main/30 to-transparent" />
 					</motion.div>
 				</motion.div>
 			</div>
@@ -420,15 +440,12 @@ function ServicesOverviewSection() {
 					</motion.div>
 					<motion.h2
 						variants={fadeUp}
-						className="max-w-[800px] text-[clamp(2.4rem,5vw,4.5rem)] leading-[1.02] font-black
+						className="max-w-200 text-[clamp(2.4rem,5vw,4.5rem)] leading-[1.02] font-black
 							tracking-[-0.03em] text-twin-white"
 					>
 						Six services. <span className="text-twin-accent-main">One mission.</span>
 					</motion.h2>
-					<motion.p
-						variants={fadeUp}
-						className="max-w-[560px] text-lg leading-[1.7] text-twin-white/65"
-					>
+					<motion.p variants={fadeUp} className="max-w-140 text-lg leading-[1.7] text-twin-white/65">
 						Every service is designed to eliminate language barriers with surgical precision.
 					</motion.p>
 				</motion.div>
@@ -448,8 +465,8 @@ function ServicesOverviewSection() {
 								`group relative flex flex-col justify-between overflow-hidden rounded-3xl border
 								border-twin-white/6 bg-twin-white/3 p-10 backdrop-blur-sm transition-all
 								duration-500 hover:border-twin-accent-main/20 hover:bg-twin-white/6`,
-								i === 0 && "md:row-span-2 md:min-h-[480px]",
-								i === 5 && "md:row-span-2 md:min-h-[480px]"
+								i === 0 && "md:row-span-2 md:min-h-120",
+								i === 5 && "md:row-span-2 md:min-h-120"
 							)}
 						>
 							<span className="text-[11px] font-bold tracking-[0.3em] text-twin-white/35 uppercase">
@@ -540,7 +557,7 @@ function ProcessStepsSection() {
 						</motion.div>
 						<motion.h2
 							variants={fadeUp}
-							className="max-w-[550px] text-[clamp(2.4rem,5vw,4rem)] leading-[1.02] font-black
+							className="max-w-137.5 text-[clamp(2.4rem,5vw,4rem)] leading-[1.02] font-black
 								tracking-[-0.03em] text-twin-primary-main"
 						>
 							Four steps to <span className="text-twin-accent-darker">flawless delivery.</span>
@@ -548,8 +565,7 @@ function ProcessStepsSection() {
 					</div>
 					<motion.p
 						variants={fadeUp}
-						className="max-w-[400px] text-[16px] leading-[1.7] text-twin-primary-main/70
-							lg:text-right"
+						className="max-w-100 text-[16px] leading-[1.7] text-twin-primary-main/70 lg:text-right"
 					>
 						A transparent, friction-free process from first contact to final deliverable.
 					</motion.p>
@@ -605,6 +621,120 @@ function ProcessStepsSection() {
 	);
 }
 
+function ReviewsSection() {
+	return (
+		<section
+			className="relative flex w-full justify-center overflow-hidden bg-twin-light-1 px-6 py-28 md:py-36
+				lg:px-[8%]"
+		>
+			<div className="flex w-full max-w-350 flex-col gap-20">
+				<motion.div
+					variants={staggerContainer(0.08)}
+					initial="hidden"
+					whileInView="show"
+					viewport={VP}
+					className="flex flex-col items-center gap-8 text-center"
+				>
+					<motion.div variants={fadeUp} className="flex items-center gap-4">
+						<span className="block h-px w-12 bg-twin-primary-main/30" />
+						<SectionLabel className="m-0! text-[12px]! text-twin-primary-main/50">
+							Reviews
+						</SectionLabel>
+						<span className="block h-px w-12 bg-twin-primary-main/30" />
+					</motion.div>
+
+					<div className="flex flex-col items-center gap-4">
+						<motion.h2
+							variants={fadeUp}
+							className="max-w-200 text-[clamp(2.4rem,5vw,4rem)] leading-[1.02] font-black
+								tracking-[-0.03em] text-twin-primary-main"
+						>
+							Trusted by professionals{" "}
+							<span className="text-twin-accent-darker">across Lancaster County.</span>
+						</motion.h2>
+						<motion.div variants={fadeUp} className="flex items-center gap-2">
+							<div className="flex items-center gap-0.5 text-twin-accent-darker">
+								{[...Array(5).keys()].map((i) => (
+									<Icon key={i} icon="lucide:star" className="size-5 fill-current" />
+								))}
+							</div>
+							<span className="font-bold text-twin-primary-main/70">5.0 Rating on Google</span>
+						</motion.div>
+					</div>
+				</motion.div>
+
+				<motion.div
+					variants={staggerContainer(0.12)}
+					initial="hidden"
+					whileInView="show"
+					viewport={VP}
+					className="grid grid-cols-1 gap-6 md:grid-cols-3"
+				>
+					{REVIEWS.map((review) => (
+						<motion.div
+							key={review.name}
+							variants={fadeUp}
+							className="flex flex-col justify-between rounded-3xl border border-twin-primary-main/6
+								bg-twin-white p-8 shadow-sm transition-all duration-500
+								hover:border-twin-primary-main/12 hover:shadow-xl"
+						>
+							<div className="flex flex-col gap-6">
+								<div className="flex items-center gap-0.5 text-twin-accent-darker">
+									{[...Array(review.rating).keys()].map((i) => (
+										<Icon key={i} icon="lucide:star" className="size-4 fill-current" />
+									))}
+								</div>
+								<p className="text-[15.5px] leading-[1.7] text-twin-primary-main/80 italic">
+									&ldquo;{review.text}&rdquo;
+								</p>
+							</div>
+
+							<div
+								className="mt-8 flex items-center justify-between border-t
+									border-twin-primary-main/6 pt-6"
+							>
+								<div className="flex flex-col">
+									<span className="font-bold text-twin-primary-main">{review.name}</span>
+									<span className="text-[13px] text-twin-primary-main/50">{review.date}</span>
+								</div>
+								<Icon icon="logos:google-icon" className="size-5 opacity-40" />
+							</div>
+						</motion.div>
+					))}
+				</motion.div>
+
+				<motion.div
+					variants={fadeUp}
+					initial="hidden"
+					whileInView="show"
+					viewport={VP}
+					className="flex justify-center"
+				>
+					<Button
+						asChild={true}
+						theme="ghost-light"
+						size="medium"
+						className="group rounded-full border-twin-primary-main/15 px-8 transition-all
+							duration-500 hover:border-twin-primary-main/30 hover:bg-twin-primary-main/3"
+					>
+						<Link
+							href="https://www.google.com/search?q=Twins+Language+Services+Lancaster+PA"
+							target="_blank"
+							className="flex items-center gap-3"
+						>
+							View All Google Reviews
+							<Icon
+								icon="lucide:external-link"
+								className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
+							/>
+						</Link>
+					</Button>
+				</motion.div>
+			</div>
+		</section>
+	);
+}
+
 function CTASection() {
 	return (
 		<section
@@ -624,7 +754,7 @@ function CTASection() {
 				initial="hidden"
 				whileInView="show"
 				viewport={VP}
-				className="relative z-10 flex w-full max-w-[900px] flex-col items-center gap-12 text-center"
+				className="relative z-10 flex w-full max-w-225 flex-col items-center gap-12 text-center"
 			>
 				<motion.div variants={fadeUp} className="flex items-center gap-4">
 					<span className="block h-px w-12 bg-twin-accent-main/40" />
@@ -648,7 +778,7 @@ function CTASection() {
 					</span>
 				</motion.h2>
 
-				<motion.p variants={fadeUp} className="max-w-[520px] text-lg leading-[1.7] text-twin-white/65">
+				<motion.p variants={fadeUp} className="max-w-130 text-lg leading-[1.7] text-twin-white/65">
 					Whether you need immediate interpretation or long-term translation support, we're ready to
 					deliver.
 				</motion.p>
