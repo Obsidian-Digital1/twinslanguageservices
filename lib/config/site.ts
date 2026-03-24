@@ -3,14 +3,14 @@
  * Central configuration for Twins Language Services website
  */
 
-export const siteConfig = {
-	// Microsoft Bookings Integration
+import { defineEnumDeep } from "@zayne-labs/toolkit-type-helpers";
+
+export const siteConfig = defineEnumDeep({
 	bookings: {
 		label: "Schedule Service",
 		url: "https://outlook.office365.com/book/TwinsLanguageServices@example.com/",
 	},
 
-	// Contact Information
 	contact: {
 		address: {
 			city: "Lancaster",
@@ -29,10 +29,8 @@ export const siteConfig = {
 	description:
 		"Professional interpretation, document translation, and transcription services in Lancaster, PA",
 
-	// Business Information
 	name: "Twins Language Services",
 
-	// Navigation Links
 	navigation: [
 		{ href: "/", label: "Home" },
 		{ href: "/about-us", label: "About Us" },
@@ -41,7 +39,6 @@ export const siteConfig = {
 		{ href: "/contact", label: "Contact Us" },
 	],
 
-	// SEO Metadata
 	seo: {
 		description:
 			"Professional language services in Lancaster, PA. Expert interpretation, document translation, and transcription for businesses, healthcare, legal, and more.",
@@ -58,7 +55,6 @@ export const siteConfig = {
 		title: "Twins Language Services | Interpretation, Translation & Transcription",
 	},
 
-	// Services
 	services: [
 		{
 			id: "in-person-interpreting",
@@ -92,7 +88,6 @@ export const siteConfig = {
 		},
 	],
 
-	// Social Media Links
 	social: {
 		facebook: "https://www.facebook.com/twinslanguageservices",
 		instagram: "https://www.instagram.com/twinslanguageservices",
@@ -100,6 +95,6 @@ export const siteConfig = {
 	},
 
 	tagline: "Breaking Language Barriers, Building Connections",
-} as const;
+});
 
 export type SiteConfig = typeof siteConfig;

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { siteConfig } from "@/lib/config/site";
 import { cnJoin } from "@/lib/utils/cn";
 import { Providers } from "./Providers";
 import "../tailwind.css";
@@ -16,8 +17,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	description: "",
-	title: "",
+	description: siteConfig.seo.description,
+	keywords: siteConfig.seo.keywords,
+	title: siteConfig.seo.title,
 };
 
 function RootLayout({ children }: LayoutProps<"/">) {
