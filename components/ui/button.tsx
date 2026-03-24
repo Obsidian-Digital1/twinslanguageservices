@@ -77,13 +77,13 @@ export const buttonVariants = tv({
 		},
 
 		size: {
-			"full-width": "h-14 w-full text-lg font-bold",
+			"full-width": "h-14 w-full text-[18px] font-bold",
 
 			icon: "size-14 md:size-20",
 
 			large: "h-16 px-14 text-xl font-extrabold",
 
-			medium: "h-14 px-10 text-lg font-bold md:h-15.5 md:px-11",
+			medium: "h-14 px-10 text-[18px] font-bold md:h-15.5 md:px-11",
 
 			sm: "h-11 px-6 text-base font-semibold",
 		},

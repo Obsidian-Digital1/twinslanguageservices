@@ -1,7 +1,7 @@
 "use client";
 
 import { Icon } from "@iconify/react";
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, type MouseEvent as ReactMouseEvent } from "react";
@@ -152,25 +152,10 @@ export default function HomePage() {
 
 function HeroSection() {
 	const sectionRef = useRef<HTMLElement>(null);
-	const { scrollYProgress } = useScroll({ offset: ["start start", "end start"], target: sectionRef });
-	const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-	const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-	const mouseX = useMotionValue(0);
-	const mouseY = useMotionValue(0);
-	const springX = useSpring(mouseX, { damping: 20, stiffness: 50 });
-	const springY = useSpring(mouseY, { damping: 20, stiffness: 50 });
-
-	const handleMouseMove = (e: ReactMouseEvent<HTMLElement>) => {
-		const rect = e.currentTarget.getBoundingClientRect();
-		mouseX.set((e.clientX - rect.left - rect.width / 2) * 0.08);
-		mouseY.set((e.clientY - rect.top - rect.height / 2) * 0.08);
-	};
 
 	return (
 		<section
 			ref={sectionRef}
-			onMouseMove={handleMouseMove}
 			className="relative flex min-h-svh w-full flex-col overflow-hidden bg-twin-primary-main"
 		>
 			<div
@@ -182,7 +167,6 @@ function HeroSection() {
 			/>
 
 			<motion.div
-				style={{ x: springX, y: springY }}
 				className="pointer-events-none absolute -top-[15%] right-[5%] z-0 aspect-square
 					w-[min(900px,80vw)] rounded-full opacity-50 blur-[140px]"
 			>
@@ -209,9 +193,8 @@ function HeroSection() {
 			/>
 
 			<motion.div
-				style={{ opacity: contentOpacity, y: contentY }}
-				className="relative z-10 flex w-full grow flex-col justify-end px-6 pt-36 pb-45 md:px-16
-					lg:px-[8%]"
+				className="relative z-10 flex w-full grow flex-col justify-end px-6 pt-32 pb-28 md:px-16
+					md:pt-36 md:pb-52 lg:px-[8%]"
 			>
 				<motion.div
 					variants={staggerContainer(0.1, 0.3)}
@@ -287,29 +270,35 @@ function HeroSection() {
 								</Link>
 							</Button>
 
-							<Link
-								href={`tel:${siteConfig.contact.phone.replaceAll(/[^0-9]/g, "")}`}
-								className="group flex items-center gap-4 rounded-full border border-twin-white/10
-									px-6 py-3.5 text-[15px] text-twin-white/70 no-underline transition-all
-									duration-400 hover:border-twin-white/25 hover:text-twin-white"
+							<Button
+								asChild={true}
+								theme="ghost-dark"
+								size="medium"
+								className="justify-start gap-4 rounded-full border-twin-white/10 px-6 text-base
+									font-normal text-twin-white/70 transition-all duration-400
+									hover:border-twin-white/20 hover:text-twin-white"
 							>
-								<span className="relative flex size-2">
-									<span
-										className="absolute inline-flex size-full animate-ping rounded-full
-											bg-twin-accent-main opacity-60"
-									/>
-									<span className="relative inline-flex size-2 rounded-full bg-twin-accent-main" />
-								</span>
-								{siteConfig.contact.phone}
-							</Link>
+								<a href={`tel:${siteConfig.contact.phone.replaceAll(/[^0-9]/g, "")}`}>
+									<div className="relative flex size-2">
+										<span
+											className="absolute inline-flex size-full animate-ping rounded-full
+												bg-twin-accent-main opacity-60"
+										/>
+										<span
+											className="relative inline-flex size-2 rounded-full bg-twin-accent-main"
+										/>
+									</div>
+									{siteConfig.contact.phone}
+								</a>
+							</Button>
 						</motion.div>
 					</div>
 				</motion.div>
 			</motion.div>
 
 			<div
-				className="pointer-events-none absolute inset-x-0 bottom-0 z-3 h-24 bg-linear-to-t
-					from-twin-white to-transparent"
+				className="pointer-events-none absolute inset-x-0 bottom-0 z-3 h-20 bg-linear-to-t
+					from-twin-white via-twin-white/60 to-transparent md:h-32"
 			/>
 		</section>
 	);
