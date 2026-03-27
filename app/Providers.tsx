@@ -12,7 +12,7 @@ function Providers(props: ProvidersProps) {
 	return (
 		<ProgressProvider
 			height="2.5px"
-			color="var(--color-webdev-primary-darker)"
+			color="var(--color-twin-primary-darker)"
 			options={{ showSpinner: true }}
 			shallowRouting={true}
 		>
