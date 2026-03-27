@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 function RootLayout({ children }: LayoutProps<"/">) {
 	return (
-		<html lang="en" data-theme="light">
+		<html lang="en" data-scroll-behavior="smooth" data-theme="light">
 			<body className={cnJoin(inter.variable, poppins.variable)}>
 				<Providers>{children}</Providers>
 			</body>

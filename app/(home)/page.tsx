@@ -1,10 +1,10 @@
 "use client";
 
-import { Icon } from "@iconify/react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, type MouseEvent as ReactMouseEvent } from "react";
+import { useRef } from "react";
+import { IconBox } from "@/components/common/IconBox";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config/site";
 import { cnJoin } from "@/lib/utils/cn";
@@ -232,7 +232,7 @@ function HeroSection() {
 								animate={{ rotate: [0, 8, -6, 0] }}
 								transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
 							>
-								<Icon icon="lucide:sparkles" className="size-6 md:size-10" />
+								<IconBox icon="lucide:sparkles" className="size-6 md:size-10" />
 							</motion.span>
 						</span>
 					</motion.h1>
@@ -262,7 +262,7 @@ function HeroSection() {
 							>
 								<Link href={siteConfig.bookings.url} className="flex items-center gap-3">
 									Schedule Service
-									<Icon
+									<IconBox
 										icon="lucide:arrow-up-right"
 										className="size-5 transition-transform duration-300
 											group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -322,7 +322,7 @@ function TrustCardsSection() {
 						<div className="flex flex-col gap-6">
 							<motion.div variants={fadeUp} className="flex items-center gap-4">
 								<span className="block h-px w-12 bg-twin-primary-main/30" />
-								<SectionLabel className="m-0! text-[12px]! text-twin-primary-main/50">
+								<SectionLabel className="text-[12px]! text-twin-primary-main/50">
 									What Sets Us Apart
 								</SectionLabel>
 							</motion.div>
@@ -358,7 +358,7 @@ function TrustCardsSection() {
 											duration-500 group-hover:border-twin-accent-main/30
 											group-hover:text-twin-accent-main"
 									>
-										<Icon icon={card.icon} className="size-5" />
+										<IconBox icon={card.icon} className="size-5" />
 									</div>
 
 									<div className="flex flex-col gap-1.5">
@@ -422,9 +422,7 @@ function ServicesOverviewSection() {
 				>
 					<motion.div variants={fadeUp} className="flex items-center gap-4">
 						<span className="block h-px w-12 bg-twin-accent-main/40" />
-						<SectionLabel className="m-0! text-[12px]! text-twin-accent-main/80">
-							Services
-						</SectionLabel>
+						<SectionLabel className="text-[12px]! text-twin-accent-main/80">Services</SectionLabel>
 						<span className="block h-px w-12 bg-twin-accent-main/40" />
 					</motion.div>
 					<motion.h2
@@ -468,7 +466,7 @@ function ServicesOverviewSection() {
 									group-hover:border-twin-accent-main/30 group-hover:text-twin-accent-main
 									group-hover:shadow-[0_0_30px_theme(--color-twin-accent-main/15%)]"
 							>
-								<Icon icon={service.icon} className="size-6" />
+								<IconBox icon={service.icon} className="size-6" />
 							</div>
 
 							<div className="mt-auto flex flex-col gap-4 pt-8">
@@ -485,7 +483,7 @@ function ServicesOverviewSection() {
 									rounded-full text-twin-white/0 transition-all duration-500
 									group-hover:text-twin-white/40"
 							>
-								<Icon icon="lucide:arrow-up-right" className="size-5" />
+								<IconBox icon="lucide:arrow-up-right" className="size-5" />
 							</div>
 
 							<Link href="/services" className="absolute inset-0 z-20 focus:outline-hidden">
@@ -511,7 +509,7 @@ function ServicesOverviewSection() {
 					>
 						<Link href="/services" className="flex items-center gap-3">
 							View All Services
-							<Icon
+							<IconBox
 								icon="lucide:arrow-right"
 								className="size-4 transition-transform duration-500 group-hover:translate-x-1.5"
 							/>
@@ -540,7 +538,7 @@ function ProcessStepsSection() {
 					<div className="flex flex-col gap-6">
 						<motion.div variants={fadeUp} className="flex items-center gap-4">
 							<span className="block h-px w-12 bg-twin-primary-main/30" />
-							<SectionLabel className="m-0! text-[12px]! text-twin-primary-main/50">
+							<SectionLabel className="text-[12px]! text-twin-primary-main/50">
 								Process
 							</SectionLabel>
 						</motion.div>
@@ -591,7 +589,7 @@ function ProcessStepsSection() {
 									bg-twin-primary-main/6 text-twin-primary-main/75 transition-all duration-500
 									group-hover:bg-twin-accent-main/10 group-hover:text-twin-accent-main"
 							>
-								<Icon icon={step.icon} className="size-5" />
+								<IconBox icon={step.icon} className="size-5" />
 							</div>
 
 							<div className="flex flex-col gap-3">
@@ -626,9 +624,7 @@ function ReviewsSection() {
 				>
 					<motion.div variants={fadeUp} className="flex items-center gap-4">
 						<span className="block h-px w-12 bg-twin-primary-main/30" />
-						<SectionLabel className="m-0! text-[12px]! text-twin-primary-main/50">
-							Reviews
-						</SectionLabel>
+						<SectionLabel className="text-[12px]! text-twin-primary-main/50">Reviews</SectionLabel>
 						<span className="block h-px w-12 bg-twin-primary-main/30" />
 					</motion.div>
 
@@ -644,7 +640,7 @@ function ReviewsSection() {
 						<motion.div variants={fadeUp} className="flex items-center gap-2">
 							<div className="flex items-center gap-0.5 text-twin-accent-darker">
 								{[...Array(5).keys()].map((i) => (
-									<Icon key={i} icon="lucide:star" className="size-5 fill-current" />
+									<IconBox key={i} icon="lucide:star" className="size-5 fill-current" />
 								))}
 							</div>
 							<span className="font-bold text-twin-primary-main/70">5.0 Rating on Google</span>
@@ -670,7 +666,7 @@ function ReviewsSection() {
 							<div className="flex flex-col gap-6">
 								<div className="flex items-center gap-0.5 text-twin-accent-darker">
 									{[...Array(review.rating).keys()].map((i) => (
-										<Icon key={i} icon="lucide:star" className="size-4 fill-current" />
+										<IconBox key={i} icon="lucide:star" className="size-4 fill-current" />
 									))}
 								</div>
 								<p className="text-[15.5px] leading-[1.7] text-twin-primary-main/80 italic">
@@ -686,7 +682,7 @@ function ReviewsSection() {
 									<span className="font-bold text-twin-primary-main">{review.name}</span>
 									<span className="text-[13px] text-twin-primary-main/50">{review.date}</span>
 								</div>
-								<Icon icon="logos:google-icon" className="size-5 opacity-40" />
+								<IconBox icon="logos:google-icon" className="size-5 opacity-40" />
 							</div>
 						</motion.div>
 					))}
@@ -712,7 +708,7 @@ function ReviewsSection() {
 							className="flex items-center gap-3"
 						>
 							View All Google Reviews
-							<Icon
+							<IconBox
 								icon="lucide:external-link"
 								className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
 							/>
@@ -782,7 +778,7 @@ function CTASection() {
 					>
 						<Link href="/booking" className="flex items-center gap-3">
 							Book Now
-							<Icon
+							<IconBox
 								icon="lucide:arrow-up-right"
 								className="size-5 transition-transform duration-300 group-hover:translate-x-0.5
 									group-hover:-translate-y-0.5"
@@ -799,7 +795,7 @@ function CTASection() {
 					>
 						<Link href="/contact" className="flex items-center gap-3">
 							Contact Us
-							<Icon icon="lucide:mail" className="size-5" />
+							<IconBox icon="lucide:mail" className="size-5" />
 						</Link>
 					</Button>
 				</motion.div>

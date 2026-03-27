@@ -20,18 +20,24 @@ importers:
       '@radix-ui/react-avatar':
         specifier: ^1.1.11
         version: 1.1.11(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@tanstack/react-query':
+        specifier: ^5.95.2
+        version: 5.95.2(react@19.2.4)
+      '@zayne-labs/callapi':
+        specifier: ^1.12.0
+        version: 1.12.0
       '@zayne-labs/toolkit-core':
-        specifier: ^0.12.44
-        version: 0.12.44
+        specifier: ^0.12.46
+        version: 0.12.46
       '@zayne-labs/toolkit-react':
-        specifier: ^0.12.44
-        version: 0.12.44(@types/react@19.2.14)(react@19.2.4)(tailwind-merge@3.5.0)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))
+        specifier: ^0.12.46
+        version: 0.12.46(@types/react@19.2.14)(react@19.2.4)(tailwind-merge@3.5.0)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))
       '@zayne-labs/toolkit-type-helpers':
-        specifier: ^0.12.44
-        version: 0.12.44
+        specifier: ^0.12.46
+        version: 0.12.46
       '@zayne-labs/ui-react':
-        specifier: 0.10.53
-        version: 0.10.53(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react-hook-form@7.72.0(react@19.2.4))(react@19.2.4)(tailwind-merge@3.5.0)(tailwindcss@4.2.2)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))
+        specifier: 0.11.2
+        version: 0.11.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react-hook-form@7.72.0(react@19.2.4))(react@19.2.4)(tailwind-merge@3.5.0)(tailwindcss@4.2.2)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -101,7 +107,7 @@ importers:
         version: 0.12.4(@eslint-react/eslint-plugin@3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(@next/eslint-plugin-next@16.2.1)(@typescript-eslint/utils@8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(eslint-plugin-better-tailwindcss@4.3.2(eslint@10.1.0(jiti@2.6.1))(tailwindcss@4.2.2)(typescript@6.0.2))(eslint-plugin-react-hooks@7.0.1(eslint@10.1.0(jiti@2.6.1)))(eslint-plugin-react-refresh@0.5.2(eslint@10.1.0(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.2(eslint@10.1.0(jiti@2.6.1)))(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@zayne-labs/prettier-config':
         specifier: 0.12.4
-        version: 0.12.4(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier-plugin-classnames@0.10.0(prettier@3.8.1))(prettier-plugin-merge@0.10.0(prettier@3.8.1))(prettier-plugin-tailwindcss@0.7.2(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier@3.8.1))(prettier@3.8.1)
+        version: 0.12.4(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier-plugin-classnames@0.10.1(prettier@3.8.1))(prettier-plugin-merge@0.10.1(prettier@3.8.1))(prettier-plugin-tailwindcss@0.7.2(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier@3.8.1))(prettier@3.8.1)
       '@zayne-labs/tsconfig':
         specifier: 0.12.4
         version: 0.12.4
@@ -127,11 +133,11 @@ importers:
         specifier: 3.8.1
         version: 3.8.1
       prettier-plugin-classnames:
-        specifier: ^0.10.0
-        version: 0.10.0(prettier@3.8.1)
+        specifier: ^0.10.1
+        version: 0.10.1(prettier@3.8.1)
       prettier-plugin-merge:
-        specifier: ^0.10.0
-        version: 0.10.0(prettier@3.8.1)
+        specifier: ^0.10.1
+        version: 0.10.1(prettier@3.8.1)
       prettier-plugin-tailwindcss:
         specifier: ^0.7.2
         version: 0.7.2(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier@3.8.1)
@@ -1525,6 +1531,14 @@ packages:
   '@tailwindcss/postcss@4.2.2':
     resolution: {integrity: sha512-n4goKQbW8RVXIbNKRB/45LzyUqN451deQK0nzIeauVEqjlI49slUlgKYJM2QyUzap/PcpnS7kzSUmPb1sCRvYQ==}
 
+  '@tanstack/query-core@5.95.2':
+    resolution: {integrity: sha512-o4T8vZHZET4Bib3jZ/tCW9/7080urD4c+0/AUaYVpIqOsr7y0reBc1oX3ttNaSW5mYyvZHctiQ/UOP2PfdmFEQ==}
+
+  '@tanstack/react-query@5.95.2':
+    resolution: {integrity: sha512-/wGkvLj/st5Ud1Q76KF1uFxScV7WeqN1slQx5280ycwAyYkIPGaRZAEgHxe3bjirSd5Zpwkj6zNcR4cqYni/ZA==}
+    peerDependencies:
+      react: ^18 || ^19
+
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
@@ -1786,6 +1800,10 @@ packages:
     peerDependencies:
       valibot: ^1.3.0
 
+  '@zayne-labs/callapi@1.12.0':
+    resolution: {integrity: sha512-vb2G8liurqxjr/EkfeZbhuaTLKH9wHDn7bRGLq3W4iHkVgNXhx+nJOrnGkN82RxOM+KjRJna5nRwkO3T9usT1w==}
+    engines: {node: '>=v18.17.0'}
+
   '@zayne-labs/eslint-config@0.12.4':
     resolution: {integrity: sha512-nhQBAHIafpE/2by9Ee1cFP/ENHTpvkqlEhhK1lNwkL+PY0R9eMg8xxFoQBW4pSRGgmcIG11+2Q06HszOsEbtNg==}
     engines: {node: '>=20.x'}
@@ -1871,12 +1889,12 @@ packages:
       prettier-plugin-tailwindcss:
         optional: true
 
-  '@zayne-labs/toolkit-core@0.12.44':
-    resolution: {integrity: sha512-wbaCm6QDPwF7TNRiw4Nc77pyZv7T5B32DFwvqTkCO+S35ZNSDjOtJctcK6LKHhWe4c9BECoJYr75Hur6wY8A4A==}
+  '@zayne-labs/toolkit-core@0.12.46':
+    resolution: {integrity: sha512-szGumo6FAvood9kaaGoFILKLU23YU8Zm/0Q7wIwxffj8/LBmgmfMfjEEGBYU8sH0jXNFMjyXKtxxvWsM6EV0YA==}
     engines: {node: '>=18.x'}
 
-  '@zayne-labs/toolkit-react@0.12.44':
-    resolution: {integrity: sha512-ffliqA8Fe5m7qHC5IwPKCd+Jm7IjAvvQhiXqs6LrqsTIaQHXuXRzpMYYiVavzF1ofK8m2YgdYWIITIjfSTZcXw==}
+  '@zayne-labs/toolkit-react@0.12.46':
+    resolution: {integrity: sha512-5Tqt/8ocqQTABqvJa1CRTzKeUev6bapUOsRqSYbbxI87XLe5o3457xjvUzdztqT8pd554fOxiggZKqdka3lqpg==}
     engines: {node: '>=18.x'}
     peerDependencies:
       '@types/react': '>=19.0.0'
@@ -1895,11 +1913,15 @@ packages:
     resolution: {integrity: sha512-CaTU7e5z8jvxsiuyq2zjCjUoyljNffT6c22Ova2Z1kPagxlQ5tUAQtLJ1jhX5wv8yzfisYT2wIN17QTwZRIH2g==}
     engines: {node: '>=18.x'}
 
+  '@zayne-labs/toolkit-type-helpers@0.12.46':
+    resolution: {integrity: sha512-Zchgili+6M5bCE62t76O8RQCKuGUYK/Ld2FFcS3TxfNqL47dEQF/zB66QYRO1sO5ynPaPew4Hdz3ghZej2Sa+A==}
+    engines: {node: '>=18.x'}
+
   '@zayne-labs/tsconfig@0.12.4':
     resolution: {integrity: sha512-E1wY4TBRZIzVn4h1532i5/jBWaS4dME/ODieTvUqVL0w603/MKk2Tk2zY3GDUtFGcDjVoFYo3YyeZHn7fwQ6yQ==}
 
-  '@zayne-labs/ui-react@0.10.53':
-    resolution: {integrity: sha512-HffiWQd1UvY1VECAq83TTSoWPzJl9J/k+3qoE5iec/m3NK1ZjcMR+sbO6dkySYbrz+Y9xvJORdlAwKmZKVhaig==}
+  '@zayne-labs/ui-react@0.11.2':
+    resolution: {integrity: sha512-d6WtIZSPnIDa+p06TYPGbtEWwHtTOthpGcwTITmK/z104KS4vRfXIh5plhV9n8N7JwWujI5wnieDDWnWugi9bA==}
     engines: {node: '>=18.x'}
     peerDependencies:
       react: 19.x.x
@@ -1946,16 +1968,16 @@ packages:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
 
-  baseline-browser-mapping@2.10.10:
-    resolution: {integrity: sha512-sUoJ3IMxx4AyRqO4MLeHlnGDkyXRoUG0/AI9fjK+vS72ekpV0yWVY7O0BVjmBcRtkNcsAO2QDZ4tdKKGoI6YaQ==}
+  baseline-browser-mapping@2.10.11:
+    resolution: {integrity: sha512-DAKrHphkJyiGuau/cFieRYhcTFeK/lBuD++C7cZ6KZHbMhBrisoi+EvhQ5RZrIfV5qwsW8kgQ07JIC+MDJRAhg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
   birecord@0.1.1:
     resolution: {integrity: sha512-VUpsf/qykW0heRlC8LooCq28Kxn3mAqKohhDG/49rrsQ1dT1CXyj/pgXS+5BSRzFTR/3DyIBOqQOrGyZOh71Aw==}
 
-  brace-expansion@5.0.4:
-    resolution: {integrity: sha512-h+DEnpVvxmfVefa4jFbCf5HdH5YMDXRsmKflpf1pILZWRFlTbJpxeU55nJl4Smt5HQaGzg1o6RHFPJaOqnmBDg==}
+  brace-expansion@5.0.5:
+    resolution: {integrity: sha512-VZznLgtwhn+Mact9tfiwx64fA9erHH/MCXEUfB/0bX/6Fz6ny5EGTXYltMocqg4xFAQZtnO3DHWWXi8RiuN7cQ==}
     engines: {node: 18 || 20 || >=22}
 
   braces@3.0.3:
@@ -2075,8 +2097,8 @@ packages:
     resolution: {integrity: sha512-vtcDfH3TOjP8UekytvnHH1o1P4FcUdt4eQ1Y+Abap1tk/OB2MWQvcwS2ClCd1zuIhc3JKOx6p3kod8Vfys3E+A==}
     engines: {node: '>=0.3.1'}
 
-  electron-to-chromium@1.5.321:
-    resolution: {integrity: sha512-L2C7Q279W2D/J4PLZLk7sebOILDSWos7bMsMNN06rK482umHUrh/3lM8G7IlHFOYip2oAg5nha1rCMxr/rs6ZQ==}
+  electron-to-chromium@1.5.325:
+    resolution: {integrity: sha512-PwfIw7WQSt3xX7yOf5OE/unLzsK9CaN2f/FvV3WjPR1Knoc1T9vePRVV4W1EM301JzzysK51K7FNKcusCr0zYA==}
 
   embla-carousel-react@8.6.0:
     resolution: {integrity: sha512-0/PjqU7geVmo6F734pmPqpyHqiM99olvyecY7zdweCw+6tKEXnrE90pBiBbMMU8s5tICemzpQ3hi5EpxzGW+JA==}
@@ -2900,12 +2922,12 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  picomatch@2.3.1:
-    resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
+  picomatch@2.3.2:
+    resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
     engines: {node: '>=8.6'}
 
-  picomatch@4.0.3:
-    resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
+  picomatch@4.0.4:
+    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
 
   pkg-types@1.3.1:
@@ -2933,8 +2955,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-classnames@0.10.0:
-    resolution: {integrity: sha512-s6lBfiLW/f2pavoi8Aak91KN8Zx5cdN2GEAlzQ+hosPpwntxXRdrroPc+UZRjFm0gsGJe5+J0P5PwAShFa2a8g==}
+  prettier-plugin-classnames@0.10.1:
+    resolution: {integrity: sha512-Jz3rqyNCTPfwlg2be8ZIfY/UM5y1VfVZ5iIFVNvdl72brru1p6vlCds+VAt83VrlDxPkjGiKnAx6MMB4OxqjBQ==}
     engines: {node: '>=18'}
     peerDependencies:
       '@prettier/plugin-oxc': '*'
@@ -2949,8 +2971,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier-plugin-merge@0.10.0:
-    resolution: {integrity: sha512-OWF0lOnjH16U2iiviF5+6s77n863c6Wff8hAcCNH2bDgOxr+HlPEM6xsVnnaHd7xCrscgJxhMcBaYot/6D/o3g==}
+  prettier-plugin-merge@0.10.1:
+    resolution: {integrity: sha512-dwz+TLE6sAIaoiZTS7mixu6JF85IfvccWrFMcaA4tpmu51TerUEW/WlI1u9h5ewU8Zxu89q08KKNHKCOe17iAQ==}
     engines: {node: '>=18'}
     peerDependencies:
       prettier: ^3
@@ -3222,8 +3244,8 @@ packages:
   tailwindcss@4.2.2:
     resolution: {integrity: sha512-KWBIxs1Xb6NoLdMVqhbhgwZf2PGBpPEiwOqgI4pFIYbNTfBXiKYyWoTsXgBQ9WFg/OlhnvHaY+AEpW7wSmFo2Q==}
 
-  tapable@2.3.0:
-    resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
+  tapable@2.3.2:
+    resolution: {integrity: sha512-1MOpMXuhGzGL5TTCZFItxCc0AARf1EZFQkGqMm7ERKj8+Hgr5oLvJOVFcC+lRmR8hCe2S3jC4T5D7Vg/d7/fhA==}
     engines: {node: '>=6'}
 
   tinyexec@1.0.4:
@@ -3577,7 +3599,7 @@ snapshots:
   '@es-joy/jsdoccomment@0.84.0':
     dependencies:
       '@types/estree': 1.0.8
-      '@typescript-eslint/types': 8.57.1
+      '@typescript-eslint/types': 8.57.2
       comment-parser: 1.4.5
       esquery: 1.7.0
       jsdoc-type-pratt-parser: 7.1.1
@@ -3599,9 +3621,9 @@ snapshots:
 
   '@eslint-react/ast@3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)':
     dependencies:
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/typescript-estree': 8.57.1(typescript@6.0.2)
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/typescript-estree': 8.57.2(typescript@6.0.2)
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
       string-ts: 2.3.1
       typescript: 6.0.2
@@ -3613,9 +3635,9 @@ snapshots:
       '@eslint-react/ast': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/var': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
       ts-pattern: 5.9.0
       typescript: 6.0.2
@@ -3625,10 +3647,10 @@ snapshots:
   '@eslint-react/eslint-plugin@3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)':
     dependencies:
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/type-utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/type-utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
       eslint-plugin-react-dom: 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint-plugin-react-naming-convention: 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
@@ -3642,7 +3664,7 @@ snapshots:
 
   '@eslint-react/shared@3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)':
     dependencies:
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
       ts-pattern: 5.9.0
       typescript: 6.0.2
@@ -3654,9 +3676,9 @@ snapshots:
     dependencies:
       '@eslint-react/ast': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
       ts-pattern: 5.9.0
       typescript: 6.0.2
@@ -4735,12 +4757,12 @@ snapshots:
   '@stylistic/eslint-plugin@5.10.0(eslint@10.1.0(jiti@2.6.1))':
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@10.1.0(jiti@2.6.1))
-      '@typescript-eslint/types': 8.57.1
+      '@typescript-eslint/types': 8.57.2
       eslint: 10.1.0(jiti@2.6.1)
       eslint-visitor-keys: 4.2.1
       espree: 10.4.0
       estraverse: 5.3.0
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   '@swc/helpers@0.5.15':
     dependencies:
@@ -4814,6 +4836,13 @@ snapshots:
       '@tailwindcss/oxide': 4.2.2
       postcss: 8.5.8
       tailwindcss: 4.2.2
+
+  '@tanstack/query-core@5.95.2': {}
+
+  '@tanstack/react-query@5.95.2(react@19.2.4)':
+    dependencies:
+      '@tanstack/query-core': 5.95.2
+      react: 19.2.4
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -5095,6 +5124,8 @@ snapshots:
     dependencies:
       valibot: 1.3.1(typescript@6.0.2)
 
+  '@zayne-labs/callapi@1.12.0': {}
+
   '@zayne-labs/eslint-config@0.12.4(@eslint-react/eslint-plugin@3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(@next/eslint-plugin-next@16.2.1)(@typescript-eslint/utils@8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(eslint-plugin-better-tailwindcss@4.3.2(eslint@10.1.0(jiti@2.6.1))(tailwindcss@4.2.2)(typescript@6.0.2))(eslint-plugin-react-hooks@7.0.1(eslint@10.1.0(jiti@2.6.1)))(eslint-plugin-react-refresh@0.5.2(eslint@10.1.0(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.2(eslint@10.1.0(jiti@2.6.1)))(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
@@ -5144,7 +5175,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@zayne-labs/prettier-config@0.12.4(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier-plugin-classnames@0.10.0(prettier@3.8.1))(prettier-plugin-merge@0.10.0(prettier@3.8.1))(prettier-plugin-tailwindcss@0.7.2(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier@3.8.1))(prettier@3.8.1)':
+  '@zayne-labs/prettier-config@0.12.4(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier-plugin-classnames@0.10.1(prettier@3.8.1))(prettier-plugin-merge@0.10.1(prettier@3.8.1))(prettier-plugin-tailwindcss@0.7.2(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier@3.8.1))(prettier@3.8.1)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 1.1.0
@@ -5153,18 +5184,18 @@ snapshots:
       local-pkg: 1.1.2
       prettier: 3.8.1
     optionalDependencies:
-      prettier-plugin-classnames: 0.10.0(prettier@3.8.1)
-      prettier-plugin-merge: 0.10.0(prettier@3.8.1)
+      prettier-plugin-classnames: 0.10.1(prettier@3.8.1)
+      prettier-plugin-merge: 0.10.1(prettier@3.8.1)
       prettier-plugin-tailwindcss: 0.7.2(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.1))(prettier@3.8.1)
 
-  '@zayne-labs/toolkit-core@0.12.44':
+  '@zayne-labs/toolkit-core@0.12.46':
     dependencies:
-      '@zayne-labs/toolkit-type-helpers': 0.12.44
+      '@zayne-labs/toolkit-type-helpers': 0.12.46
 
-  '@zayne-labs/toolkit-react@0.12.44(@types/react@19.2.14)(react@19.2.4)(tailwind-merge@3.5.0)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))':
+  '@zayne-labs/toolkit-react@0.12.46(@types/react@19.2.14)(react@19.2.4)(tailwind-merge@3.5.0)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))':
     dependencies:
-      '@zayne-labs/toolkit-core': 0.12.44
-      '@zayne-labs/toolkit-type-helpers': 0.12.44
+      '@zayne-labs/toolkit-core': 0.12.46
+      '@zayne-labs/toolkit-type-helpers': 0.12.46
       tailwind-merge: 3.5.0
     optionalDependencies:
       '@types/react': 19.2.14
@@ -5173,13 +5204,15 @@ snapshots:
 
   '@zayne-labs/toolkit-type-helpers@0.12.44': {}
 
+  '@zayne-labs/toolkit-type-helpers@0.12.46': {}
+
   '@zayne-labs/tsconfig@0.12.4': {}
 
-  '@zayne-labs/ui-react@0.10.53(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react-hook-form@7.72.0(react@19.2.4))(react@19.2.4)(tailwind-merge@3.5.0)(tailwindcss@4.2.2)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))':
+  '@zayne-labs/ui-react@0.11.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react-hook-form@7.72.0(react@19.2.4))(react@19.2.4)(tailwind-merge@3.5.0)(tailwindcss@4.2.2)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))':
     dependencies:
-      '@zayne-labs/toolkit-core': 0.12.44
-      '@zayne-labs/toolkit-react': 0.12.44(@types/react@19.2.14)(react@19.2.4)(tailwind-merge@3.5.0)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))
-      '@zayne-labs/toolkit-type-helpers': 0.12.44
+      '@zayne-labs/toolkit-core': 0.12.46
+      '@zayne-labs/toolkit-react': 0.12.46(@types/react@19.2.14)(react@19.2.4)(tailwind-merge@3.5.0)(zustand@5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4)))
+      '@zayne-labs/toolkit-type-helpers': 0.12.46
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
       tailwind-merge: 3.5.0
@@ -5217,11 +5250,11 @@ snapshots:
 
   balanced-match@4.0.4: {}
 
-  baseline-browser-mapping@2.10.10: {}
+  baseline-browser-mapping@2.10.11: {}
 
   birecord@0.1.1: {}
 
-  brace-expansion@5.0.4:
+  brace-expansion@5.0.5:
     dependencies:
       balanced-match: 4.0.4
 
@@ -5231,9 +5264,9 @@ snapshots:
 
   browserslist@4.28.1:
     dependencies:
-      baseline-browser-mapping: 2.10.10
+      baseline-browser-mapping: 2.10.11
       caniuse-lite: 1.0.30001781
-      electron-to-chromium: 1.5.321
+      electron-to-chromium: 1.5.325
       node-releases: 2.0.36
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
@@ -5316,7 +5349,7 @@ snapshots:
 
   diff@5.2.2: {}
 
-  electron-to-chromium@1.5.321: {}
+  electron-to-chromium@1.5.325: {}
 
   embla-carousel-react@8.6.0(react@19.2.4):
     dependencies:
@@ -5335,7 +5368,7 @@ snapshots:
   enhanced-resolve@5.20.1:
     dependencies:
       graceful-fs: 4.2.11
-      tapable: 2.3.0
+      tapable: 2.3.2
 
   escalade@3.2.0: {}
 
@@ -5419,7 +5452,7 @@ snapshots:
   eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(eslint@10.1.0(jiti@2.6.1)):
     dependencies:
       '@package-json/types': 0.0.12
-      '@typescript-eslint/types': 8.57.1
+      '@typescript-eslint/types': 8.57.2
       comment-parser: 1.4.5
       debug: 4.4.3
       eslint: 10.1.0(jiti@2.6.1)
@@ -5486,7 +5519,7 @@ snapshots:
 
   eslint-plugin-perfectionist@5.7.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2):
     dependencies:
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
       natural-orderby: 5.0.0
     transitivePeerDependencies:
@@ -5510,9 +5543,9 @@ snapshots:
       '@eslint-react/core': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/var': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       compare-versions: 6.1.1
       eslint: 10.1.0(jiti@2.6.1)
       ts-pattern: 5.9.0
@@ -5537,10 +5570,10 @@ snapshots:
       '@eslint-react/core': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/var': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/type-utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/type-utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       compare-versions: 6.1.1
       eslint: 10.1.0(jiti@2.6.1)
       string-ts: 2.3.1
@@ -5558,10 +5591,10 @@ snapshots:
       '@eslint-react/ast': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/var': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/type-utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/type-utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
       ts-pattern: 5.9.0
       typescript: 6.0.2
@@ -5574,9 +5607,9 @@ snapshots:
       '@eslint-react/core': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/var': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       birecord: 0.1.1
       eslint: 10.1.0(jiti@2.6.1)
       ts-pattern: 5.9.0
@@ -5590,10 +5623,10 @@ snapshots:
       '@eslint-react/core': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/shared': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       '@eslint-react/var': 3.0.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/scope-manager': 8.57.1
-      '@typescript-eslint/type-utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
-      '@typescript-eslint/types': 8.57.1
-      '@typescript-eslint/utils': 8.57.1(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/scope-manager': 8.57.2
+      '@typescript-eslint/type-utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
+      '@typescript-eslint/types': 8.57.2
+      '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       compare-versions: 6.1.1
       eslint: 10.1.0(jiti@2.6.1)
       string-ts: 2.3.1
@@ -5755,9 +5788,9 @@ snapshots:
     dependencies:
       format: 0.2.2
 
-  fdir@6.5.0(picomatch@4.0.3):
+  fdir@6.5.0(picomatch@4.0.4):
     optionalDependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   file-entry-cache@8.0.0:
     dependencies:
@@ -6276,11 +6309,11 @@ snapshots:
   micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
-      picomatch: 2.3.1
+      picomatch: 2.3.2
 
   minimatch@10.2.4:
     dependencies:
-      brace-expansion: 5.0.4
+      brace-expansion: 5.0.5
 
   minimist@1.2.8: {}
 
@@ -6319,7 +6352,7 @@ snapshots:
     dependencies:
       '@next/env': 16.2.1
       '@swc/helpers': 0.5.15
-      baseline-browser-mapping: 2.10.10
+      baseline-browser-mapping: 2.10.11
       caniuse-lite: 1.0.30001781
       postcss: 8.4.31
       react: 19.2.4
@@ -6378,9 +6411,9 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  picomatch@2.3.1: {}
+  picomatch@2.3.2: {}
 
-  picomatch@4.0.3: {}
+  picomatch@4.0.4: {}
 
   pkg-types@1.3.1:
     dependencies:
@@ -6414,12 +6447,12 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-classnames@0.10.0(prettier@3.8.1):
+  prettier-plugin-classnames@0.10.1(prettier@3.8.1):
     dependencies:
       prettier: 3.8.1
       zod: 3.22.4
 
-  prettier-plugin-merge@0.10.0(prettier@3.8.1):
+  prettier-plugin-merge@0.10.1(prettier@3.8.1):
     dependencies:
       diff: 5.2.2
       prettier: 3.8.1
@@ -6661,14 +6694,14 @@ snapshots:
 
   tailwindcss@4.2.2: {}
 
-  tapable@2.3.0: {}
+  tapable@2.3.2: {}
 
   tinyexec@1.0.4: {}
 
   tinyglobby@0.2.15:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
 
   to-regex-range@5.0.1:
     dependencies:
@@ -6689,7 +6722,7 @@ snapshots:
 
   ts-declaration-location@1.0.7(typescript@6.0.2):
     dependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.4
       typescript: 6.0.2
 
   ts-pattern@5.9.0: {}
@@ -6698,7 +6731,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.20.1
-      tapable: 2.3.0
+      tapable: 2.3.2
       tsconfig-paths: 4.2.0
 
   tsconfig-paths@4.2.0:

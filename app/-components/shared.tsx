@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { cnJoin } from "@/lib/utils/cn";
+import { cnMerge } from "@/lib/utils/cn";
 
 export const fadeUp = {
 	hidden: { opacity: 0, y: 24 },
@@ -30,8 +30,8 @@ export function SectionLabel({ children, className }: { children: string; classN
 	return (
 		<motion.p
 			variants={fadeUp}
-			className={cnJoin(
-				"text-[15px] font-black tracking-[0.28em] text-twin-primary-darker uppercase sm:text-[20px]",
+			className={cnMerge(
+				"text-[14px] font-black tracking-[0.28em] text-twin-primary-main uppercase md:text-[18px]",
 				className
 			)}
 		>
