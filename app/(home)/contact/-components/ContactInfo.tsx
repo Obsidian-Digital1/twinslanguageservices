@@ -35,8 +35,7 @@ const CONTACT_INFO: ContactInfoItem[] = [
 	{
 		icon: "lucide:clock",
 		label: "Business Hours",
-		note: "Monday - Friday",
-		value: "9:00 AM - 5:00 PM",
+		value: siteConfig.contact.hours,
 	},
 ];
 

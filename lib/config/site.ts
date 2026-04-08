@@ -14,16 +14,17 @@ export const siteConfig = defineEnumDeep({
 	contact: {
 		address: {
 			city: "Lancaster",
-			full: "1707 Marrietta Avenue, Lancaster, PA 17603",
+			full: "210 W Grant St, Lancaster, PA 17603",
 			state: "PA",
-			street: "1707 Marrietta Avenue",
+			street: "210 W Grant St",
 			zip: "17603",
 		},
 		coordinates: {
-			lat: 40.0379,
-			lng: -76.3055,
+			lat: 40.0455,
+			lng: -76.3113,
 		},
 		email: "info@twinslanguageservices.com",
+		hours: "24/7",
 		phone: "(717)-420-3157",
 	},
 	description:
