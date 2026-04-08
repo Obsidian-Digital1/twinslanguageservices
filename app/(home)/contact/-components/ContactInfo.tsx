@@ -48,13 +48,13 @@ export function ContactInfo() {
 		>
 			<div className="pointer-events-none absolute inset-0 opacity-30">
 				<div
-					className="absolute top-0 right-0 size-[600px] rounded-full bg-twin-accent-main/20
+					className="absolute top-0 right-0 size-150 rounded-full bg-twin-accent-main/20
 						blur-[120px]"
 				/>
-				<div className="absolute bottom-0 left-0 size-[500px] rounded-full bg-blue-400/10 blur-[100px]" />
+				<div className="absolute bottom-0 left-0 size-122.5 rounded-full bg-blue-400/10 blur-[100px]" />
 			</div>
 
-			<div className="relative mx-auto flex w-full max-w-[1400px] flex-col gap-20">
+			<div className="relative mx-auto flex w-full max-w-350 flex-col gap-20">
 				<motion.div
 					variants={staggerContainer(0.1)}
 					initial="hidden"
@@ -63,7 +63,7 @@ export function ContactInfo() {
 					className="flex flex-col gap-8"
 				>
 					<motion.div variants={fadeUp} className="flex items-center gap-4">
-						<div className="h-[2px] w-16 bg-twin-accent-main" />
+						<div className="h-0.5 w-16 bg-twin-accent-main" />
 						<span className="font-mono text-sm tracking-[0.3em] text-twin-accent-main uppercase">
 							Let's Connect
 						</span>
@@ -71,7 +71,7 @@ export function ContactInfo() {
 
 					<motion.h1
 						variants={fadeUp}
-						className="max-w-[900px] font-serif text-[clamp(3rem,7vw,6rem)] leading-[0.95] font-bold
+						className="max-w-225 font-serif text-[clamp(3rem,7vw,6rem)] leading-[0.95] font-bold
 							tracking-[-0.03em] text-white"
 					>
 						Start Your
@@ -81,7 +81,7 @@ export function ContactInfo() {
 
 					<motion.p
 						variants={fadeUp}
-						className="max-w-[600px] text-[19px] leading-[1.7] text-white/70"
+						className="max-w-150 text-[19px] leading-[1.7] text-white"
 					>
 						Whether you need interpretation, translation, or language consulting—we're ready to help
 						you bridge communication gaps with precision and care.
@@ -126,7 +126,7 @@ export function ContactInfo() {
 								</span>
 
 								<div className="flex flex-col gap-3">
-									<h3 className="font-mono text-xs tracking-[0.2em] text-white/50 uppercase">
+									<h3 className="font-mono text-xs font-bold tracking-[0.2em] text-white uppercase">
 										{info.label}
 									</h3>
 
@@ -149,7 +149,7 @@ export function ContactInfo() {
 									}
 
 									{info.note && (
-										<p className="text-[15px] leading-normal text-white/60">{info.note}</p>
+										<p className="text-[15px] leading-normal font-medium text-white">{info.note}</p>
 									)}
 								</div>
 

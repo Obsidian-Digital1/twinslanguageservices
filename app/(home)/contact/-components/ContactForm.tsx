@@ -7,10 +7,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { fadeUp, staggerContainer, VP } from "@/app/-components/shared";
 import { IconBox } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { fadeUp, staggerContainer, VP } from "../../../-components/shared";
 
 const contactFormSchema = z.object({
 	email: z.email("Please enter a valid email address"),
@@ -74,7 +74,7 @@ export function ContactForm() {
 					bg-[radial-gradient(circle_at_2px_2px,currentColor_1px,transparent_0)] bg-size-[40px_40px]
 					opacity-[0.03]"
 			/>
-			<div className="relative mx-auto flex w-full max-w-[1400px] flex-col gap-20 lg:flex-row lg:gap-16">
+			<div className="relative mx-auto flex w-full max-w-350 flex-col gap-20 lg:flex-row lg:gap-16">
 				<motion.div
 					variants={staggerContainer(0.1)}
 					initial="hidden"
@@ -83,8 +83,8 @@ export function ContactForm() {
 					className="flex flex-col gap-8 lg:sticky lg:top-32 lg:h-fit lg:w-[45%]"
 				>
 					<motion.div variants={fadeUp} className="flex items-center gap-4">
-						<div className="h-[2px] w-16 bg-twin-accent-main" />
-						<span className="font-mono text-sm tracking-[0.3em] text-twin-accent-main uppercase">
+						<div className="h-0.5 w-16 bg-twin-accent-darker" />
+						<span className="font-mono text-sm tracking-[0.3em] text-twin-accent-darker uppercase">
 							Get in Touch
 						</span>
 					</motion.div>
@@ -96,12 +96,12 @@ export function ContactForm() {
 					>
 						Send Us a
 						<br />
-						<span className="text-twin-accent-main italic">Message</span>
+						<span className="text-twin-accent-darker italic">Message</span>
 					</motion.h2>
 
 					<motion.p
 						variants={fadeUp}
-						className="max-w-[500px] text-[18px] leading-[1.7] text-twin-primary-main/60"
+						className="max-w-125 text-[18px] leading-[1.7] text-twin-primary-main"
 					>
 						Have a question or need more information? Fill out the form and we'll respond promptly.
 						We're here to help with all your language service needs.
@@ -132,20 +132,20 @@ export function ContactForm() {
 							</Form.Field>
 
 							<motion.div variants={fadeUp}>
-								<Form.Field control={form.control} name="name">
+								<Form.Field control={form.control} name="name" className="flex flex-col gap-3">
 									<Form.Label
-										className="mb-3 block font-mono text-xs tracking-[0.2em]
-											text-twin-primary-main/60 uppercase"
+										className="block font-mono text-sm font-bold tracking-[0.2em]
+											text-twin-primary-main uppercase"
 									>
 										Full Name
 									</Form.Label>
 									<Form.Input
 										type="text"
 										placeholder="John Doe"
-										className="w-full border-0 border-b-2 border-twin-primary-main/10
-											bg-transparent px-0 py-4 text-[18px] text-twin-primary-main transition-all
-											duration-300 placeholder:text-twin-primary-main/30
-											focus:border-twin-accent-main focus:ring-0 focus:outline-none"
+										className="w-full border-0 border-b-2 border-twin-primary-main/15
+											bg-transparent px-0 py-4 text-[14px] text-twin-primary-main transition-all
+											duration-300 placeholder:text-twin-primary-main/70
+											focus:border-twin-accent-main focus:ring-0 focus:outline-none lg:text-[18px]"
 									/>
 									<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
 								</Form.Field>
@@ -153,40 +153,42 @@ export function ContactForm() {
 
 							<div className="grid grid-cols-1 gap-8 md:grid-cols-2">
 								<motion.div variants={fadeUp}>
-									<Form.Field control={form.control} name="email">
+									<Form.Field control={form.control} name="email" className="flex flex-col gap-3">
 										<Form.Label
-											className="mb-3 block font-mono text-xs tracking-[0.2em]
-												text-twin-primary-main/60 uppercase"
+											className="block font-mono text-sm font-bold tracking-[0.2em]
+												text-twin-primary-main uppercase"
 										>
 											Email Address
 										</Form.Label>
 										<Form.Input
 											type="email"
 											placeholder="john@example.com"
-											className="w-full border-0 border-b-2 border-twin-primary-main/10
-												bg-transparent px-0 py-4 text-[18px] text-twin-primary-main
-												transition-all duration-300 placeholder:text-twin-primary-main/30
-												focus:border-twin-accent-main focus:ring-0 focus:outline-none"
+											className="w-full border-0 border-b-2 border-twin-primary-main/15
+												bg-transparent px-0 py-4 text-[14px] text-twin-primary-main
+												transition-all duration-300 placeholder:text-twin-primary-main/70
+												focus:border-twin-accent-main focus:ring-0 focus:outline-none
+												lg:text-[18px]"
 										/>
 										<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
 									</Form.Field>
 								</motion.div>
 
 								<motion.div variants={fadeUp}>
-									<Form.Field control={form.control} name="phone">
+									<Form.Field control={form.control} name="phone" className="flex flex-col gap-3">
 										<Form.Label
-											className="mb-3 block font-mono text-xs tracking-[0.2em]
-												text-twin-primary-main/60 uppercase"
+											className="block font-mono text-sm font-bold tracking-[0.2em]
+												text-twin-primary-main uppercase"
 										>
 											Phone Number
 										</Form.Label>
 										<Form.Input
 											type="tel"
 											placeholder="(123) 456-7890"
-											className="w-full border-0 border-b-2 border-twin-primary-main/10
-												bg-transparent px-0 py-4 text-[18px] text-twin-primary-main
-												transition-all duration-300 placeholder:text-twin-primary-main/30
-												focus:border-twin-accent-main focus:ring-0 focus:outline-none"
+											className="w-full border-0 border-b-2 border-twin-primary-main/15
+												bg-transparent px-0 py-4 text-[14px] text-twin-primary-main
+												transition-all duration-300 placeholder:text-twin-primary-main/70
+												focus:border-twin-accent-main focus:ring-0 focus:outline-none
+												lg:text-[18px]"
 										/>
 										<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
 									</Form.Field>
@@ -194,20 +196,20 @@ export function ContactForm() {
 							</div>
 
 							<motion.div variants={fadeUp}>
-								<Form.Field control={form.control} name="message">
+								<Form.Field control={form.control} name="message" className="flex flex-col gap-3">
 									<Form.Label
-										className="mb-3 block font-mono text-xs tracking-[0.2em]
-											text-twin-primary-main/60 uppercase"
+										className="block font-mono text-sm font-bold tracking-[0.2em]
+											text-twin-primary-main uppercase"
 									>
 										Your Message
 									</Form.Label>
 									<Form.TextArea
 										placeholder="Tell us about your language service needs..."
 										rows={6}
-										className="w-full resize-none border-0 border-b-2 border-twin-primary-main/10
-											bg-transparent px-0 py-4 text-[18px] text-twin-primary-main transition-all
-											duration-300 placeholder:text-twin-primary-main/30
-											focus:border-twin-accent-main focus:ring-0 focus:outline-none"
+										className="w-full resize-none border-0 border-b-2 border-twin-primary-main/15
+											bg-transparent px-0 py-4 text-[14px] text-twin-primary-main transition-all
+											duration-300 placeholder:text-twin-primary-main/70
+											focus:border-twin-accent-main focus:ring-0 focus:outline-none lg:text-[18px]"
 									/>
 									<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
 								</Form.Field>
@@ -260,7 +262,7 @@ export function ContactForm() {
 								<h3 className="font-serif text-3xl font-bold text-twin-primary-main">
 									Message Sent Successfully!
 								</h3>
-								<p className="text-[17px] leading-[1.7] text-twin-primary-main/70">
+								<p className="text-[17px] leading-[1.7] text-twin-primary-main/85">
 									Thank you for reaching out. We'll get back to you as soon as possible.
 								</p>
 							</div>
