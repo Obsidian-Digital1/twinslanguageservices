@@ -38,83 +38,9 @@ const TRUST_CARDS = [
 	},
 ] as const;
 
-const SERVICES = [
-	{
-		accent: "from-twin-accent-main/20 to-transparent",
-		description:
-			"Professional on-site interpretation for meetings, appointments, and high-stakes events requiring nuanced, real-time communication.",
-		icon: "lucide:users",
-		id: "in-person-interpreting",
-		title: "In-Person Interpreting",
-	},
-	{
-		accent: "from-twin-secondary-lighter/15 to-transparent",
-		description:
-			"Immediate over-the-phone language support for urgent, time-sensitive communication needs.",
-		icon: "lucide:phone",
-		id: "phone-interpreting",
-		title: "Phone Interpreting",
-	},
-	{
-		accent: "from-twin-accent-darker/15 to-transparent",
-		description:
-			"Remote interpretation via leading video platforms—bridging distance without sacrificing clarity.",
-		icon: "lucide:monitor-play",
-		id: "video-interpreting",
-		title: "Virtual Interpreting",
-	},
-	{
-		accent: "from-twin-primary-lighter/15 to-transparent",
-		description:
-			"Precise translation of legal documents, certificates, medical records, and business materials.",
-		icon: "lucide:file-text",
-		id: "document-translation",
-		title: "Document Translation",
-	},
-	{
-		accent: "from-twin-accent-main/15 to-transparent",
-		description:
-			"Meticulous audio and video transcription with guaranteed accuracy and fast turnaround.",
-		icon: "lucide:headphones",
-		id: "transcription",
-		title: "Transcription",
-	},
-	{
-		accent: "from-twin-secondary-main/15 to-transparent",
-		description:
-			"Court-certified interpretation for depositions, hearings, trials, and sensitive legal proceedings.",
-		icon: "lucide:scale",
-		id: "court-legal",
-		title: "Legal Interpretation",
-	},
-] as const;
+const SERVICES = siteConfig.services;
 
-const PROCESS_STEPS = [
-	{
-		description: "Reach out via phone, email, or our booking system with your language requirements.",
-		icon: "lucide:send",
-		number: "01",
-		title: "Initiate",
-	},
-	{
-		description: "We analyze your needs and pair you with the perfect linguistic specialist.",
-		icon: "lucide:search",
-		number: "02",
-		title: "Strategize",
-	},
-	{
-		description: "Logistics, scheduling, and scope are locked in for total alignment.",
-		icon: "lucide:check-circle",
-		number: "03",
-		title: "Confirm",
-	},
-	{
-		description: "Our professionals execute flawless, confidential language services.",
-		icon: "lucide:zap",
-		number: "04",
-		title: "Deliver",
-	},
-] as const;
+const PROCESS_STEPS = siteConfig.processSteps;
 
 const REVIEWS = [
 	{
@@ -322,7 +248,7 @@ function TrustCardsSection() {
 						<div className="flex flex-col gap-6">
 							<motion.div variants={fadeUp} className="flex items-center gap-4">
 								<span className="block h-px w-12 bg-twin-primary-main/30" />
-								<SectionLabel className="text-[12px]! text-twin-primary-main/50">
+								<SectionLabel className="text-[12px] text-twin-primary-main/50">
 									What Sets Us Apart
 								</SectionLabel>
 							</motion.div>
@@ -422,7 +348,7 @@ function ServicesOverviewSection() {
 				>
 					<motion.div variants={fadeUp} className="flex items-center gap-4">
 						<span className="block h-px w-12 bg-twin-accent-main/40" />
-						<SectionLabel className="text-[12px]! text-twin-accent-main/80">Services</SectionLabel>
+						<SectionLabel className="text-[12px] text-twin-accent-main/80">Services</SectionLabel>
 						<span className="block h-px w-12 bg-twin-accent-main/40" />
 					</motion.div>
 					<motion.h2
@@ -430,7 +356,7 @@ function ServicesOverviewSection() {
 						className="max-w-200 text-[clamp(2.4rem,5vw,4.5rem)] leading-[1.02] font-black
 							tracking-[-0.03em] text-twin-white"
 					>
-						Six services. <span className="text-twin-accent-main">One mission.</span>
+						Nine services. <span className="text-twin-accent-main">One mission.</span>
 					</motion.h2>
 					<motion.p variants={fadeUp} className="max-w-140 text-lg leading-[1.7] text-twin-white/65">
 						Every service is designed to eliminate language barriers with surgical precision.
@@ -442,19 +368,15 @@ function ServicesOverviewSection() {
 					initial="hidden"
 					whileInView="show"
 					viewport={VP}
-					className="grid grid-cols-1 gap-4 md:grid-cols-2"
+					className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
 				>
 					{SERVICES.map((service, i) => (
 						<motion.div
 							key={service.id}
 							variants={fadeUp}
-							className={cnJoin(
-								`group relative flex flex-col justify-between overflow-hidden rounded-3xl border
-								border-twin-white/6 bg-twin-white/3 p-10 backdrop-blur-sm transition-all
-								duration-500 hover:border-twin-accent-main/20 hover:bg-twin-white/6`,
-								i === 0 && "md:row-span-2 md:min-h-120",
-								i === 5 && "md:row-span-2 md:min-h-120"
-							)}
+							className="group relative flex flex-col justify-between overflow-hidden rounded-3xl
+								border border-twin-white/6 bg-twin-white/3 p-10 backdrop-blur-sm transition-all
+								duration-500 hover:border-twin-accent-main/20 hover:bg-twin-white/6"
 						>
 							<span className="text-[11px] font-bold tracking-[0.3em] text-twin-white/35 uppercase">
 								{String(i + 1).padStart(2, "0")}
@@ -474,7 +396,7 @@ function ServicesOverviewSection() {
 									{service.title}
 								</h3>
 								<p className="max-w-[400px] text-[16px] leading-[1.7] text-twin-white/65">
-									{service.description}
+									{service.shortDescription}
 								</p>
 							</div>
 
@@ -538,9 +460,7 @@ function ProcessStepsSection() {
 					<div className="flex flex-col gap-6">
 						<motion.div variants={fadeUp} className="flex items-center gap-4">
 							<span className="block h-px w-12 bg-twin-primary-main/30" />
-							<SectionLabel className="text-[12px]! text-twin-primary-main/50">
-								Process
-							</SectionLabel>
+							<SectionLabel className="text-[12px] text-twin-primary-main/50">Process</SectionLabel>
 						</motion.div>
 						<motion.h2
 							variants={fadeUp}
@@ -567,7 +487,7 @@ function ProcessStepsSection() {
 				>
 					{PROCESS_STEPS.map((step, idx) => (
 						<motion.div
-							key={step.number}
+							key={step.title}
 							variants={fadeUp}
 							className={cnJoin(
 								"group relative flex flex-col gap-8 py-10 lg:px-8",
@@ -580,7 +500,7 @@ function ProcessStepsSection() {
 										tracking-tighter text-twin-primary-main/15 transition-colors duration-500
 										group-hover:text-twin-accent-main/30"
 								>
-									{step.number}
+									{String(idx + 1).padStart(2, "0")}
 								</span>
 							</div>
 
@@ -624,7 +544,7 @@ function ReviewsSection() {
 				>
 					<motion.div variants={fadeUp} className="flex items-center gap-4">
 						<span className="block h-px w-12 bg-twin-primary-main/30" />
-						<SectionLabel className="text-[12px]! text-twin-primary-main/50">Reviews</SectionLabel>
+						<SectionLabel className="text-[12px] text-twin-primary-main/50">Reviews</SectionLabel>
 						<span className="block h-px w-12 bg-twin-primary-main/30" />
 					</motion.div>
 

@@ -39,6 +39,29 @@ export const siteConfig = defineEnumDeep({
 		{ href: "/contact", label: "Contact Us" },
 	],
 
+	processSteps: [
+		{
+			description: "Reach out via phone, email, or our booking system with your language requirements.",
+			icon: "lucide:send",
+			title: "Initiate Request",
+		},
+		{
+			description: "We analyze your needs and pair you with the best linguistic specialist.",
+			icon: "lucide:search",
+			title: "Matched Expertise",
+		},
+		{
+			description: "Logistics, scheduling, and scope are finalized for complete alignment.",
+			icon: "lucide:check-circle",
+			title: "Final Confirmation",
+		},
+		{
+			description: "Our certified professionals execute high-quality language services.",
+			icon: "lucide:zap",
+			title: "Seamless execution",
+		},
+	],
+
 	seo: {
 		description:
 			"Professional language services in Lancaster, PA. Expert interpretation, document translation, and transcription for businesses, healthcare, legal, and more.",
@@ -57,34 +80,69 @@ export const siteConfig = defineEnumDeep({
 
 	services: [
 		{
+			accent: "from-twin-accent-main/20 to-transparent",
+			icon: "lucide:users",
 			id: "in-person-interpreting",
-			shortDescription: "Professional on-site interpretation for meetings, appointments, and events",
+			shortDescription:
+				"Professional on-site interpretation for meetings, appointments, and high-stakes events requiring nuanced, real-time communication.",
 			title: "In-Person Interpreting",
 		},
 		{
+			accent: "from-twin-secondary-lighter/15 to-transparent",
+			icon: "lucide:phone",
 			id: "phone-interpreting",
-			shortDescription: "Immediate language support via telephone for urgent communication needs",
+			shortDescription: "Immediate over-the-phone language support for urgent, time-sensitive communication needs.",
 			title: "Phone Interpreting",
 		},
 		{
+			accent: "from-twin-accent-darker/15 to-transparent",
+			icon: "lucide:monitor-play",
 			id: "video-interpreting",
-			shortDescription: "Remote interpretation services via video conferencing platforms",
-			title: "Video/Virtual Interpreting",
+			shortDescription:
+				"Remote interpretation via leading video platforms—bridging distance without sacrificing clarity.",
+			title: "Virtual Interpreting",
 		},
 		{
+			accent: "from-twin-primary-lighter/15 to-transparent",
+			icon: "lucide:file-text",
 			id: "document-translation",
-			shortDescription: "Accurate translation of documents, certificates, and business materials",
+			shortDescription: "Precise translation of legal documents, certificates, medical records, and business materials.",
 			title: "Document Translation",
 		},
 		{
+			accent: "from-twin-accent-main/15 to-transparent",
+			icon: "lucide:headphones",
 			id: "transcription",
-			shortDescription: "Professional transcription services for audio and video content",
+			shortDescription: "Meticulous audio and video transcription with guaranteed accuracy and fast turnaround.",
 			title: "Transcription",
 		},
 		{
+			accent: "from-twin-secondary-main/15 to-transparent",
+			icon: "lucide:scale",
 			id: "court-legal",
-			shortDescription: "Certified interpretation for legal proceedings and court appearances",
-			title: "Court/Legal Interpretation",
+			shortDescription: "Court-certified interpretation for depositions, hearings, trials, and sensitive legal proceedings.",
+			title: "Legal Interpretation",
+		},
+		{
+			accent: "from-twin-primary-lighter/15 to-transparent",
+			icon: "lucide:stethoscope",
+			id: "doctors-appointments",
+			shortDescription: "Specialized medical interpretation for patient consultations, hospital visits, and clinical appointments.",
+			title: "Doctors Appointments",
+		},
+		{
+			accent: "from-twin-accent-main/15 to-transparent",
+			icon: "lucide:graduation-cap",
+			id: "school-appointments",
+			shortDescription: "Facilitating clear communication between educators and families for conferences, IEP meetings, and school events.",
+			title: "School Appointments",
+		},
+		{
+			accent: "from-twin-secondary-lighter/15 to-transparent",
+			icon: "lucide:presentation",
+			id: "company-meetings",
+			shortDescription: "Professional linguistic support for corporate boardroom discussions, strategic negotiations, and internal briefings.",
+			title: "Company Meetings",
 		},
 	],
 
