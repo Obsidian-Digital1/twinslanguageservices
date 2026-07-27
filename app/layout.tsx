@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import { Inter, Poppins } from "next/font/google";
+import { siteConfig } from "@/lib/config/site";
+import { cnJoin } from "@/lib/utils/cn";
+import { Providers } from "./Providers";
+import "../tailwind.css";
+
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--font-inter",
+});
+
+const poppins = Poppins({
+	subsets: ["latin"],
+	variable: "--font-poppins",
+	weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
+export const metadata: Metadata = {
+	description: siteConfig.seo.description,
+	keywords: siteConfig.seo.keywords,
+	title: siteConfig.seo.title,
+};
+
+function RootLayout({ children }: LayoutProps<"/">) {
+	return (
+		<html lang="en" data-scroll-behavior="smooth" data-theme="light">
+			<body className={cnJoin(inter.variable, poppins.variable)}>
+				<Providers>{children}</Providers>
+			</body>
+		</html>
+	);
+}
+
+export default RootLayout;
