@@ -19,16 +19,17 @@ export const CONTACT_RATE_LIMIT = {
 } as const;
 
 /**
+ * @description Applies a lightweight per-IP limit to contact submissions.
  * Small, in-memory defense for a single server instance.
  *
  * Production deployments with multiple instances need a durable shared provider
  * (for example, a managed Redis-compatible rate limiter) for global guarantees.
  */
-export function checkContactRateLimit(
+export const checkContactRateLimit = (
 	key: string,
 	now = Date.now(),
 	config = CONTACT_RATE_LIMIT
-): RateLimitResult {
+): RateLimitResult => {
 	const current = requestBuckets.get(key);
 
 	if (!current || current.resetAt <= now) {
@@ -54,16 +55,15 @@ export function checkContactRateLimit(
 		remaining: config.maxRequests - current.count,
 		retryAfterSeconds: Math.ceil((current.resetAt - now) / 1000),
 	};
-}
+};
 
-export function getContactRateLimitKey(headers: Headers) {
+export const getContactRateLimitKey = (headers: Headers) => {
 	const platformIp = headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim();
 
 	if (!platformIp) return "platform-ip-unavailable";
 
 	return createHash("sha256").update(platformIp).digest("hex");
-}
+};
 
-export function resetContactRateLimitForTests() {
-	requestBuckets.clear();
-}
+export const resetContactRateLimitForTests = () => requestBuckets.clear();
+

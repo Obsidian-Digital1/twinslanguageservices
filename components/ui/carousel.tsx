@@ -102,6 +102,7 @@ function CarouselRoot(props: CarouselProps & InferProps<"div">) {
 	useEffect(() => {
 		if (!carouselApi) return;
 
+		// eslint-disable-next-line react-hooks/set-state-in-effect -- Embla exposes its initial state only after the API is initialized.
 		onSelect(carouselApi);
 
 		carouselApi.on("reInit", onSelect);

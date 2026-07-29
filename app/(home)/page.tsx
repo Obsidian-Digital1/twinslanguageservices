@@ -23,9 +23,9 @@ export default function HomePage() {
 			<section className="relative isolate overflow-hidden bg-twin-primary-main px-5 pt-36 pb-24 text-white md:px-10 md:pt-44 md:pb-32 lg:px-[8%]">
 				<div
 					aria-hidden="true"
-					className="pointer-events-none absolute inset-0 opacity-35
-						[background-image:linear-gradient(rgba(96,216,222,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(96,216,222,0.08)_1px,transparent_1px)]
-						[background-size:54px_54px]"
+					className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(96,216,222,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(96,216,222,0.08)_1px,transparent_1px)]
+						bg-size-[54px_54px]
+						opacity-35"
 				/>
 				<div className="relative mx-auto grid w-full max-w-350 gap-14 lg:grid-cols-[1.4fr_0.6fr] lg:items-end">
 					<div>
@@ -33,13 +33,13 @@ export default function HomePage() {
 							<span aria-hidden="true" className="h-0.5 w-12 bg-current" />
 							Lancaster, Pennsylvania
 						</p>
-						<h1 className="max-w-245 text-balance text-[clamp(3.25rem,8vw,7.25rem)] leading-[0.92] font-bold tracking-[-0.055em]">
+						<h1 className="max-w-245 text-[clamp(3.25rem,8vw,7.25rem)] leading-[0.92] font-bold tracking-[-0.055em] text-balance">
 							Communication
 							<span className="block font-serif font-normal text-twin-accent-main italic">
 								without barriers.
 							</span>
 						</h1>
-						<p className="mt-8 max-w-175 text-pretty text-lg leading-[1.75] text-white/75 md:text-xl">
+						<p className="mt-8 max-w-175 text-lg leading-[1.75] text-pretty text-white/75 md:text-xl">
 							Professional interpretation, document translation, and transcription for
 							healthcare, legal, business, education, and community settings.
 						</p>
@@ -49,7 +49,7 @@ export default function HomePage() {
 								className={`${linkFocus} inline-flex min-h-14 items-center justify-center gap-3
 									rounded-full bg-twin-accent-main px-8 font-bold text-twin-primary-main
 									no-underline transition-[background-color,transform] duration-160
-									ease-[var(--ease-out)] hover:bg-white active:scale-[0.97]`}
+									ease-out hover:bg-white active:scale-[0.97]`}
 							>
 								Schedule Service
 								<IconBox aria-hidden="true" icon="lucide:arrow-up-right" className="size-5" />
@@ -59,7 +59,7 @@ export default function HomePage() {
 								className={`${linkFocus} inline-flex min-h-14 items-center justify-center rounded-full
 									border border-white/25 px-8 font-bold text-white no-underline
 									transition-[background-color,border-color,transform] duration-160
-									ease-[var(--ease-out)] hover:border-white/55 hover:bg-white/8
+									ease-out hover:border-white/55 hover:bg-white/8
 									active:scale-[0.97]`}
 							>
 								Explore Services
@@ -92,11 +92,11 @@ export default function HomePage() {
 							<p className="text-sm font-black tracking-[0.24em] text-twin-accent-darker uppercase">
 								Our Services
 							</p>
-							<h2 className="mt-4 text-balance text-4xl leading-tight font-bold tracking-tight text-twin-primary-main md:text-5xl">
+							<h2 className="mt-4 text-4xl/tight font-bold tracking-tight text-balance text-twin-primary-main md:text-5xl">
 								Language support shaped around the conversation.
 							</h2>
 						</div>
-						<p className="max-w-180 self-end text-pretty text-lg/relaxed text-twin-secondary-main">
+						<p className="max-w-180 self-end text-lg/relaxed text-pretty text-twin-secondary-main">
 							Every request begins with context. We learn what you need, where the service will
 							happen, and which language professional is suited to the setting.
 						</p>
@@ -123,7 +123,7 @@ export default function HomePage() {
 									className={`${linkFocus} inline-flex size-12 items-center justify-center rounded-full
 										border border-twin-primary-main/18 text-twin-primary-main no-underline
 										transition-[background-color,color,transform] duration-160
-										ease-[var(--ease-out)] hover:bg-twin-primary-main hover:text-white
+										ease-out hover:bg-twin-primary-main hover:text-white
 										active:scale-[0.97]`}
 								>
 									<IconBox aria-hidden="true" icon="lucide:arrow-right" className="size-5" />
@@ -149,7 +149,7 @@ export default function HomePage() {
 					<p className="text-sm font-black tracking-[0.24em] text-twin-accent-darker uppercase">
 						How It Works
 					</p>
-					<h2 className="mt-4 max-w-220 text-balance text-4xl leading-tight font-bold tracking-tight text-twin-primary-main md:text-5xl">
+					<h2 className="mt-4 max-w-220 text-4xl/tight font-bold tracking-tight text-balance text-twin-primary-main md:text-5xl">
 						A clear path from first request to service delivery.
 					</h2>
 					<ol className="mt-14 grid gap-px overflow-hidden border border-twin-primary-main/12 bg-twin-primary-main/12 lg:grid-cols-4">
@@ -172,7 +172,7 @@ export default function HomePage() {
 						<p className="text-sm font-black tracking-[0.24em] text-twin-accent-main uppercase">
 							Start a Conversation
 						</p>
-						<h2 className="mt-4 max-w-230 text-balance text-4xl leading-tight font-bold tracking-tight md:text-6xl">
+						<h2 className="mt-4 max-w-230 text-4xl/tight font-bold tracking-tight text-balance md:text-6xl">
 							Tell us what needs to be understood.
 						</h2>
 						<p className="mt-5 max-w-165 text-lg/relaxed text-white/70">
@@ -184,7 +184,7 @@ export default function HomePage() {
 						href="/contact"
 						className={`${linkFocus} inline-flex min-h-14 items-center justify-center gap-3 rounded-full
 							bg-twin-accent-main px-8 font-bold text-twin-primary-main no-underline
-							transition-[background-color,transform] duration-160 ease-[var(--ease-out)]
+							transition-[background-color,transform] duration-160 ease-out
 							hover:bg-white active:scale-[0.97]`}
 					>
 						Contact Our Team

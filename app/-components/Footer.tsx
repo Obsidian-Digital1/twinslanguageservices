@@ -19,6 +19,8 @@ const columns = [
 const focusClasses =
 	"rounded-sm focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-twin-accent-main";
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 function Footer() {
 	return (
 		<footer className="flex w-full justify-center overflow-hidden border-t border-white/8 bg-twin-primary-main px-5 pt-14 pb-8 md:px-10 lg:px-25">
@@ -62,7 +64,7 @@ function Footer() {
 						</a>
 						<a
 							href={`mailto:${siteConfig.contact.email}`}
-							className={`${focusClasses} break-words text-base text-white/70 no-underline
+							className={`${focusClasses} text-base wrap-break-word text-white/70 no-underline
 								transition-colors duration-160 hover:text-white`}
 						>
 							{siteConfig.contact.email}
@@ -89,7 +91,7 @@ function Footer() {
 
 				<div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-6">
 					<p className="text-sm text-white/50">
-						© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+						© {CURRENT_YEAR} {siteConfig.name}. All rights reserved.
 					</p>
 					<NavLink
 						href="/contact"

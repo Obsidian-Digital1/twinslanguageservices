@@ -85,7 +85,7 @@ function Navbar() {
 						aria-expanded={isNavOpen}
 						aria-controls={MOBILE_MENU_ID}
 						className="z-50 flex size-12 items-center justify-center rounded-xl text-white
-							transition-[background-color,transform] duration-160 ease-[var(--ease-out)]
+							transition-[background-color,transform] duration-160 ease-out
 							hover:bg-white/10 focus-visible:outline-3 focus-visible:outline-offset-3
 							focus-visible:outline-twin-accent-main active:scale-[0.97] md:hidden"
 						onClick={() => setIsNavOpen((current) => !current)}
@@ -129,7 +129,7 @@ function DesktopNavigation(props: { className?: string }) {
 				asChild={true}
 				theme="accent-gradient"
 				size="sm"
-				className="rounded-full transition-transform duration-160 ease-[var(--ease-out)]
+				className="rounded-full transition-transform duration-160 ease-out
 					focus-within:outline-3 focus-within:outline-offset-3
 					focus-within:outline-twin-accent-main active:scale-[0.97]"
 			>
@@ -153,8 +153,8 @@ function MobileNavigationDrawer({
 			role="dialog"
 			aria-modal="true"
 			aria-label="Site navigation"
-			className="fixed inset-0 z-40 flex flex-col bg-twin-primary-main pt-24 text-white
-				overscroll-contain"
+			className="fixed inset-0 z-40 flex flex-col overscroll-contain bg-twin-primary-main pt-24
+				text-white"
 		>
 			<button
 				type="button"
@@ -170,7 +170,7 @@ function MobileNavigationDrawer({
 						onClick={closeMenu}
 						className="w-full max-w-sm rounded-xl px-5 py-3 text-center text-2xl font-bold
 							text-white/75 no-underline transition-[background-color,color,transform]
-							duration-160 ease-[var(--ease-out)] hover:bg-white/8 hover:text-white
+							duration-160 ease-out hover:bg-white/8 hover:text-white
 							focus-visible:outline-3 focus-visible:outline-offset-2
 							focus-visible:outline-twin-accent-main active:scale-[0.97]
 							data-[active=true]:bg-white/8 data-[active=true]:text-twin-accent-main"
@@ -185,7 +185,7 @@ function MobileNavigationDrawer({
 				theme="accent-gradient"
 				size="medium"
 				className="mx-auto mt-6 rounded-full transition-transform duration-160
-					ease-[var(--ease-out)] focus-within:outline-3 focus-within:outline-offset-3
+					ease-out focus-within:outline-3 focus-within:outline-offset-3
 					focus-within:outline-white active:scale-[0.97]"
 			>
 				<NavLink href="/booking" onClick={closeMenu}>
