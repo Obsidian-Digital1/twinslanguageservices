@@ -1,135 +1,102 @@
-"use client";
-
-import { motion } from "motion/react";
 import Link from "next/link";
 import { Logo, NavLink } from "@/components/common";
 import { siteConfig } from "@/lib/config/site";
 
-const fadeUp = {
-	hidden: { opacity: 0, y: 24 },
-	show: { opacity: 1, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] }, y: 0 },
-} as const;
-
-const staggerContainer = (staggerChildren = 0.08, delayChildren = 0) => ({
-	hidden: {},
-	show: { transition: { delayChildren, staggerChildren } },
-});
-
-const VP = { amount: 0.15, once: true } as const;
-
 const columns = [
 	{
-		links: siteConfig.navigation.map((item) => ({
-			href: item.href,
-			label: item.label,
-		})),
+		links: siteConfig.navigation,
 		title: "Pages",
 	},
 	{
 		links: siteConfig.services.map((service) => ({
-			href: "/services",
+			href: `/services#${service.id}`,
 			label: service.title,
 		})),
 		title: "Services",
 	},
-	{
-		links: [
-			{ href: `tel:${siteConfig.contact.phone}`, label: siteConfig.contact.phone },
-			{ href: `mailto:${siteConfig.contact.email}`, label: siteConfig.contact.email },
-			{ href: null, label: siteConfig.contact.address.full },
-		],
-		title: "Contact Us",
-	},
-];
+] as const;
+
+const focusClasses =
+	"rounded-sm focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-twin-accent-main";
 
 function Footer() {
 	return (
-		<footer
-			className="flex w-full justify-center overflow-hidden border-t border-white/5 bg-twin-primary-main
-				px-4 pt-12 pb-8 md:px-10 lg:px-25"
-		>
+		<footer className="flex w-full justify-center overflow-hidden border-t border-white/8 bg-twin-primary-main px-5 pt-14 pb-8 md:px-10 lg:px-25">
 			<div className="w-full max-w-275">
-				<motion.div
-					variants={staggerContainer(0.08)}
-					initial="hidden"
-					whileInView="show"
-					viewport={VP}
-					className="mb-14 grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
-				>
-					<motion.div variants={fadeUp} className="flex flex-col gap-4">
-						<Logo iconSize={32} />
-						<p className="max-w-65 text-base/relaxed text-white/45">{siteConfig.tagline}</p>
-					</motion.div>
+				<div className="mb-14 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.15fr]">
+					<div className="flex flex-col gap-4">
+						<Logo iconSize={36} />
+						<p className="max-w-72 text-base/relaxed text-white/65">{siteConfig.tagline}</p>
+					</div>
 
-					{columns.map((col) => (
-						<motion.div key={col.title} variants={fadeUp} className="flex flex-col gap-3">
-							<p className="text-lg font-black tracking-[0.28em] text-white/30 uppercase">
-								{col.title}
-							</p>
-							<div className="flex flex-col gap-3">
-								{col.links.map((link) =>
-									link.href ?
-										<NavLink
-											prefetch={false}
-											key={link.label}
-											href={link.href as never}
-											className="text-white/45 transition-all duration-300 hover:translate-x-0.5
-												hover:text-white/80"
-										>
-											{link.label}
-										</NavLink>
-									:	<span
-											key={link.label}
-											className="text-white/45 transition-all duration-300 hover:translate-x-0.5
-												hover:text-white/80"
-										>
-											{link.label}
-										</span>
-								)}
-							</div>
-						</motion.div>
+					{columns.map((column) => (
+						<div key={column.title} className="flex flex-col gap-3">
+							<h2 className="text-sm font-black tracking-[0.24em] text-white/50 uppercase">
+								{column.title}
+							</h2>
+							<nav aria-label={`${column.title} links`} className="flex flex-col gap-2.5">
+								{column.links.map((link) => (
+									<NavLink
+										key={link.label}
+										href={link.href as never}
+										className={`${focusClasses} text-base text-white/65 no-underline
+											transition-colors duration-160 hover:text-white`}
+									>
+										{link.label}
+									</NavLink>
+								))}
+							</nav>
+						</div>
 					))}
-				</motion.div>
 
-				<div
-					className="mb-6 flex flex-wrap items-center justify-center gap-6 border-t border-white/5
-						pt-6"
-				>
-					<Link
-						href={siteConfig.social.facebook}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-white/45 no-underline transition-colors hover:text-twin-accent-main"
-					>
-						Facebook
-					</Link>
-					<Link
-						href={siteConfig.social.instagram}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-white/45 no-underline transition-colors hover:text-twin-accent-main"
-					>
-						Instagram
-					</Link>
-					<Link
-						href={siteConfig.social.linkedin}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-white/45 no-underline transition-colors hover:text-twin-accent-main"
-					>
-						LinkedIn
-					</Link>
+					<div className="flex min-w-0 flex-col gap-3">
+						<h2 className="text-sm font-black tracking-[0.24em] text-white/50 uppercase">
+							Contact
+						</h2>
+						<a
+							href={`tel:${siteConfig.contact.phone}`}
+							className={`${focusClasses} text-base text-white/70 no-underline
+								transition-colors duration-160 hover:text-white`}
+						>
+							{siteConfig.contact.phone}
+						</a>
+						<a
+							href={`mailto:${siteConfig.contact.email}`}
+							className={`${focusClasses} break-words text-base text-white/70 no-underline
+								transition-colors duration-160 hover:text-white`}
+						>
+							{siteConfig.contact.email}
+						</a>
+						<p className="text-base/relaxed text-white/65">{siteConfig.contact.address.full}</p>
+					</div>
 				</div>
 
-				<div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/5 pt-6">
-					<span className="text-[12px] text-white/25">
-						© 2025 {siteConfig.name}. All rights reserved.
-					</span>
+				<div className="mb-6 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-white/8 pt-7">
+					{Object.entries(siteConfig.social).map(([network, href]) => (
+						<Link
+							key={network}
+							href={href}
+							target="_blank"
+							rel="noopener noreferrer"
+							className={`${focusClasses} text-base text-white/65 no-underline
+								transition-colors duration-160 hover:text-twin-accent-main`}
+						>
+							<span className="capitalize">{network}</span>
+							<span className="sr-only"> (opens in a new tab)</span>
+						</Link>
+					))}
+				</div>
+
+				<div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-6">
+					<p className="text-sm text-white/50">
+						© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+					</p>
 					<NavLink
-						href={`mailto:${siteConfig.contact.email}`}
-						className="text-[12px] text-white/25 no-underline transition-colors hover:text-white/45"
+						href="/contact"
+						className={`${focusClasses} text-sm text-white/60 no-underline
+							transition-colors duration-160 hover:text-white`}
 					>
-						{siteConfig.contact.email}
+						Request Language Support
 					</NavLink>
 				</div>
 			</div>

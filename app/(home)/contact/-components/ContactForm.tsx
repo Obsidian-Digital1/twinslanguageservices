@@ -2,56 +2,68 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { callApi } from "@zayne-labs/callapi";
-import { motion } from "motion/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
-import { fadeUp, staggerContainer, VP } from "@/app/-components/shared";
 import { IconBox } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import { siteConfig } from "@/lib/config/site";
+import { cnMerge } from "@/lib/utils/cn";
+import { ContactRequestSchema, type ContactRequestSchemaType } from "@/lib/validation/contact";
 
-const contactFormSchema = z.object({
-	email: z.email("Please enter a valid email address"),
-	honeypot: z.string().max(0, "Invalid submission").optional(),
-	message: z.string().min(10, "Message must be at least 10 characters"),
-	name: z.string().min(2, "Name must be at least 2 characters"),
-	phone: z.string().min(10, "Please enter a valid phone number"),
-});
+const serviceOptions = [
+	"In-Person Interpreting",
+	"Phone Interpreting",
+	"Video Interpreting",
+	"Document Translation",
+	"Legal Interpretation",
+	"Medical Interpretation",
+	"School Interpretation",
+	"Business Meetings",
+	"Other",
+] as const;
+
+const controlClassName = cnMerge(
+	"min-h-13 w-full rounded-xl border-[1.5px] border-[#A9D4E2] bg-white px-4 py-3",
+	"text-base text-twin-primary-main shadow-sm shadow-twin-primary-main/3 outline-none",
+	"transition-[border-color,box-shadow] duration-200 placeholder:text-[#6f8798]",
+	"hover:border-twin-accent-darker focus:border-twin-primary-main",
+	"focus:ring-4 focus:ring-twin-accent-main/18"
+);
+
+const errorControlClassName = "border-twin-state-error-main focus:border-twin-state-error-main";
 
 export function ContactForm() {
 	const [isSuccess, setIsSuccess] = useState(false);
 
 	const form = useForm({
 		defaultValues: {
+			agree: false,
+			appointmentDate: "",
 			email: "",
+			firstName: "",
 			honeypot: "",
+			lastName: "",
 			message: "",
-			name: "",
+			organization: "",
 			phone: "",
+			preferredLanguage: "",
+			serviceNeeded: "",
 		},
-		resolver: zodResolver(contactFormSchema),
+		resolver: zodResolver(ContactRequestSchema),
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
-		// Check honeypot
 		if (data.honeypot) {
 			toast.error("Invalid submission");
 			return;
 		}
 
 		await callApi("@post/api/contact", {
-			body: {
-				email: data.email,
-				message: data.message,
-				name: data.name,
-				phone: data.phone,
-			},
+			body: data,
 			onError: ({ error }) => {
-				toast.error("Failed to send message", {
-					description: error.message,
-				});
+				toast.error("Failed to send message", { description: error.message });
 			},
 			onSuccess: () => {
 				setIsSuccess(true);
@@ -59,231 +71,279 @@ export function ContactForm() {
 				toast.success("Message sent successfully!", {
 					description: "We'll get back to you as soon as possible.",
 				});
-
-				setTimeout(() => {
-					setIsSuccess(false);
-				}, 5000);
 			},
 		});
 	});
 
 	return (
-		<section className="relative w-full overflow-hidden bg-white px-6 py-32 md:py-40 lg:px-[8%]">
-			<span
-				className="pointer-events-none absolute inset-0
-					bg-[radial-gradient(circle_at_2px_2px,currentColor_1px,transparent_0)] bg-size-[40px_40px]
-					opacity-[0.03]"
-			/>
-			<div className="relative mx-auto flex w-full max-w-350 flex-col gap-20 lg:flex-row lg:gap-16">
-				<motion.div
-					variants={staggerContainer(0.1)}
-					initial="hidden"
-					whileInView="show"
-					viewport={VP}
-					className="flex flex-col gap-8 lg:sticky lg:top-32 lg:h-fit lg:w-[45%]"
+		<section
+			id="contact-form"
+			aria-label="Contact form and location"
+			className="relative w-full overflow-hidden bg-twin-primary-subtle/65 px-5 py-24 md:px-8 md:py-32
+				lg:px-[8%]"
+		>
+			<div
+				className="relative mx-auto grid w-full max-w-350 gap-8
+					lg:grid-cols-[minmax(0,1.55fr)_minmax(320px,1fr)]"
+			>
+				<div
+					className="rounded-3xl border border-twin-primary-main/8 bg-white p-6
+						shadow-[0_24px_70px_-30px_rgba(7,54,84,0.28)] sm:p-9 lg:p-11"
 				>
-					<motion.div variants={fadeUp} className="flex items-center gap-4">
-						<div className="h-0.5 w-16 bg-twin-accent-darker" />
-						<span className="font-mono text-sm tracking-[0.3em] text-twin-accent-darker uppercase">
-							Get in Touch
-						</span>
-					</motion.div>
+					<div className="mb-9">
+						<p
+							className="mb-3 text-sm font-black tracking-[0.24em] text-twin-accent-darker
+								uppercase"
+						>
+							Get in touch
+						</p>
+						<h2 className="text-3xl font-bold tracking-tight text-twin-primary-main md:text-4xl">
+							Send Us a Message
+						</h2>
+						<p className="mt-3 max-w-2xl text-base leading-relaxed text-twin-primary-main/75">
+							Fill out the form and our team will get back to you shortly.
+						</p>
+					</div>
 
-					<motion.h2
-						variants={fadeUp}
-						className="font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.95] font-bold
-							tracking-[-0.03em] text-twin-primary-main"
-					>
-						Send Us a
-						<br />
-						<span className="text-twin-accent-darker italic">Message</span>
-					</motion.h2>
-
-					<motion.p
-						variants={fadeUp}
-						className="max-w-125 text-[18px] leading-[1.7] text-twin-primary-main"
-					>
-						Have a question or need more information? Fill out the form and we'll respond promptly.
-						We're here to help with all your language service needs.
-					</motion.p>
-				</motion.div>
-
-				<motion.div
-					variants={staggerContainer(0.08)}
-					initial="hidden"
-					whileInView="show"
-					viewport={VP}
-					className="flex-1"
-				>
-					{!isSuccess ?
-						<Form.Root
+					{isSuccess ?
+						<SuccessMessage onReset={() => setIsSuccess(false)} />
+					:	<Form.Root
 							form={form}
 							onSubmit={(event) => void onSubmit(event)}
-							className="flex flex-col gap-8"
+							noValidate={true}
+							className="flex flex-col gap-6"
 						>
-							{/* Honeypot field for spam protection */}
-							<Form.Field
-								control={form.control}
-								className="hidden"
-								aria-hidden="true"
-								name="honeypot"
-							>
+							<Form.Field name="honeypot" className="hidden" aria-hidden="true">
 								<Form.Input type="text" tabIndex={-1} autoComplete="off" />
 							</Form.Field>
 
-							<motion.div variants={fadeUp}>
-								<Form.Field control={form.control} name="name" className="flex flex-col gap-3">
-									<Form.Label
-										className="block font-mono text-sm font-bold tracking-[0.2em]
-											text-twin-primary-main uppercase"
-									>
-										Full Name
-									</Form.Label>
+							<div className="grid gap-6 sm:grid-cols-2">
+								<FieldShared name="firstName" label="First Name" required={true}>
 									<Form.Input
 										type="text"
-										placeholder="John Doe"
-										className="w-full border-0 border-b-2 border-twin-primary-main/15
-											bg-transparent px-0 py-4 text-[14px] text-twin-primary-main transition-all
-											duration-300 placeholder:text-twin-primary-main/70
-											focus:border-twin-accent-main focus:ring-0 focus:outline-none lg:text-[18px]"
+										autoComplete="given-name"
+										className={controlClassName}
+										classNames={{ error: errorControlClassName }}
 									/>
-									<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
-								</Form.Field>
-							</motion.div>
-
-							<div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-								<motion.div variants={fadeUp}>
-									<Form.Field control={form.control} name="email" className="flex flex-col gap-3">
-										<Form.Label
-											className="block font-mono text-sm font-bold tracking-[0.2em]
-												text-twin-primary-main uppercase"
-										>
-											Email Address
-										</Form.Label>
-										<Form.Input
-											type="email"
-											placeholder="john@example.com"
-											className="w-full border-0 border-b-2 border-twin-primary-main/15
-												bg-transparent px-0 py-4 text-[14px] text-twin-primary-main
-												transition-all duration-300 placeholder:text-twin-primary-main/70
-												focus:border-twin-accent-main focus:ring-0 focus:outline-none
-												lg:text-[18px]"
-										/>
-										<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
-									</Form.Field>
-								</motion.div>
-
-								<motion.div variants={fadeUp}>
-									<Form.Field control={form.control} name="phone" className="flex flex-col gap-3">
-										<Form.Label
-											className="block font-mono text-sm font-bold tracking-[0.2em]
-												text-twin-primary-main uppercase"
-										>
-											Phone Number
-										</Form.Label>
-										<Form.Input
-											type="tel"
-											placeholder="(123) 456-7890"
-											className="w-full border-0 border-b-2 border-twin-primary-main/15
-												bg-transparent px-0 py-4 text-[14px] text-twin-primary-main
-												transition-all duration-300 placeholder:text-twin-primary-main/70
-												focus:border-twin-accent-main focus:ring-0 focus:outline-none
-												lg:text-[18px]"
-										/>
-										<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
-									</Form.Field>
-								</motion.div>
+								</FieldShared>
+								<FieldShared name="lastName" label="Last Name" required={true}>
+									<Form.Input
+										type="text"
+										autoComplete="family-name"
+										className={controlClassName}
+										classNames={{ error: errorControlClassName }}
+									/>
+								</FieldShared>
 							</div>
 
-							<motion.div variants={fadeUp}>
-								<Form.Field control={form.control} name="message" className="flex flex-col gap-3">
-									<Form.Label
-										className="block font-mono text-sm font-bold tracking-[0.2em]
-											text-twin-primary-main uppercase"
+							<div className="grid gap-6 sm:grid-cols-2">
+								<FieldShared name="email" label="Email" required={true}>
+									<Form.Input
+										type="email"
+										autoComplete="email"
+										inputMode="email"
+										className={controlClassName}
+										classNames={{ error: errorControlClassName }}
+									/>
+								</FieldShared>
+								<FieldShared name="phone" label="Phone Number" required={true}>
+									<Form.Input
+										type="tel"
+										autoComplete="tel"
+										inputMode="tel"
+										className={controlClassName}
+										classNames={{ error: errorControlClassName }}
+									/>
+								</FieldShared>
+							</div>
+
+							<div className="grid gap-6 sm:grid-cols-2">
+								<FieldShared name="organization" label="Organization" optional={true}>
+									<Form.Input
+										type="text"
+										autoComplete="organization"
+										className={controlClassName}
+									/>
+								</FieldShared>
+								<FieldShared name="preferredLanguage" label="Preferred Language" optional={true}>
+									<Form.Input
+										type="text"
+										placeholder="e.g. Spanish"
+										className={controlClassName}
+									/>
+								</FieldShared>
+							</div>
+
+							<div className="grid gap-6 sm:grid-cols-2">
+								<FieldShared name="serviceNeeded" label="Service Needed" required={true}>
+									<Form.Select
+										className={controlClassName}
+										classNames={{ error: errorControlClassName }}
 									>
-										Your Message
-									</Form.Label>
-									<Form.TextArea
-										placeholder="Tell us about your language service needs..."
-										rows={6}
-										className="w-full resize-none border-0 border-b-2 border-twin-primary-main/15
-											bg-transparent px-0 py-4 text-[14px] text-twin-primary-main transition-all
-											duration-300 placeholder:text-twin-primary-main/70
-											focus:border-twin-accent-main focus:ring-0 focus:outline-none lg:text-[18px]"
-									/>
-									<Form.ErrorMessage className="mt-2 text-sm text-red-500" />
-								</Form.Field>
-							</motion.div>
-
-							<motion.div variants={fadeUp} className="mt-4">
-								<Form.StateSubscribe>
-									{({ isSubmitting }) => (
-										<Form.Submit
-											as={Button}
-											disabled={isSubmitting}
-											className="group relative overflow-hidden rounded-full
-												bg-twin-primary-main px-10 py-5 font-semibold text-white transition-all
-												duration-500 hover:bg-twin-accent-main
-												hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] disabled:opacity-50"
-										>
-											<p className="z-10 flex items-center gap-3">
-												Send Message
-												<IconBox
-													icon="lucide:send"
-													className="size-5 transition-transform duration-300
-														group-hover:translate-x-1 group-hover:-translate-y-1"
-												/>
-											</p>
-
-											<span
-												className="absolute inset-0 z-0 bg-linear-to-r from-twin-accent-main
-													to-twin-primary-main opacity-0 transition-opacity duration-500
-													group-hover:opacity-100"
-											/>
-										</Form.Submit>
-									)}
-								</Form.StateSubscribe>
-							</motion.div>
-						</Form.Root>
-					:	<motion.div
-							variants={fadeUp}
-							className="flex flex-col items-center gap-8 rounded-3xl border-2
-								border-twin-accent-main/20 bg-linear-to-br from-twin-accent-main/5 to-transparent
-								p-12 text-center backdrop-blur-sm"
-						>
-							<div
-								className="flex size-20 items-center justify-center rounded-full
-									bg-twin-accent-main/10 text-twin-accent-main"
-							>
-								<IconBox icon="lucide:check-circle" className="size-10" />
+										<option value="">Select a service…</option>
+										{serviceOptions.map((service) => (
+											<option key={service} value={service}>
+												{service}
+											</option>
+										))}
+									</Form.Select>
+								</FieldShared>
+								<FieldShared name="appointmentDate" label="Appointment Date" optional={true}>
+									<Form.Input type="date" className={controlClassName} />
+								</FieldShared>
 							</div>
 
-							<div className="flex flex-col gap-4">
-								<h3 className="font-serif text-3xl font-bold text-twin-primary-main">
-									Message Sent Successfully!
-								</h3>
-								<p className="text-[17px] leading-[1.7] text-twin-primary-main/85">
-									Thank you for reaching out. We'll get back to you as soon as possible.
-								</p>
-							</div>
-
-							<button
-								type="button"
-								onClick={() => setIsSuccess(false)}
-								className="group mt-4 flex items-center gap-3 rounded-full border-2
-									border-twin-primary-main bg-twin-primary-main px-8 py-4 font-semibold text-white
-									transition-all duration-300 hover:bg-transparent hover:text-twin-primary-main"
-							>
-								Send Another Message
-								<IconBox
-									icon="lucide:arrow-right"
-									className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+							<FieldShared name="message" label="Message" required={true}>
+								<Form.TextArea
+									rows={6}
+									placeholder="Tell us how we can help…"
+									className={cnMerge(controlClassName, "min-h-36 resize-y")}
+									classNames={{ error: errorControlClassName }}
 								/>
-							</button>
-						</motion.div>
+							</FieldShared>
+
+							<Form.Field name="agree" className="gap-1">
+								<Form.Label
+									className="flex cursor-pointer items-start gap-3 rounded-xl border
+										border-transparent px-1 py-1 text-base leading-relaxed
+										text-twin-secondary-main focus-within:border-twin-accent-main"
+								>
+									<Form.Input
+										type="checkbox"
+										className="mt-1 size-5 shrink-0 accent-twin-primary-main"
+									/>
+									<span>I agree to be contacted regarding my request.</span>
+								</Form.Label>
+								<Form.ErrorMessage
+									className="mt-1 text-sm font-medium text-twin-state-error-darker"
+								/>
+							</Form.Field>
+
+							<Form.StateSubscribe>
+								{({ isSubmitting }) => (
+									<Form.Submit
+										as={Button}
+										disabled={isSubmitting}
+										className="mt-1 min-h-14 w-full rounded-xl bg-twin-primary-main px-8
+											text-base font-bold text-white transition-colors
+											hover:bg-twin-secondary-main disabled:cursor-wait disabled:opacity-60"
+									>
+										<span className="flex items-center justify-center gap-3">
+											{isSubmitting ? "Sending…" : "Send Message"}
+											<IconBox icon="lucide:send" className="size-5" />
+										</span>
+									</Form.Submit>
+								)}
+							</Form.StateSubscribe>
+						</Form.Root>
 					}
-				</motion.div>
+				</div>
+
+				<Aside />
 			</div>
 		</section>
+	);
+}
+
+function FieldShared(props: {
+	children: React.ReactNode;
+	label: string;
+	name: keyof ContactRequestSchemaType;
+	optional?: boolean;
+	required?: boolean;
+}) {
+	const { children, label, name, optional, required } = props;
+
+	return (
+		<Form.Field name={name} className="min-w-0 gap-2">
+			<Form.Label className="text-base font-bold text-twin-primary-main">
+				{label}
+				{required && (
+					<span className="ml-1 text-twin-state-error-main" aria-hidden="true">
+						*
+					</span>
+				)}
+				{optional && <span className="ml-1 font-normal text-twin-primary-main/60">(optional)</span>}
+			</Form.Label>
+			{children}
+			<Form.ErrorMessage className="mt-1 text-sm font-medium text-twin-state-error-darker" />
+		</Form.Field>
+	);
+}
+
+function SuccessMessage({ onReset }: { onReset: () => void }) {
+	return (
+		<div
+			role="status"
+			aria-live="polite"
+			className="flex min-h-90 flex-col items-center justify-center gap-6 rounded-2xl border
+				border-twin-accent-main bg-twin-accent-subtle p-8 text-center"
+		>
+			<div className="flex size-16 items-center justify-center rounded-full bg-twin-accent-main/20">
+				<IconBox aria-hidden="true" icon="lucide:circle-check" className="size-9 text-twin-primary-main" />
+			</div>
+			<div>
+				<h3 className="text-2xl font-bold text-twin-primary-main">Message sent!</h3>
+				<p className="mt-2 text-base text-twin-secondary-main">
+					Thank you for reaching out. A member of our team will contact you soon.
+				</p>
+			</div>
+			<Button type="button" onClick={onReset} className="rounded-xl bg-twin-primary-main text-white">
+				Send another message
+			</Button>
+		</div>
+	);
+}
+
+function Aside() {
+	return (
+		<aside className="flex flex-col gap-7">
+			<div
+				className="rounded-3xl bg-twin-primary-main p-8 text-white
+					shadow-[0_20px_50px_-25px_rgba(7,54,84,0.7)]"
+			>
+				<div
+					className="mb-5 flex size-12 items-center justify-center rounded-xl bg-twin-accent-main/15"
+				>
+					<IconBox aria-hidden="true" icon="lucide:phone-call" className="size-6 text-twin-accent-main" />
+				</div>
+				<h3 className="text-xl font-bold">Need an Interpreter Quickly?</h3>
+				<p className="mt-3 text-base leading-relaxed text-twin-accent-lighter">
+					Call us directly for immediate assistance.
+				</p>
+				<a
+					href={`tel:${siteConfig.contact.phone}`}
+					className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-twin-accent-main px-5
+						font-bold text-twin-primary-main no-underline transition-colors hover:bg-white"
+				>
+					{siteConfig.contact.phone}
+				</a>
+			</div>
+
+			<div
+				className="overflow-hidden rounded-3xl border border-[#A9D4E2] bg-white
+					shadow-[0_20px_50px_-30px_rgba(7,54,84,0.35)]"
+			>
+				<iframe
+					title="Twins Language Services location map"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3054.666357715981!2d-76.31152382348908!3d40.03822797858855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c625e7a5ce8b8d%3A0x4dd7b5f55efbb22d!2sTwins%20Language%20Services!5e0!3m2!1sen!2sus!4v1785339021598!5m2!1sen!2sus"
+					width="100%"
+					height="340"
+					loading="lazy"
+					allowFullScreen={true}
+					referrerPolicy="strict-origin-when-cross-origin"
+					className="block border-0"
+				/>
+				<div className="flex items-start gap-3 p-6">
+					<IconBox aria-hidden="true" icon="lucide:map-pin" className="mt-0.5 size-5 shrink-0 text-twin-accent-darker" />
+					<p className="text-base leading-relaxed text-twin-secondary-main">
+						{siteConfig.contact.address.street}
+						<br />
+						{siteConfig.contact.address.city}, {siteConfig.contact.address.state}{" "}
+						{siteConfig.contact.address.zip}
+					</p>
+				</div>
+			</div>
+		</aside>
 	);
 }

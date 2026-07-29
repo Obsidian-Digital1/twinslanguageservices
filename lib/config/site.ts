@@ -8,7 +8,7 @@ import { defineEnumDeep } from "@zayne-labs/toolkit-type-helpers";
 export const siteConfig = defineEnumDeep({
 	bookings: {
 		label: "Schedule Service",
-		url: "https://outlook.office365.com/book/TwinsLanguageServices@example.com/",
+		url: "",
 	},
 
 	contact: {
@@ -57,9 +57,9 @@ export const siteConfig = defineEnumDeep({
 			title: "Final Confirmation",
 		},
 		{
-			description: "Our certified professionals execute high-quality language services.",
+			description: "A language professional delivers the agreed service with care and clear communication.",
 			icon: "lucide:zap",
-			title: "Seamless execution",
+			title: "Service Delivery",
 		},
 	],
 
@@ -114,14 +114,16 @@ export const siteConfig = defineEnumDeep({
 			accent: "from-twin-accent-main/15 to-transparent",
 			icon: "lucide:headphones",
 			id: "transcription",
-			shortDescription: "Meticulous audio and video transcription with guaranteed accuracy and fast turnaround.",
+			shortDescription:
+				"Careful audio and video transcription prepared around the content, format, and timing of your request.",
 			title: "Transcription",
 		},
 		{
 			accent: "from-twin-secondary-main/15 to-transparent",
 			icon: "lucide:scale",
 			id: "court-legal",
-			shortDescription: "Court-certified interpretation for depositions, hearings, trials, and sensitive legal proceedings.",
+			shortDescription:
+				"Professional interpretation support for depositions, hearings, trials, and sensitive legal proceedings.",
 			title: "Legal Interpretation",
 		},
 		{
@@ -149,8 +151,8 @@ export const siteConfig = defineEnumDeep({
 
 	social: {
 		facebook: "https://www.facebook.com/twinslanguageservices",
-		instagram: "https://www.instagram.com/twinslanguageservices",
-		linkedin: "https://www.linkedin.com/company/twins-language-services",
+		instagram: "https://www.instagram.com/twinslanguageservices/",
+		linkedin: "https://www.linkedin.com/in/twinslanguageservices",
 	},
 
 	tagline: "Breaking Language Barriers, Building Connections",
