@@ -100,7 +100,7 @@ export function ContactForm() {
 						<h2 className="text-3xl font-bold tracking-tight text-twin-primary-main md:text-4xl">
 							Send Us a Message
 						</h2>
-						<p className="mt-3 max-w-2xl text-base leading-relaxed text-twin-primary-main/75">
+						<p className="mt-3 max-w-2xl text-base/relaxed text-twin-primary-main/75">
 							Fill out the form and our team will get back to you shortly.
 						</p>
 					</div>
@@ -205,8 +205,8 @@ export function ContactForm() {
 							<Form.Field name="agree" className="gap-1">
 								<Form.Label
 									className="flex cursor-pointer items-start gap-3 rounded-xl border
-										border-transparent px-1 py-1 text-base leading-relaxed
-										text-twin-secondary-main focus-within:border-twin-accent-main"
+										border-transparent p-1 text-base/relaxed text-twin-secondary-main
+										focus-within:border-twin-accent-main"
 								>
 									<Form.Input
 										type="checkbox"
@@ -280,7 +280,11 @@ function SuccessMessage({ onReset }: { onReset: () => void }) {
 				border-twin-accent-main bg-twin-accent-subtle p-8 text-center"
 		>
 			<div className="flex size-16 items-center justify-center rounded-full bg-twin-accent-main/20">
-				<IconBox aria-hidden="true" icon="lucide:circle-check" className="size-9 text-twin-primary-main" />
+				<IconBox
+					aria-hidden="true"
+					icon="lucide:circle-check"
+					className="size-9 text-twin-primary-main"
+				/>
 			</div>
 			<div>
 				<h3 className="text-2xl font-bold text-twin-primary-main">Message sent!</h3>
@@ -305,10 +309,14 @@ function Aside() {
 				<div
 					className="mb-5 flex size-12 items-center justify-center rounded-xl bg-twin-accent-main/15"
 				>
-					<IconBox aria-hidden="true" icon="lucide:phone-call" className="size-6 text-twin-accent-main" />
+					<IconBox
+						aria-hidden="true"
+						icon="lucide:phone-call"
+						className="size-6 text-twin-accent-main"
+					/>
 				</div>
 				<h3 className="text-xl font-bold">Need an Interpreter Quickly?</h3>
-				<p className="mt-3 text-base leading-relaxed text-twin-accent-lighter">
+				<p className="mt-3 text-base/relaxed text-twin-accent-lighter">
 					Call us directly for immediate assistance.
 				</p>
 				<a
@@ -325,6 +333,7 @@ function Aside() {
 					shadow-[0_20px_50px_-30px_rgba(7,54,84,0.35)]"
 			>
 				<iframe
+					sandbox=""
 					title="Twins Language Services location map"
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3054.666357715981!2d-76.31152382348908!3d40.03822797858855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c625e7a5ce8b8d%3A0x4dd7b5f55efbb22d!2sTwins%20Language%20Services!5e0!3m2!1sen!2sus!4v1785339021598!5m2!1sen!2sus"
 					width="100%"
@@ -335,8 +344,12 @@ function Aside() {
 					className="block border-0"
 				/>
 				<div className="flex items-start gap-3 p-6">
-					<IconBox aria-hidden="true" icon="lucide:map-pin" className="mt-0.5 size-5 shrink-0 text-twin-accent-darker" />
-					<p className="text-base leading-relaxed text-twin-secondary-main">
+					<IconBox
+						aria-hidden="true"
+						icon="lucide:map-pin"
+						className="mt-0.5 size-5 shrink-0 text-twin-accent-darker"
+					/>
+					<p className="text-base/relaxed text-twin-secondary-main">
 						{siteConfig.contact.address.street}
 						<br />
 						{siteConfig.contact.address.city}, {siteConfig.contact.address.state}{" "}

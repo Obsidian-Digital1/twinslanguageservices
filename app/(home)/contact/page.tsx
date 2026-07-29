@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	title: "Contact Us | Twins Language Services",
 };
 
-export default function ContactPage() {
+function ContactPage() {
 	return (
 		<Main>
 			<ContactInfo />
@@ -23,3 +23,5 @@ export default function ContactPage() {
 		</Main>
 	);
 }
+
+export default ContactPage;

@@ -27,7 +27,9 @@ function HomeLayout({ children }: LayoutProps<"/">) {
 			<Footer />
 			<script
 				type="application/ld+json"
+				// eslint-disable-next-line react/dom-no-dangerously-set-innerhtml
 				dangerouslySetInnerHTML={{
+					// eslint-disable-next-line react-hooks/todo
 					__html: JSON.stringify(structuredData).replaceAll("<", String.raw`\u003c`),
 				}}
 			/>
