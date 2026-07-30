@@ -229,9 +229,19 @@ function ProcessSection() {
 function CTASection() {
 	return (
 		<section
-			className="relative flex w-full justify-center overflow-hidden bg-twin-primary-main px-6 py-28
+			className="relative flex w-full justify-center overflow-hidden bg-twin-primary-subtle px-6 py-28
 				md:py-36 lg:px-[8%]"
 		>
+			<div
+				aria-hidden="true"
+				className="absolute top-0 left-1/2 h-px w-2/3 -translate-x-1/2
+					bg-linear-to-r from-transparent via-twin-accent-main/35 to-transparent"
+			/>
+			<div
+				aria-hidden="true"
+				className="absolute -top-32 left-1/2 size-96 -translate-x-1/2 rounded-full
+					bg-twin-accent-main/12 blur-3xl"
+			/>
 			<motion.div
 				variants={staggerContainer(0.1)}
 				initial="hidden"
@@ -240,23 +250,23 @@ function CTASection() {
 				className="relative z-10 flex w-full max-w-225 flex-col items-center gap-10 text-center"
 			>
 				<motion.div variants={fadeUp} className="flex items-center gap-4">
-					<span className="block h-px w-12 bg-twin-accent-main/40" />
-					<span className="font-black tracking-[0.28em] text-twin-accent-main uppercase lg:text-lg">
+					<span className="block h-px w-12 bg-twin-primary-main/25" />
+					<span className="font-black tracking-[0.28em] text-twin-accent-darker uppercase lg:text-lg">
 						Get Started
 					</span>
-					<span className="block h-px w-12 bg-twin-accent-main/40" />
+					<span className="block h-px w-12 bg-twin-primary-main/25" />
 				</motion.div>
 
 				<motion.h2
 					variants={fadeUp}
 					className="text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.02] font-black tracking-[-0.03em]
-						text-twin-white"
+						text-twin-primary-main"
 				>
 					Ready to bridge the{" "}
 					<span className="text-twin-accent-darker">language gap?</span>
 				</motion.h2>
 
-				<motion.p variants={fadeUp} className="max-w-130 text-lg leading-[1.7] text-twin-white/65">
+				<motion.p variants={fadeUp} className="max-w-130 text-lg leading-[1.7] text-twin-primary-main/70">
 					Whether you need immediate interpretation or long-term translation support, we're ready to
 					deliver.
 				</motion.p>
@@ -281,10 +291,10 @@ function CTASection() {
 
 					<Button
 						asChild={true}
-						theme="ghost-dark"
+						theme="ghost-light"
 						size="large"
-						className="rounded-full border-twin-white/12 transition-all duration-500
-							hover:border-twin-white/25"
+						className="rounded-full border-twin-primary-main/15 transition-all duration-500
+							hover:border-twin-primary-main/30 hover:bg-twin-primary-main/3"
 					>
 						<Link href="/contact" className="flex items-center gap-3">
 							Contact Us
