@@ -266,6 +266,7 @@ function FieldShared(props: {
 				{optional && <span className="ml-1 font-normal text-twin-primary-main/60">(optional)</span>}
 			</Form.Label>
 			{children}
+
 			<Form.ErrorMessage className="mt-1 text-sm font-medium text-twin-state-error-darker" />
 		</Form.Field>
 	);
@@ -332,8 +333,9 @@ function Aside() {
 				className="overflow-hidden rounded-3xl border border-[#A9D4E2] bg-white
 					shadow-[0_20px_50px_-30px_rgba(7,54,84,0.35)]"
 			>
+				{/* Google Maps embeds require an unsandboxed iframe to function correctly. */}
+				{/* eslint-disable-next-line react/dom-no-missing-iframe-sandbox */}
 				<iframe
-					sandbox=""
 					title="Twins Language Services location map"
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3054.666357715981!2d-76.31152382348908!3d40.03822797858855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c625e7a5ce8b8d%3A0x4dd7b5f55efbb22d!2sTwins%20Language%20Services!5e0!3m2!1sen!2sus!4v1785339021598!5m2!1sen!2sus"
 					width="100%"

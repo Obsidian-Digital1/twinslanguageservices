@@ -1,108 +1,64 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useToggle } from "@zayne-labs/toolkit-react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { IconBox, Logo, NavLink } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config/site";
 import { cnMerge } from "@/lib/utils/cn";
 
-const MOBILE_MENU_ID = "mobile-navigation";
-
 function Navbar() {
-	const [isNavOpen, setIsNavOpen] = useState(false);
-	const menuButtonRef = useRef<HTMLButtonElement>(null);
-	const drawerRef = useRef<HTMLDivElement>(null);
+	const [isNavShow, toggleNavShow] = useToggle(false);
+	const { scrollY } = useScroll();
 
-	const closeMenu = () => {
-		setIsNavOpen(false);
-		requestAnimationFrame(() => menuButtonRef.current?.focus());
-	};
-
-	useEffect(() => {
-		if (!isNavOpen) return;
-
-		const main = document.querySelector<HTMLElement>("#main-content");
-		const footer = document.querySelector<HTMLElement>("footer");
-		const previousOverflow = document.body.style.overflow;
-
-		document.body.style.overflow = "hidden";
-		main?.setAttribute("inert", "");
-		footer?.setAttribute("inert", "");
-		drawerRef.current?.querySelector<HTMLElement>("a")?.focus();
-
-		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") {
-				event.preventDefault();
-				closeMenu();
-				return;
-			}
-
-			if (event.key !== "Tab" || !drawerRef.current) return;
-
-			const focusable = [
-				...drawerRef.current.querySelectorAll<HTMLElement>(
-					'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-				),
-			];
-			const first = focusable[0];
-			const last = focusable.at(-1);
-
-			if (event.shiftKey && document.activeElement === first) {
-				event.preventDefault();
-				last?.focus();
-			} else if (!event.shiftKey && document.activeElement === last) {
-				event.preventDefault();
-				first?.focus();
-			}
-		};
-
-		document.addEventListener("keydown", handleKeyDown);
-
-		return () => {
-			document.body.style.overflow = previousOverflow;
-			main?.removeAttribute("inert");
-			footer?.removeAttribute("inert");
-			document.removeEventListener("keydown", handleKeyDown);
-		};
-	}, [isNavOpen]);
+	const bg = useTransform(scrollY, [0, 60], ["hsl(199, 88%, 18%)", "hsl(199, 88%, 18%, 0.96)"]);
+	const blur = useTransform(scrollY, [0, 60], ["blur(0px)", "blur(20px)"]);
 
 	return (
 		<>
-			<header
-				className="fixed inset-x-0 top-0 z-50 flex justify-center border-b border-white/8
-					bg-twin-primary-main/96 backdrop-blur-xl"
+			<motion.header
+				style={{ backdropFilter: blur, backgroundColor: bg }}
+				className="fixed inset-x-0 top-0 z-50 flex justify-center border-b border-white/0
+					transition-[border-color] duration-300
+					[&:not(:where([data-scrolled=false]))]:border-white/6"
 			>
-				<div className="flex h-20 w-full max-w-290 items-center justify-between px-5 md:px-6">
-					<Logo />
+				<div className="flex h-20 w-full max-w-290 items-center justify-between px-6">
+					<motion.div
+						initial={{ opacity: 0, x: -16 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5 }}
+					>
+						<Logo />
+					</motion.div>
 
 					<DesktopNavigation className="max-md:hidden" />
 
 					<Button
-						ref={menuButtonRef}
 						unstyled={true}
 						type="button"
-						aria-label={isNavOpen ? "Close navigation menu" : "Open navigation menu"}
-						aria-expanded={isNavOpen}
-						aria-controls={MOBILE_MENU_ID}
-						className="z-50 flex size-12 items-center justify-center rounded-xl text-white
-							transition-[background-color,transform] duration-160 ease-out
-							hover:bg-white/10 focus-visible:outline-3 focus-visible:outline-offset-3
-							focus-visible:outline-twin-accent-main active:scale-[0.97] md:hidden"
-						onClick={() => setIsNavOpen((current) => !current)}
+						aria-label={isNavShow ? "Close navigation menu" : "Open navigation menu"}
+						aria-expanded={isNavShow}
+						aria-controls="mobile-navigation"
+						className="z-50 flex size-12 items-center justify-center rounded-xl transition-colors
+							hover:bg-white/8 focus-visible:outline-3 focus-visible:outline-offset-3
+							focus-visible:outline-twin-accent-main md:hidden"
+						onClick={toggleNavShow}
 					>
 						<IconBox
-							icon={isNavOpen ? "lucide:x" : "lucide:menu"}
 							aria-hidden="true"
-							className="size-8"
+							icon={isNavShow ? "lucide:x" : "lucide:menu"}
+							className="size-8 text-white"
 							strokeWidth={2.5}
 						/>
 					</Button>
 				</div>
-			</header>
+			</motion.header>
 
-			{isNavOpen && (
-				<MobileNavigationDrawer ref={drawerRef} closeMenu={closeMenu} />
-			)}
+			<MobileNavigationDrawer
+				isNavShow={isNavShow}
+				toggleNavShow={toggleNavShow}
+				className="md:hidden"
+			/>
 		</>
 	);
 }
@@ -111,15 +67,19 @@ function DesktopNavigation(props: { className?: string }) {
 	const { className } = props;
 
 	return (
-		<nav aria-label="Primary navigation" className={cnMerge("flex items-center gap-7", className)}>
+		<motion.nav
+			aria-label="Primary navigation"
+			initial={{ opacity: 0, x: 16 }}
+			animate={{ opacity: 1, x: 0 }}
+			transition={{ delay: 0.1, duration: 0.5 }}
+			className={cnMerge("flex items-center gap-8", className)}
+		>
 			{siteConfig.navigation.map((linkItem) => (
 				<NavLink
 					key={linkItem.label}
 					href={linkItem.href as never}
-					className="rounded-md text-base font-semibold text-white/70 no-underline
-						transition-colors duration-160 hover:text-white focus-visible:outline-3
-						focus-visible:outline-offset-4 focus-visible:outline-twin-accent-main
-						data-[active=true]:text-twin-accent-main"
+					className="text-lg font-semibold text-white/55 no-underline transition-colors
+						hover:text-white"
 				>
 					{linkItem.label}
 				</NavLink>
@@ -129,70 +89,53 @@ function DesktopNavigation(props: { className?: string }) {
 				asChild={true}
 				theme="accent-gradient"
 				size="sm"
-				className="rounded-full transition-transform duration-160 ease-out
-					focus-within:outline-3 focus-within:outline-offset-3
-					focus-within:outline-twin-accent-main active:scale-[0.97]"
+				className="transition-transform duration-300 hover:scale-104 active:scale-98"
 			>
-				<NavLink href="/booking">{siteConfig.bookings.label}</NavLink>
+				<a href={siteConfig.bookings.url}>{siteConfig.bookings.label}</a>
 			</Button>
-		</nav>
+		</motion.nav>
 	);
 }
 
-function MobileNavigationDrawer({
-	closeMenu,
-	ref,
-}: {
-	closeMenu: () => void;
-	ref: React.RefObject<HTMLDivElement | null>;
+function MobileNavigationDrawer(props: {
+	className?: string;
+	isNavShow: boolean;
+	toggleNavShow: () => void;
 }) {
+	const { className, isNavShow, toggleNavShow } = props;
+
 	return (
-		<div
-			ref={ref}
-			id={MOBILE_MENU_ID}
-			role="dialog"
-			aria-modal="true"
-			aria-label="Site navigation"
-			className="fixed inset-0 z-40 flex flex-col overscroll-contain bg-twin-primary-main pt-24
-				text-white"
+		<section
+			id="mobile-navigation"
+			aria-label="Mobile navigation"
+			aria-hidden={!isNavShow}
+			className={cnMerge(
+				`fixed inset-[0_0_0_auto] z-40 flex flex-col items-center gap-7 overflow-x-hidden
+				bg-twin-primary-main/98 pt-24 text-white backdrop-blur-xl transition-[width] ease-[ease]`,
+				isNavShow ? "w-full duration-350" : "w-0 duration-500",
+				className
+			)}
+			onClick={(event) => {
+				const element = event.target as HTMLElement;
+				element.tagName === "A" && toggleNavShow();
+			}}
 		>
-			<button
-				type="button"
-				aria-label="Close navigation menu"
-				className="absolute inset-0 -z-10 cursor-default bg-twin-primary-main"
-				onClick={closeMenu}
-			/>
-			<nav aria-label="Mobile navigation" className="flex flex-col items-center gap-2 px-6 pt-8">
+			<nav aria-label="Mobile navigation links" className="mt-5 flex flex-col items-center gap-5 text-nowrap">
 				{siteConfig.navigation.map((linkItem) => (
 					<NavLink
 						key={linkItem.label}
 						href={linkItem.href as never}
-						onClick={closeMenu}
-						className="w-full max-w-sm rounded-xl px-5 py-3 text-center text-2xl font-bold
-							text-white/75 no-underline transition-[background-color,color,transform]
-							duration-160 ease-out hover:bg-white/8 hover:text-white
-							focus-visible:outline-3 focus-visible:outline-offset-2
-							focus-visible:outline-twin-accent-main active:scale-[0.97]
-							data-[active=true]:bg-white/8 data-[active=true]:text-twin-accent-main"
+						className="text-2xl font-bold text-white/60 transition-colors hover:text-white"
 					>
 						{linkItem.label}
 					</NavLink>
 				))}
 			</nav>
 
-			<Button
-				asChild={true}
-				theme="accent-gradient"
-				size="medium"
-				className="mx-auto mt-6 rounded-full transition-transform duration-160
-					ease-out focus-within:outline-3 focus-within:outline-offset-3
-					focus-within:outline-white active:scale-[0.97]"
-			>
-				<NavLink href="/booking" onClick={closeMenu}>
-					{siteConfig.bookings.label}
-				</NavLink>
+			<Button asChild={true} theme="accent-gradient" size="medium">
+				<a href={siteConfig.bookings.url}>{siteConfig.bookings.label}</a>
 			</Button>
-		</div>
+		</section>
 	);
 }
 

@@ -1,10 +1,27 @@
+"use client";
+
+import { motion } from "motion/react";
 import Link from "next/link";
-import { Logo, NavLink } from "@/components/common";
+import { IconBox, Logo, NavLink } from "@/components/common";
 import { siteConfig } from "@/lib/config/site";
 
+const fadeUp = {
+	hidden: { opacity: 0, y: 24 },
+	show: { opacity: 1, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] }, y: 0 },
+} as const;
+
+const staggerContainer = (staggerChildren = 0.08, delayChildren = 0) => ({
+	hidden: {},
+	show: { transition: { delayChildren, staggerChildren } },
+});
+
+const VP = { amount: 0.15, once: true } as const;
 const columns = [
 	{
-		links: siteConfig.navigation,
+		links: siteConfig.navigation.map((item) => ({
+			href: item.href,
+			label: item.label,
+		})),
 		title: "Pages",
 	},
 	{
@@ -14,92 +31,128 @@ const columns = [
 		})),
 		title: "Services",
 	},
-] as const;
-
-const focusClasses =
-	"rounded-sm focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-twin-accent-main";
-
-const CURRENT_YEAR = new Date().getFullYear();
+	{
+		links: [
+			{ href: `tel:${siteConfig.contact.phone}`, label: siteConfig.contact.phone },
+			{ href: `mailto:${siteConfig.contact.email}`, label: siteConfig.contact.email },
+			{ href: null, label: siteConfig.contact.address.full },
+		],
+		title: "Contact Us",
+	},
+];
 
 function Footer() {
 	return (
-		<footer className="flex w-full justify-center overflow-hidden border-t border-white/8 bg-twin-primary-main px-5 pt-14 pb-8 md:px-10 lg:px-25">
+		<footer
+			className="flex w-full justify-center overflow-hidden border-t border-white/5 bg-twin-primary-main
+				px-4 pt-12 pb-8 md:px-10 lg:px-25"
+		>
 			<div className="w-full max-w-275">
-				<div className="mb-14 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.15fr]">
-					<div className="flex flex-col gap-4">
-						<Logo iconSize={36} />
-						<p className="max-w-72 text-base/relaxed text-white/65">{siteConfig.tagline}</p>
-					</div>
+				<motion.div
+					variants={staggerContainer(0.08)}
+					initial="hidden"
+					whileInView="show"
+					viewport={VP}
+					className="mb-14 grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
+				>
+					<motion.div variants={fadeUp} className="flex flex-col gap-4">
+						<Logo iconSize={32} />
+						<p className="max-w-65 text-base/relaxed text-white/45">{siteConfig.tagline}</p>
+					</motion.div>
 
-					{columns.map((column) => (
-						<div key={column.title} className="flex flex-col gap-3">
-							<h2 className="text-sm font-black tracking-[0.24em] text-white/50 uppercase">
-								{column.title}
+					{columns.map((col) => (
+						<motion.div key={col.title} variants={fadeUp} className="flex flex-col gap-3">
+							<h2 className="text-sm font-black tracking-[0.28em] text-white/45 uppercase">
+								{col.title}
 							</h2>
-							<nav aria-label={`${column.title} links`} className="flex flex-col gap-2.5">
-								{column.links.map((link) => (
-									<NavLink
-										key={link.label}
-										href={link.href as never}
-										className={`${focusClasses} text-base text-white/65 no-underline
-											transition-colors duration-160 hover:text-white`}
-									>
-										{link.label}
-									</NavLink>
-								))}
-							</nav>
-						</div>
+							<div className="flex flex-col gap-3">
+								{col.links.map((link) =>
+									link.href ?
+										<NavLink
+											prefetch={false}
+											key={link.label}
+											href={link.href as never}
+											className="text-white/45 transition-all duration-300 hover:translate-x-0.5
+												hover:text-white/80"
+										>
+											{link.label}
+										</NavLink>
+									:	<span
+											key={link.label}
+											className="text-white/45 transition-all duration-300 hover:translate-x-0.5
+												hover:text-white/80"
+										>
+											{link.label}
+										</span>
+								)}
+							</div>
+						</motion.div>
 					))}
+				</motion.div>
 
-					<div className="flex min-w-0 flex-col gap-3">
-						<h2 className="text-sm font-black tracking-[0.24em] text-white/50 uppercase">
-							Contact
-						</h2>
-						<a
-							href={`tel:${siteConfig.contact.phone}`}
-							className={`${focusClasses} text-base text-white/70 no-underline
-								transition-colors duration-160 hover:text-white`}
+				<div
+					className="mb-6 flex flex-wrap items-center justify-center gap-6 border-t border-white/5
+						pt-6"
+				>
+					<Link
+						href={siteConfig.social.facebook}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center gap-2.5 text-white/50 no-underline transition-colors
+							hover:text-twin-accent-main"
+					>
+						<IconBox aria-hidden="true" icon="simple-icons:facebook" className="size-4" />
+						Facebook
+						<span className="sr-only"> (opens in a new tab)</span>
+					</Link>
+					<Link
+						href={siteConfig.social.instagram}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center gap-2.5 text-white/50 no-underline transition-colors
+							hover:text-twin-accent-main"
+					>
+						<IconBox aria-hidden="true" icon="simple-icons:instagram" className="size-4" />
+						Instagram
+						<span className="sr-only"> (opens in a new tab)</span>
+					</Link>
+					<Link
+						href={siteConfig.social.linkedin}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center gap-2.5 text-white/50 no-underline transition-colors
+							hover:text-twin-accent-main"
+					>
+						<IconBox aria-hidden="true" icon="simple-icons:linkedin" className="size-4" />
+						LinkedIn
+						<span className="sr-only"> (opens in a new tab)</span>
+					</Link>
+				</div>
+
+				<div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-6">
+					<span className="text-[12px] text-white/40">
+						© 2026 Obsidian Digital. All rights reserved.
+					</span>
+					<nav aria-label="Legal links" className="flex flex-wrap items-center gap-x-5 gap-y-2">
+						<NavLink
+							href="/privacy-policy"
+							className="text-[12px] text-white/40 no-underline transition-colors hover:text-white/70"
 						>
-							{siteConfig.contact.phone}
-						</a>
-						<a
+							Privacy Policy
+						</NavLink>
+						<NavLink
+							href="/terms-and-conditions"
+							className="text-[12px] text-white/40 no-underline transition-colors hover:text-white/70"
+						>
+							Terms &amp; Conditions
+						</NavLink>
+						<NavLink
 							href={`mailto:${siteConfig.contact.email}`}
-							className={`${focusClasses} text-base wrap-break-word text-white/70 no-underline
-								transition-colors duration-160 hover:text-white`}
+							className="text-[12px] text-white/40 no-underline transition-colors hover:text-white/70"
 						>
 							{siteConfig.contact.email}
-						</a>
-						<p className="text-base/relaxed text-white/65">{siteConfig.contact.address.full}</p>
-					</div>
-				</div>
-
-				<div className="mb-6 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-white/8 pt-7">
-					{Object.entries(siteConfig.social).map(([network, href]) => (
-						<Link
-							key={network}
-							href={href}
-							target="_blank"
-							rel="noopener noreferrer"
-							className={`${focusClasses} text-base text-white/65 no-underline
-								transition-colors duration-160 hover:text-twin-accent-main`}
-						>
-							<span className="capitalize">{network}</span>
-							<span className="sr-only"> (opens in a new tab)</span>
-						</Link>
-					))}
-				</div>
-
-				<div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-6">
-					<p className="text-sm text-white/50">
-						© {CURRENT_YEAR} {siteConfig.name}. All rights reserved.
-					</p>
-					<NavLink
-						href="/contact"
-						className={`${focusClasses} text-sm text-white/60 no-underline
-							transition-colors duration-160 hover:text-white`}
-					>
-						Request Language Support
-					</NavLink>
+						</NavLink>
+					</nav>
 				</div>
 			</div>
 		</footer>

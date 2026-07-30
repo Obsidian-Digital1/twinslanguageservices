@@ -8,7 +8,7 @@ import { defineEnumDeep } from "@zayne-labs/toolkit-type-helpers";
 export const siteConfig = defineEnumDeep({
 	bookings: {
 		label: "Schedule Service",
-		url: "",
+		url: "/contact#contact-form",
 	},
 
 	contact: {
@@ -36,7 +36,7 @@ export const siteConfig = defineEnumDeep({
 		{ href: "/", label: "Home" },
 		{ href: "/about-us", label: "About Us" },
 		{ href: "/services", label: "Services" },
-		{ href: "/booking", label: "Booking" },
+		{ href: "/contact#contact-form", label: "Booking" },
 		{ href: "/contact", label: "Contact Us" },
 	],
 
@@ -57,7 +57,8 @@ export const siteConfig = defineEnumDeep({
 			title: "Final Confirmation",
 		},
 		{
-			description: "A language professional delivers the agreed service with care and clear communication.",
+			description:
+				"A language professional delivers the agreed service with care and clear communication.",
 			icon: "lucide:zap",
 			title: "Service Delivery",
 		},
@@ -92,7 +93,8 @@ export const siteConfig = defineEnumDeep({
 			accent: "from-twin-secondary-lighter/15 to-transparent",
 			icon: "lucide:phone",
 			id: "phone-interpreting",
-			shortDescription: "Immediate over-the-phone language support for urgent, time-sensitive communication needs.",
+			shortDescription:
+				"Immediate over-the-phone language support for urgent, time-sensitive communication needs.",
 			title: "Phone Interpreting",
 		},
 		{
@@ -107,7 +109,8 @@ export const siteConfig = defineEnumDeep({
 			accent: "from-twin-primary-lighter/15 to-transparent",
 			icon: "lucide:file-text",
 			id: "document-translation",
-			shortDescription: "Precise translation of legal documents, certificates, medical records, and business materials.",
+			shortDescription:
+				"Precise translation of legal documents, certificates, medical records, and business materials.",
 			title: "Document Translation",
 		},
 		{
@@ -130,21 +133,24 @@ export const siteConfig = defineEnumDeep({
 			accent: "from-twin-primary-lighter/15 to-transparent",
 			icon: "lucide:stethoscope",
 			id: "doctors-appointments",
-			shortDescription: "Specialized medical interpretation for patient consultations, hospital visits, and clinical appointments.",
+			shortDescription:
+				"Specialized medical interpretation for patient consultations, hospital visits, and clinical appointments.",
 			title: "Doctors Appointments",
 		},
 		{
 			accent: "from-twin-accent-main/15 to-transparent",
 			icon: "lucide:graduation-cap",
 			id: "school-appointments",
-			shortDescription: "Facilitating clear communication between educators and families for conferences, IEP meetings, and school events.",
+			shortDescription:
+				"Facilitating clear communication between educators and families for conferences, IEP meetings, and school events.",
 			title: "School Appointments",
 		},
 		{
 			accent: "from-twin-secondary-lighter/15 to-transparent",
 			icon: "lucide:presentation",
 			id: "company-meetings",
-			shortDescription: "Professional linguistic support for corporate boardroom discussions, strategic negotiations, and internal briefings.",
+			shortDescription:
+				"Professional linguistic support for corporate boardroom discussions, strategic negotiations, and internal briefings.",
 			title: "Company Meetings",
 		},
 	],
