@@ -122,7 +122,7 @@ function HeroSection() {
 			<div
 				aria-hidden="true"
 				className="pointer-events-none absolute top-[17%] right-[7%] z-4 hidden size-100
-					xl:block 2xl:right-[10%] 2xl:size-112"
+					xl:block"
 			>
 				<div className="absolute inset-0 rounded-full border border-twin-accent-main/12" />
 				<div className="absolute inset-12 rounded-full border border-dashed border-twin-accent-main/18" />

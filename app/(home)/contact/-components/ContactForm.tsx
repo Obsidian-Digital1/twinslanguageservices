@@ -61,9 +61,12 @@ export function ContactForm() {
 		}
 
 		await callApi("@post/api/contact", {
+			baseURL: globalThis.location.origin,
 			body: data,
 			onError: ({ error }) => {
-				toast.error("Failed to send message", { description: error.message });
+				toast.error("Failed to send message", {
+					description: error.message,
+				});
 			},
 			onSuccess: () => {
 				setIsSuccess(true);
@@ -72,6 +75,7 @@ export function ContactForm() {
 					description: "We'll get back to you as soon as possible.",
 				});
 			},
+			throwOnError: true,
 		});
 	});
 
@@ -158,14 +162,14 @@ export function ContactForm() {
 							</div>
 
 							<div className="grid gap-6 sm:grid-cols-2">
-								<FieldShared name="organization" label="Organization" optional={true}>
+								<FieldShared name="organization" label="Organization">
 									<Form.Input
 										type="text"
 										autoComplete="organization"
 										className={controlClassName}
 									/>
 								</FieldShared>
-								<FieldShared name="preferredLanguage" label="Preferred Language" optional={true}>
+								<FieldShared name="preferredLanguage" label="Preferred Language">
 									<Form.Input
 										type="text"
 										placeholder="e.g. Spanish"
@@ -188,7 +192,7 @@ export function ContactForm() {
 										))}
 									</Form.Select>
 								</FieldShared>
-								<FieldShared name="appointmentDate" label="Appointment Date" optional={true}>
+								<FieldShared name="appointmentDate" label="Appointment Date">
 									<Form.Input type="date" className={controlClassName} />
 								</FieldShared>
 							</div>
@@ -249,10 +253,9 @@ function FieldShared(props: {
 	children: React.ReactNode;
 	label: string;
 	name: keyof ContactRequestSchemaType;
-	optional?: boolean;
 	required?: boolean;
 }) {
-	const { children, label, name, optional, required } = props;
+	const { children, label, name, required } = props;
 
 	return (
 		<Form.Field name={name} className="min-w-0 gap-2">
@@ -263,7 +266,6 @@ function FieldShared(props: {
 						*
 					</span>
 				)}
-				{optional && <span className="ml-1 font-normal text-twin-primary-main/60">(optional)</span>}
 			</Form.Label>
 			{children}
 
