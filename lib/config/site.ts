@@ -7,8 +7,10 @@ import { defineEnumDeep } from "@zayne-labs/toolkit-type-helpers";
 
 export const siteConfig = defineEnumDeep({
 	bookings: {
+		embedUrl:
+			"https://outlook.office.com/book/TwinsLanguageServices2@twinslanguageservices.com/?ismsaljsauthenabled",
 		label: "Schedule Service",
-		url: "https://outlook.office.com/book/TwinsLanguageServices2@twinslanguageservices.com/?ismsaljsauthenabled",
+		url: "/booking",
 	},
 
 	contact: {
@@ -36,10 +38,7 @@ export const siteConfig = defineEnumDeep({
 		{ href: "/", label: "Home" },
 		{ href: "/about-us", label: "About Us" },
 		{ href: "/services", label: "Services" },
-		{
-			href: "https://outlook.office.com/book/TwinsLanguageServices2@twinslanguageservices.com/?ismsaljsauthenabled",
-			label: "Booking",
-		},
+		{ href: "/booking", label: "Booking" },
 		{ href: "/contact", label: "Contact Us" },
 	],
 
