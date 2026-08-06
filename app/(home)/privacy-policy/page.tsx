@@ -50,6 +50,11 @@ export default function PrivacyPolicyPage() {
 								securely.
 							</p>
 							<p>
+								The contact form is protected with Google Cloud reCAPTCHA Enterprise, which may
+								collect device and usage signals to assess risk of automated abuse. Google
+								processes that data under its own terms and privacy policy.
+							</p>
+							<p>
 								The contact page includes an embedded Google Map. Google may receive technical
 								information when the map loads and handles that information under its own
 								privacy terms. Social-media and booking links also lead to third-party services.

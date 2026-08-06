@@ -44,9 +44,9 @@ function RootLayout({ children }: LayoutProps<"/">) {
 			<body className={cnJoin(inter.variable, poppins.variable)}>
 				<a
 					href="#main-content"
-					className="fixed top-3 left-3 z-[100] -translate-y-24 rounded-lg
+					className="fixed top-3 left-3 z-100 -translate-y-24 rounded-lg
 						bg-twin-accent-main px-5 py-3 font-bold text-twin-primary-main no-underline
-						transition-transform duration-160 ease-[var(--ease-out)]
+						transition-transform duration-160 ease-out
 						focus-visible:translate-y-0 focus-visible:outline-3 focus-visible:outline-offset-3
 						focus-visible:outline-white"
 				>

@@ -21,6 +21,8 @@ const nextConfig = {
 
 	reactStrictMode: true,
 
+	serverExternalPackages: ["@google-cloud/recaptcha-enterprise"],
+
 	typedRoutes: true,
 } satisfies NextConfig;
 

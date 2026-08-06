@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const ContactRequestSchema = z.object({
+export const ContactFormFieldsSchema = z.object({
 	agree: z.boolean().refine(Boolean, "You must agree to be contacted"),
 	appointmentDate: z.string().max(40, "Appointment date is too long"),
 	email: z.email("Please enter a valid email address").max(254),
@@ -14,4 +14,9 @@ export const ContactRequestSchema = z.object({
 	serviceNeeded: z.string().trim().min(1, "Please select a service").max(120),
 });
 
+export const ContactRequestSchema = ContactFormFieldsSchema.extend({
+	recaptchaToken: z.string().trim().min(1, "Verification required"),
+});
+
+export type ContactFormFieldsSchemaType = z.infer<typeof ContactFormFieldsSchema>;
 export type ContactRequestSchemaType = z.infer<typeof ContactRequestSchema>;

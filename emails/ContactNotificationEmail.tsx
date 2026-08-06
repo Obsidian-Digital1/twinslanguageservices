@@ -11,9 +11,9 @@ import {
 	Section,
 	Text,
 } from "react-email";
-import type { ContactRequestSchemaType } from "@/lib/validation/contact";
+import type { ContactFormFieldsSchemaType } from "@/lib/validation/contact";
 
-export function ContactNotificationEmail(props: ContactRequestSchemaType) {
+export function ContactNotificationEmail(props: ContactFormFieldsSchemaType) {
 	const {
 		appointmentDate,
 		email,
@@ -120,7 +120,7 @@ ContactNotificationEmail.PreviewProps = {
 	phone: "(717) 555-0148",
 	preferredLanguage: "Spanish",
 	serviceNeeded: "Medical Interpretation",
-} satisfies ContactRequestSchemaType;
+} satisfies ContactFormFieldsSchemaType;
 
 export default ContactNotificationEmail;
 

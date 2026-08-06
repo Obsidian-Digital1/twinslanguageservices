@@ -8,9 +8,14 @@ import { toast } from "sonner";
 import { IconBox } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import { getRecaptchaToken, RECAPTCHA_USER_ERROR } from "@/lib/client/recaptcha";
 import { siteConfig } from "@/lib/config/site";
+import { RECAPTCHA_ACTIONS } from "@/lib/recaptcha/actions";
 import { cnMerge } from "@/lib/utils/cn";
-import { ContactRequestSchema, type ContactRequestSchemaType } from "@/lib/validation/contact";
+import {
+	ContactFormFieldsSchema,
+	type ContactFormFieldsSchemaType,
+} from "@/lib/validation/contact";
 
 const serviceOptions = [
 	"In-Person Interpreting",
@@ -51,7 +56,7 @@ export function ContactForm() {
 			preferredLanguage: "",
 			serviceNeeded: "",
 		},
-		resolver: zodResolver(ContactRequestSchema),
+		resolver: zodResolver(ContactFormFieldsSchema),
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
@@ -60,12 +65,21 @@ export function ContactForm() {
 			return;
 		}
 
+		let recaptchaToken: string;
+
+		try {
+			recaptchaToken = await getRecaptchaToken(RECAPTCHA_ACTIONS.contactSubmit);
+		} catch {
+			toast.error(RECAPTCHA_USER_ERROR);
+			return;
+		}
+
 		await callApi("@post/api/contact", {
 			baseURL: globalThis.location.origin,
-			body: data,
+			body: { ...data, recaptchaToken },
 			onError: ({ error }) => {
 				toast.error("Failed to send message", {
-					description: error.message,
+					description: error.message || RECAPTCHA_USER_ERROR,
 				});
 			},
 			onSuccess: () => {
@@ -252,7 +266,7 @@ export function ContactForm() {
 function FieldShared(props: {
 	children: React.ReactNode;
 	label: string;
-	name: keyof ContactRequestSchemaType;
+	name: keyof ContactFormFieldsSchemaType;
 	required?: boolean;
 }) {
 	const { children, label, name, required } = props;
