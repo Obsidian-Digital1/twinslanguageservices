@@ -31,6 +31,8 @@ Optional:
 ```bash
 RECAPTCHA_ALLOWED_HOSTNAMES=staging.example.com
 GOOGLE_CLOUD_API_KEY=
+# Alias also accepted by the app:
+# GOOGLE_CLOUD_RECAPTCHA_API_KEY=
 GOOGLE_SERVICE_ACCOUNT_KEY=
 GOOGLE_APPLICATION_CREDENTIALS=
 RECAPTCHA_BYPASS_DEV=true
@@ -47,7 +49,7 @@ Preferred order:
 
 1. **Attached Google Cloud service account / Application Default Credentials** when hosted on Google Cloud.
 2. **Workload Identity Federation** when supported by the platform.
-3. **Restricted Google Cloud API key** (`GOOGLE_CLOUD_API_KEY`) — practical for Vercel and other non-GCP hosts. Restrict the key to the reCAPTCHA Enterprise API and expected callers.
+3. **Restricted Google Cloud API key** (`GOOGLE_CLOUD_API_KEY` or `GOOGLE_CLOUD_RECAPTCHA_API_KEY`) — practical for Hostinger/Vercel and other non-GCP hosts. Restrict the key to the reCAPTCHA Enterprise API and expected callers.
 4. **Service-account JSON** via `GOOGLE_SERVICE_ACCOUNT_KEY` (stringified JSON) when necessary. Escaped `\n` sequences in `private_key` are normalized on the server. Alternatively set `GOOGLE_APPLICATION_CREDENTIALS` to a filesystem path available only at runtime.
 
 The Google Cloud identity used for CreateAssessment needs the **`roles/recaptchaenterprise.agent`** role when using IAM.
