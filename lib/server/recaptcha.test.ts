@@ -89,6 +89,21 @@ describe("readRecaptchaConfig", () => {
 		}
 	});
 
+	it("accepts GOOGLE_CLOUD_RECAPTCHA_API_KEY as an API key alias", () => {
+		const result = readRecaptchaConfig({
+			GOOGLE_CLOUD_PROJECT_ID: "twinslanguageservices",
+			GOOGLE_CLOUD_RECAPTCHA_API_KEY: "alias-key",
+			NEXT_PUBLIC_RECAPTCHA_SITE_KEY: "site-key",
+			NODE_ENV: "production",
+			RECAPTCHA_MIN_SCORE: "0.5",
+		});
+
+		expect(result.ok).toBe(true);
+		if (result.ok) {
+			expect(result.config.apiKey).toBe("alias-key");
+		}
+	});
+
 	it("fails when production auth is missing", () => {
 		const result = readRecaptchaConfig({
 			GOOGLE_CLOUD_PROJECT_ID: "twinslanguageservices",
