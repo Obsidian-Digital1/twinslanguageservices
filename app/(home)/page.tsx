@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { NavLink } from "@/components/common";
 import { IconBox } from "@/components/common/IconBox";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config/site";
@@ -93,7 +94,7 @@ function HeroSection() {
 			/>
 
 			<motion.div
-				className="pointer-events-none absolute -top-[15%] right-[5%] z-0 aspect-square
+				className="pointer-events-none absolute top-[-15%] right-[5%] z-0 aspect-square
 					w-[min(900px,80vw)] rounded-full opacity-50 blur-[140px]"
 			>
 				<div
@@ -103,7 +104,7 @@ function HeroSection() {
 			</motion.div>
 
 			<div
-				className="pointer-events-none absolute -bottom-[25%] -left-[15%] z-0 aspect-square
+				className="pointer-events-none absolute bottom-[-25%] left-[-15%] z-0 aspect-square
 					w-[min(700px,70vw)] rounded-full bg-twin-secondary-main/30 opacity-40 blur-[120px]"
 			/>
 
@@ -117,6 +118,67 @@ function HeroSection() {
 					from-transparent via-twin-white/6 to-transparent lg:block"
 				style={{ left: "50%" }}
 			/>
+
+			<div
+				aria-hidden="true"
+				className="pointer-events-none absolute top-[17%] right-[7%] z-4 hidden size-100
+					xl:block"
+			>
+				<div className="absolute inset-0 rounded-full border border-twin-accent-main/12" />
+				<div className="absolute inset-12 rounded-full border border-dashed border-twin-accent-main/18" />
+
+				<motion.div
+					className="absolute inset-0"
+					animate={{ rotate: 360 }}
+					transition={{ duration: 42, ease: "linear", repeat: Infinity }}
+				>
+					<span
+						className="absolute top-7 left-1/2 size-2.5 -translate-x-1/2 rounded-full
+							bg-twin-accent-main shadow-[0_0_24px_var(--color-twin-accent-main)]"
+					/>
+					<span className="absolute top-1/2 right-7 size-1.5 -translate-y-1/2 rounded-full bg-white/55" />
+					<span className="absolute bottom-7 left-1/2 size-2 -translate-x-1/2 rounded-full bg-twin-accent-lighter/70" />
+				</motion.div>
+
+				<motion.div
+					className="absolute inset-25 flex flex-col items-center justify-center rounded-full border
+						border-white/12 bg-twin-primary-main/35 text-center shadow-2xl
+						shadow-twin-primary-darker/20 backdrop-blur-md"
+					animate={{ y: [0, -8, 0] }}
+					transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
+				>
+					<IconBox icon="lucide:languages" className="size-10 text-twin-accent-main" />
+					<span className="mt-3 text-[10px] font-bold tracking-[0.28em] text-white/55 uppercase">
+						Every voice
+					</span>
+					<span className="mt-1 text-sm font-bold text-white">understood</span>
+				</motion.div>
+
+				<span
+					className="absolute top-9 left-2 rounded-full border border-white/10 bg-white/6 px-4 py-2
+						text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
+				>
+					Hola
+				</span>
+				<span
+					className="absolute top-24 right-0 rounded-full border border-white/10 bg-white/6 px-4 py-2
+						text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
+				>
+					Bonjour
+				</span>
+				<span
+					className="absolute right-8 bottom-12 rounded-full border border-white/10 bg-white/6 px-4
+						py-2 text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
+				>
+					Olá
+				</span>
+				<span
+					className="absolute bottom-17 left-0 rounded-full border border-white/10 bg-white/6 px-4 py-2
+						text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
+				>
+					Hello
+				</span>
+			</div>
 
 			<motion.div
 				className="relative z-10 flex w-full grow flex-col justify-end px-6 pt-32 pb-28 md:px-16
@@ -186,14 +248,14 @@ function HeroSection() {
 								className="group overflow-hidden rounded-full transition-all duration-500
 									hover:shadow-[0_0_50px_theme(--color-twin-accent-main/35%)] active:scale-[0.97]"
 							>
-								<Link href={siteConfig.bookings.url} className="flex items-center gap-3">
+								<NavLink href={siteConfig.bookings.url} className="flex items-center gap-3">
 									Schedule Service
 									<IconBox
 										icon="lucide:arrow-up-right"
 										className="size-5 transition-transform duration-300
 											group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
 									/>
-								</Link>
+								</NavLink>
 							</Button>
 
 							<Button
@@ -205,15 +267,6 @@ function HeroSection() {
 									hover:border-twin-white/20 hover:text-twin-white"
 							>
 								<a href={`tel:${siteConfig.contact.phone.replaceAll(/[^0-9]/g, "")}`}>
-									<div className="relative flex size-2">
-										<span
-											className="absolute inline-flex size-full animate-ping rounded-full
-												bg-twin-accent-main opacity-60"
-										/>
-										<span
-											className="relative inline-flex size-2 rounded-full bg-twin-accent-main"
-										/>
-									</div>
 									{siteConfig.contact.phone}
 								</a>
 							</Button>
@@ -643,15 +696,15 @@ function ReviewsSection() {
 function CTASection() {
 	return (
 		<section
-			className="relative flex w-full justify-center overflow-hidden bg-twin-primary-main px-6 py-28
+			className="relative flex w-full justify-center overflow-hidden bg-twin-primary-subtle px-6 py-28
 				md:py-36 lg:px-[8%]"
 		>
 			<div className="pointer-events-none absolute inset-0 z-0">
 				<div
-					className="absolute inset-0
-						bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,var(--color-twin-accent-main),transparent)]
-						opacity-[0.08]"
+					className="absolute top-0 left-1/2 h-px w-2/3 -translate-x-1/2
+						bg-linear-to-r from-transparent via-twin-accent-main/35 to-transparent"
 				/>
+				<div className="absolute -top-32 left-1/2 size-96 -translate-x-1/2 rounded-full bg-twin-accent-main/12 blur-3xl" />
 			</div>
 
 			<motion.div
@@ -662,17 +715,17 @@ function CTASection() {
 				className="relative z-10 flex w-full max-w-225 flex-col items-center gap-12 text-center"
 			>
 				<motion.div variants={fadeUp} className="flex items-center gap-4">
-					<span className="block h-px w-12 bg-twin-accent-main/40" />
-					<span className="text-[11px] font-bold tracking-[0.3em] text-twin-accent-main/80 uppercase">
+					<span className="block h-px w-12 bg-twin-primary-main/25" />
+					<span className="text-[11px] font-bold tracking-[0.3em] text-twin-accent-darker uppercase">
 						Get Started
 					</span>
-					<span className="block h-px w-12 bg-twin-accent-main/40" />
+					<span className="block h-px w-12 bg-twin-primary-main/25" />
 				</motion.div>
 
 				<motion.h2
 					variants={fadeUp}
 					className="text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.02] font-black tracking-[-0.03em]
-						text-twin-white"
+						text-twin-primary-main"
 				>
 					Ready to bridge the{" "}
 					<span
@@ -683,7 +736,7 @@ function CTASection() {
 					</span>
 				</motion.h2>
 
-				<motion.p variants={fadeUp} className="max-w-130 text-lg leading-[1.7] text-twin-white/65">
+				<motion.p variants={fadeUp} className="max-w-130 text-lg leading-[1.7] text-twin-primary-main/70">
 					Whether you need immediate interpretation or long-term translation support, we're ready to
 					deliver.
 				</motion.p>
@@ -696,7 +749,7 @@ function CTASection() {
 						className="group overflow-hidden rounded-full transition-all duration-500
 							hover:shadow-[0_0_60px_theme(--color-twin-accent-main/30%)] active:scale-[0.97]"
 					>
-						<Link href="/booking" className="flex items-center gap-3">
+						<Link href={siteConfig.bookings.url} className="flex items-center gap-3">
 							Book Now
 							<IconBox
 								icon="lucide:arrow-up-right"
@@ -708,10 +761,10 @@ function CTASection() {
 
 					<Button
 						asChild={true}
-						theme="ghost-dark"
+						theme="ghost-light"
 						size="large"
-						className="rounded-full border-twin-white/12 transition-all duration-500
-							hover:border-twin-white/25"
+						className="rounded-full border-twin-primary-main/15 transition-all duration-500
+							hover:border-twin-primary-main/30 hover:bg-twin-primary-main/3"
 					>
 						<Link href="/contact" className="flex items-center gap-3">
 							Contact Us

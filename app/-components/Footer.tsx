@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { Logo, NavLink } from "@/components/common";
+import { IconBox, Logo, NavLink } from "@/components/common";
 import { siteConfig } from "@/lib/config/site";
 
 const fadeUp = {
@@ -16,7 +16,6 @@ const staggerContainer = (staggerChildren = 0.08, delayChildren = 0) => ({
 });
 
 const VP = { amount: 0.15, once: true } as const;
-
 const columns = [
 	{
 		links: siteConfig.navigation.map((item) => ({
@@ -27,7 +26,7 @@ const columns = [
 	},
 	{
 		links: siteConfig.services.map((service) => ({
-			href: "/services",
+			href: `/services#${service.id}`,
 			label: service.title,
 		})),
 		title: "Services",
@@ -63,9 +62,9 @@ function Footer() {
 
 					{columns.map((col) => (
 						<motion.div key={col.title} variants={fadeUp} className="flex flex-col gap-3">
-							<p className="text-lg font-black tracking-[0.28em] text-white/30 uppercase">
+							<h2 className="text-sm font-black tracking-[0.28em] text-white/45 uppercase">
 								{col.title}
-							</p>
+							</h2>
 							<div className="flex flex-col gap-3">
 								{col.links.map((link) =>
 									link.href ?
@@ -99,38 +98,61 @@ function Footer() {
 						href={siteConfig.social.facebook}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-white/45 no-underline transition-colors hover:text-twin-accent-main"
+						className="inline-flex items-center gap-2.5 text-white/50 no-underline transition-colors
+							hover:text-twin-accent-main"
 					>
+						<IconBox aria-hidden="true" icon="simple-icons:facebook" className="size-4" />
 						Facebook
+						<span className="sr-only"> (opens in a new tab)</span>
 					</Link>
 					<Link
 						href={siteConfig.social.instagram}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-white/45 no-underline transition-colors hover:text-twin-accent-main"
+						className="inline-flex items-center gap-2.5 text-white/50 no-underline transition-colors
+							hover:text-twin-accent-main"
 					>
+						<IconBox aria-hidden="true" icon="simple-icons:instagram" className="size-4" />
 						Instagram
+						<span className="sr-only"> (opens in a new tab)</span>
 					</Link>
 					<Link
 						href={siteConfig.social.linkedin}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-white/45 no-underline transition-colors hover:text-twin-accent-main"
+						className="inline-flex items-center gap-2.5 text-white/50 no-underline transition-colors
+							hover:text-twin-accent-main"
 					>
+						<IconBox aria-hidden="true" icon="simple-icons:linkedin" className="size-4" />
 						LinkedIn
+						<span className="sr-only"> (opens in a new tab)</span>
 					</Link>
 				</div>
 
-				<div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/5 pt-6">
-					<span className="text-[12px] text-white/25">
-						© 2025 {siteConfig.name}. All rights reserved.
+				<div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-6">
+					<span className="text-[12px] text-white/40">
+						© 2026 Obsidian Digital. All rights reserved.
 					</span>
-					<NavLink
-						href={`mailto:${siteConfig.contact.email}`}
-						className="text-[12px] text-white/25 no-underline transition-colors hover:text-white/45"
-					>
-						{siteConfig.contact.email}
-					</NavLink>
+					<nav aria-label="Legal links" className="flex flex-wrap items-center gap-x-5 gap-y-2">
+						<NavLink
+							href="/privacy-policy"
+							className="text-[12px] text-white/40 no-underline transition-colors hover:text-white/70"
+						>
+							Privacy Policy
+						</NavLink>
+						<NavLink
+							href="/terms-and-conditions"
+							className="text-[12px] text-white/40 no-underline transition-colors hover:text-white/70"
+						>
+							Terms &amp; Conditions
+						</NavLink>
+						<NavLink
+							href={`mailto:${siteConfig.contact.email}`}
+							className="text-[12px] text-white/40 no-underline transition-colors hover:text-white/70"
+						>
+							{siteConfig.contact.email}
+						</NavLink>
+					</nav>
 				</div>
 			</div>
 		</footer>

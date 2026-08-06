@@ -8,6 +8,10 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+	--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
 	--color-twin-primary-main: #073654;
 	--color-twin-primary-darker: #052740;
 	--color-twin-primary-lighter: #0a4a6e;
@@ -179,6 +183,7 @@
 
 	html {
 		height: 100%;
+		scroll-padding-top: 6rem;
 	}
 
 	body {
@@ -194,9 +199,9 @@
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-	input:focus-visible {
-		outline: 2px solid transparent;
-		outline-offset: 2px;
+	:where(a, button, input, select, textarea, summary):focus-visible {
+		outline: 3px solid var(--color-twin-accent-main);
+		outline-offset: 3px;
 	}
 
 	img {
@@ -205,12 +210,22 @@
 		max-width: unset;
 	}
 
-	button {
-		outline: transparent;
-	}
-
 	button:not(:disabled) {
 		cursor: pointer;
+	}
+
+	button,
+	a {
+		touch-action: manipulation;
+	}
+
+	select {
+		background-color: white;
+		color: var(--color-twin-primary-main);
+	}
+
+	:where(h1, h2, h3, h4, h5, h6)[id] {
+		scroll-margin-top: 6rem;
 	}
 
 	h1,
@@ -227,6 +242,21 @@
 		font-size: 18px;
 		font-family: var(--font-body);
 		color: var(--color-twin-body-color);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
 	}
 }
 

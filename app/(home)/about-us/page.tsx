@@ -141,7 +141,7 @@ function HeroSection() {
 			/>
 
 			<motion.div
-				className="pointer-events-none absolute -top-[20%] right-[10%] z-0 aspect-square
+				className="pointer-events-none absolute top-[-20%] right-[10%] z-0 aspect-square
 					w-[min(700px,70vw)] rounded-full opacity-40 blur-[120px]"
 			>
 				<div

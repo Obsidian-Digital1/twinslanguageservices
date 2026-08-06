@@ -7,8 +7,10 @@ import { defineEnumDeep } from "@zayne-labs/toolkit-type-helpers";
 
 export const siteConfig = defineEnumDeep({
 	bookings: {
+		embedUrl:
+			"https://outlook.office.com/book/TwinsLanguageServices2@twinslanguageservices.com/?ismsaljsauthenabled",
 		label: "Schedule Service",
-		url: "https://outlook.office365.com/book/TwinsLanguageServices@example.com/",
+		url: "/booking",
 	},
 
 	contact: {
@@ -57,9 +59,10 @@ export const siteConfig = defineEnumDeep({
 			title: "Final Confirmation",
 		},
 		{
-			description: "Our certified professionals execute high-quality language services.",
+			description:
+				"A language professional delivers the agreed service with care and clear communication.",
 			icon: "lucide:zap",
-			title: "Seamless execution",
+			title: "Service Delivery",
 		},
 	],
 
@@ -92,7 +95,8 @@ export const siteConfig = defineEnumDeep({
 			accent: "from-twin-secondary-lighter/15 to-transparent",
 			icon: "lucide:phone",
 			id: "phone-interpreting",
-			shortDescription: "Immediate over-the-phone language support for urgent, time-sensitive communication needs.",
+			shortDescription:
+				"Immediate over-the-phone language support for urgent, time-sensitive communication needs.",
 			title: "Phone Interpreting",
 		},
 		{
@@ -107,50 +111,56 @@ export const siteConfig = defineEnumDeep({
 			accent: "from-twin-primary-lighter/15 to-transparent",
 			icon: "lucide:file-text",
 			id: "document-translation",
-			shortDescription: "Precise translation of legal documents, certificates, medical records, and business materials.",
+			shortDescription:
+				"Precise translation of legal documents, certificates, medical records, and business materials.",
 			title: "Document Translation",
 		},
 		{
 			accent: "from-twin-accent-main/15 to-transparent",
 			icon: "lucide:headphones",
 			id: "transcription",
-			shortDescription: "Meticulous audio and video transcription with guaranteed accuracy and fast turnaround.",
+			shortDescription:
+				"Careful audio and video transcription prepared around the content, format, and timing of your request.",
 			title: "Transcription",
 		},
 		{
 			accent: "from-twin-secondary-main/15 to-transparent",
 			icon: "lucide:scale",
 			id: "court-legal",
-			shortDescription: "Court-certified interpretation for depositions, hearings, trials, and sensitive legal proceedings.",
+			shortDescription:
+				"Professional interpretation support for depositions, hearings, trials, and sensitive legal proceedings.",
 			title: "Legal Interpretation",
 		},
 		{
 			accent: "from-twin-primary-lighter/15 to-transparent",
 			icon: "lucide:stethoscope",
 			id: "doctors-appointments",
-			shortDescription: "Specialized medical interpretation for patient consultations, hospital visits, and clinical appointments.",
+			shortDescription:
+				"Specialized medical interpretation for patient consultations, hospital visits, and clinical appointments.",
 			title: "Doctors Appointments",
 		},
 		{
 			accent: "from-twin-accent-main/15 to-transparent",
 			icon: "lucide:graduation-cap",
 			id: "school-appointments",
-			shortDescription: "Facilitating clear communication between educators and families for conferences, IEP meetings, and school events.",
+			shortDescription:
+				"Facilitating clear communication between educators and families for conferences, IEP meetings, and school events.",
 			title: "School Appointments",
 		},
 		{
 			accent: "from-twin-secondary-lighter/15 to-transparent",
 			icon: "lucide:presentation",
 			id: "company-meetings",
-			shortDescription: "Professional linguistic support for corporate boardroom discussions, strategic negotiations, and internal briefings.",
+			shortDescription:
+				"Professional linguistic support for corporate boardroom discussions, strategic negotiations, and internal briefings.",
 			title: "Company Meetings",
 		},
 	],
 
 	social: {
 		facebook: "https://www.facebook.com/twinslanguageservices",
-		instagram: "https://www.instagram.com/twinslanguageservices",
-		linkedin: "https://www.linkedin.com/company/twins-language-services",
+		instagram: "https://www.instagram.com/twinslanguageservices/",
+		linkedin: "https://www.linkedin.com/in/twinslanguageservices",
 	},
 
 	tagline: "Breaking Language Barriers, Building Connections",

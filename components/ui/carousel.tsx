@@ -63,9 +63,11 @@ function CarouselRoot(props: CarouselProps & InferProps<"div">) {
 	const onSelect = useCallbackRef((api: CarouselApi) => {
 		if (!api) return;
 
+		/* eslint-disable react/set-state-in-effect -- Embla scroll state is synced from API events. */
 		setCanScrollPrev(api.canScrollPrev());
 		setCanScrollNext(api.canScrollNext());
 		setSelectedIndex(api.selectedScrollSnap());
+		/* eslint-enable react/set-state-in-effect */
 	});
 
 	const scrollPrev = useCallbackRef(() => carouselApi?.scrollPrev());
@@ -93,11 +95,13 @@ function CarouselRoot(props: CarouselProps & InferProps<"div">) {
 		}
 	});
 
+	/* eslint-disable react-you-might-not-need-an-effect/no-event-handler, react-you-might-not-need-an-effect/no-pass-data-to-parent -- Embla API handoff to parent */
 	useEffect(() => {
 		if (!carouselApi || !setApi) return;
 
 		setApi(carouselApi);
 	}, [carouselApi, setApi]);
+	/* eslint-enable react-you-might-not-need-an-effect/no-event-handler, react-you-might-not-need-an-effect/no-pass-data-to-parent */
 
 	useEffect(() => {
 		if (!carouselApi) return;

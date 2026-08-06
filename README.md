@@ -543,3 +543,11 @@ These items should be confirmed before build begins:
 
 ## Final Build Summary
 This project is a **simplified, conversion-focused rebuild** of the current Twins Language Services site. The revised website should keep the recognizable brand colors and core service identity from the live site, while improving structure, professionalism, and clear paths to **Microsoft Bookings** (via a simple Booking page) and **Contact Us**. The final result should feel trustworthy, clear, and easy for a customer to use when seeking interpretation, translation, transcription, or related language support.
+
+---
+
+## Bot protection (reCAPTCHA Enterprise)
+
+The contact form is protected with Google Cloud reCAPTCHA Enterprise (**Website • score**), verified server-side with CreateAssessment (not legacy SiteVerify).
+
+See [docs/RECAPTCHA.md](docs/RECAPTCHA.md) for environment variables, authentication options, action names, score threshold, local/staging/production testing, and the production checklist.

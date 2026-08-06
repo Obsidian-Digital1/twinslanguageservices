@@ -5,6 +5,10 @@ const nextConfig = {
 		position: "bottom-right",
 	},
 
+	experimental: {
+		typedEnv: true,
+	},
+
 	images: {
 		remotePatterns: [
 			{
@@ -17,9 +21,9 @@ const nextConfig = {
 
 	reactStrictMode: true,
 
-	typescript: {
-		ignoreBuildErrors: true,
-	},
+	serverExternalPackages: ["@google-cloud/recaptcha-enterprise"],
+
+	typedRoutes: true,
 } satisfies NextConfig;
 
 export default nextConfig;

@@ -33,8 +33,19 @@ function Navbar() {
 
 					<DesktopNavigation className="max-md:hidden" />
 
-					<Button unstyled={true} className="z-50 md:hidden" onClick={toggleNavShow}>
+					<Button
+						unstyled={true}
+						type="button"
+						aria-label={isNavShow ? "Close navigation menu" : "Open navigation menu"}
+						aria-expanded={isNavShow}
+						aria-controls="mobile-navigation"
+						className="z-50 flex size-12 items-center justify-center rounded-xl transition-colors
+							hover:bg-white/8 focus-visible:outline-3 focus-visible:outline-offset-3
+							focus-visible:outline-twin-accent-main md:hidden"
+						onClick={toggleNavShow}
+					>
 						<IconBox
+							aria-hidden="true"
 							icon={isNavShow ? "lucide:x" : "lucide:menu"}
 							className="size-8 text-white"
 							strokeWidth={2.5}
@@ -57,6 +68,7 @@ function DesktopNavigation(props: { className?: string }) {
 
 	return (
 		<motion.nav
+			aria-label="Primary navigation"
 			initial={{ opacity: 0, x: 16 }}
 			animate={{ opacity: 1, x: 0 }}
 			transition={{ delay: 0.1, duration: 0.5 }}
@@ -79,7 +91,7 @@ function DesktopNavigation(props: { className?: string }) {
 				size="sm"
 				className="transition-transform duration-300 hover:scale-104 active:scale-98"
 			>
-				<NavLink href="/booking">{siteConfig.bookings.label}</NavLink>
+				<a href={siteConfig.bookings.url}>{siteConfig.bookings.label}</a>
 			</Button>
 		</motion.nav>
 	);
@@ -94,6 +106,9 @@ function MobileNavigationDrawer(props: {
 
 	return (
 		<section
+			id="mobile-navigation"
+			aria-label="Mobile navigation"
+			aria-hidden={!isNavShow}
 			className={cnMerge(
 				`fixed inset-[0_0_0_auto] z-40 flex flex-col items-center gap-7 overflow-x-hidden
 				bg-twin-primary-main/98 pt-24 text-white backdrop-blur-xl transition-[width] ease-[ease]`,
@@ -105,7 +120,7 @@ function MobileNavigationDrawer(props: {
 				element.tagName === "A" && toggleNavShow();
 			}}
 		>
-			<nav className="mt-5 flex flex-col items-center gap-5 text-nowrap">
+			<nav aria-label="Mobile navigation links" className="mt-5 flex flex-col items-center gap-5 text-nowrap">
 				{siteConfig.navigation.map((linkItem) => (
 					<NavLink
 						key={linkItem.label}
@@ -118,7 +133,7 @@ function MobileNavigationDrawer(props: {
 			</nav>
 
 			<Button asChild={true} theme="accent-gradient" size="medium">
-				<NavLink href="/booking">{siteConfig.bookings.label}</NavLink>
+				<a href={siteConfig.bookings.url}>{siteConfig.bookings.label}</a>
 			</Button>
 		</section>
 	);

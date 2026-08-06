@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { cnMerge } from "@/lib/utils/cn";
 
 function InfiniteMover(props: {
@@ -14,8 +14,6 @@ function InfiniteMover(props: {
 
 	const containerRef = useRef<HTMLDivElement>(null);
 	const scrollerRef = useRef<HTMLUListElement>(null);
-
-	const [start, setStart] = useState(false);
 
 	useEffect(() => {
 		const getDirection = () => {
@@ -40,22 +38,21 @@ function InfiniteMover(props: {
 		};
 		const addAnimation = () => {
 			if (containerRef.current && scrollerRef.current) {
-				const scrollerContent = [...scrollerRef.current.children];
+				const scroller = scrollerRef.current;
 
-				scrollerContent.forEach((item) => {
-					const duplicatedItem = item.cloneNode(true);
-					if (scrollerRef.current) {
-						scrollerRef.current.append(duplicatedItem);
-					}
-				});
+				if (scroller.dataset.cloned !== "true") {
+					const scrollerContent = [...scroller.children];
+					scrollerContent.forEach((item) => {
+						scroller.append(item.cloneNode(true));
+					});
+					scroller.dataset.cloned = "true";
+				}
 
 				getDirection();
 				getSpeed();
-				setStart(true);
 			}
 		};
 
-		// eslint-disable-next-line react-you-might-not-need-an-effect/no-adjust-state-on-prop-change
 		addAnimation();
 	}, [direction, speed]);
 
@@ -63,7 +60,7 @@ function InfiniteMover(props: {
 		<div
 			ref={containerRef}
 			className={cnMerge(
-				`scroller relative z-20 max-w-7xl overflow-hidden
+				`relative z-20 max-w-7xl overflow-hidden
 				mask-[linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]`,
 				className
 			)}
@@ -71,8 +68,7 @@ function InfiniteMover(props: {
 			<ul
 				ref={scrollerRef}
 				className={cnMerge(
-					"flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
-					start && "animate-scroll",
+					"flex w-max min-w-full shrink-0 animate-scroll flex-nowrap gap-4 py-4",
 					pauseOnHover && "hover:paused"
 				)}
 			>

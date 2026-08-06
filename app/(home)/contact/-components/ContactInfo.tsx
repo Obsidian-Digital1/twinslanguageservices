@@ -47,8 +47,7 @@ export function ContactInfo() {
 		>
 			<div className="pointer-events-none absolute inset-0 opacity-30">
 				<div
-					className="absolute top-0 right-0 size-150 rounded-full bg-twin-accent-main/20
-						blur-[120px]"
+					className="absolute top-0 right-0 size-150 rounded-full bg-twin-accent-main/20 blur-[120px]"
 				/>
 				<div className="absolute bottom-0 left-0 size-122.5 rounded-full bg-blue-400/10 blur-[100px]" />
 			</div>
@@ -78,10 +77,7 @@ export function ContactInfo() {
 						<span className="text-twin-accent-main italic">Conversation</span>
 					</motion.h1>
 
-					<motion.p
-						variants={fadeUp}
-						className="max-w-150 text-[19px] leading-[1.7] text-white"
-					>
+					<motion.p variants={fadeUp} className="max-w-150 text-[19px] leading-[1.7] text-white">
 						Whether you need interpretation, translation, or language consulting—we're ready to help
 						you bridge communication gaps with precision and care.
 					</motion.p>
@@ -125,7 +121,9 @@ export function ContactInfo() {
 								</span>
 
 								<div className="flex flex-col gap-3">
-									<h3 className="font-mono text-xs font-bold tracking-[0.2em] text-white uppercase">
+									<h3
+										className="font-mono text-xs font-bold tracking-[0.2em] text-white uppercase"
+									>
 										{info.label}
 									</h3>
 
@@ -148,7 +146,9 @@ export function ContactInfo() {
 									}
 
 									{info.note && (
-										<p className="text-[15px] leading-normal font-medium text-white">{info.note}</p>
+										<p className="text-[15px] leading-normal font-medium text-white">
+											{info.note}
+										</p>
 									)}
 								</div>
 
