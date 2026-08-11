@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { SonnerToaster } from "@/components/common";
 import { siteConfig } from "@/lib/config/site";
 import { cnJoin } from "@/lib/utils/cn";
 import { Providers } from "./Providers";
@@ -53,6 +54,7 @@ function RootLayout({ children }: LayoutProps<"/">) {
 					Skip to Main Content
 				</a>
 				<Providers>{children}</Providers>
+				<SonnerToaster />
 			</body>
 		</html>
 	);
