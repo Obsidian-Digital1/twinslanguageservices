@@ -362,7 +362,13 @@ const createAssessmentWithApiKey = async (
 	});
 
 	if (!response.ok) {
-		throw new Error(`Assessment request failed with status ${response.status}`);
+		// Google's body names the actual problem (blocked referer, API disabled, bad project).
+		// The key lives in the query string, never in the body, so this is safe to log.
+		const detail = await response.text().catch(() => "");
+
+		throw new Error(
+			`Assessment request failed with status ${response.status}${detail ? `: ${detail}` : ""}`
+		);
 	}
 
 	const payload = (await response.json()) as AssessmentResponse;
@@ -477,10 +483,12 @@ export const verifyRecaptchaToken = async (
 			expectedAction: input.expectedAction,
 			minScore: config.minScore,
 		});
-	} catch {
+	} catch (error) {
+		// Surface why the assessment call failed. Without this the route can only report a
+		// generic 503, which makes credential and API-enablement problems invisible in logs.
 		return {
 			failureCode: "ASSESSMENT_ERROR",
-			reasons: [],
+			reasons: [error instanceof Error ? error.message : String(error)],
 			score: null,
 			success: false,
 		};
