@@ -1,5 +1,4 @@
-import type { NextConfig } from "next";
-
+/** @type {import("next").NextConfig} */
 const nextConfig = {
 	devIndicators: {
 		position: "bottom-right",
@@ -24,6 +23,6 @@ const nextConfig = {
 	serverExternalPackages: ["@google-cloud/recaptcha-enterprise"],
 
 	typedRoutes: true,
-} satisfies NextConfig;
+};
 
 export default nextConfig;

@@ -20,6 +20,9 @@ importers:
       '@iconify/react':
         specifier: ^6.0.2
         version: 6.0.2(react@19.2.8)
+      '@next/swc-wasm-nodejs':
+        specifier: 16.3.0
+        version: 16.3.0
       '@radix-ui/react-avatar':
         specifier: ^1.2.6
         version: 1.2.6(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -168,6 +171,13 @@ importers:
       vitest:
         specifier: ^4.1.10
         version: 4.1.10(@types/node@26.2.0)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0))
+    optionalDependencies:
+      '@next/swc-linux-x64-gnu':
+        specifier: 16.3.0
+        version: 16.3.0
+      '@next/swc-linux-x64-musl':
+        specifier: 16.3.0
+        version: 16.3.0
 
 packages:
 
@@ -1034,6 +1044,9 @@ packages:
     cpu: [x64]
     os: [linux]
     libc: [musl]
+
+  '@next/swc-wasm-nodejs@16.3.0':
+    resolution: {integrity: sha512-fkF1rDfao0RWc5KojvpO8MQlPWdbcWnA8Np9dTtziGlZHePOEeycyLfyKSTQI04prd2UMY0AIqLWs2YrKat0wQ==}
 
   '@next/swc-win32-arm64-msvc@16.3.0':
     resolution: {integrity: sha512-C5JSgiO54wURdaxdEUIXqkz04uMqC9UmPX1gtDrV/5Tf1UowdWYI8uA5hfFbPolTlp0q4KZ60xlHePNibf0VIw==}
@@ -4088,10 +4101,6 @@ packages:
     resolution: {integrity: sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postcss@8.5.25:
-    resolution: {integrity: sha512-DTPx3RWSSnWyzLxQnlH0rJP+EW5ekl16ZU4/psbIhA0e53kJfdgaN5vKM+xP7yJtXVu+nfdVFmlgFDEKAe4Pyw==}
-    engines: {node: ^10 || ^12 || >=14}
-
   postcss@8.5.26:
     resolution: {integrity: sha512-u82N74LFzG8ca+dD8puPnplTXoGH4fTPpVGuIbt36G3qvNlkvfD0lEAZSxaly3KX8TS/L1A1gsCEmvKmBcVbkQ==}
     engines: {node: ^10 || ^12 || >=14}
@@ -5692,6 +5701,8 @@ snapshots:
 
   '@next/swc-linux-x64-musl@16.3.0':
     optional: true
+
+  '@next/swc-wasm-nodejs@16.3.0': {}
 
   '@next/swc-win32-arm64-msvc@16.3.0':
     optional: true
@@ -8951,12 +8962,6 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postcss@8.5.25:
-    dependencies:
-      nanoid: 3.3.18
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
-
   postcss@8.5.26:
     dependencies:
       nanoid: 3.3.18
@@ -9607,7 +9612,7 @@ snapshots:
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.5
-      postcss: 8.5.25
+      postcss: 8.5.26
       rolldown: 1.2.4
       tinyglobby: 0.2.17
     optionalDependencies:
