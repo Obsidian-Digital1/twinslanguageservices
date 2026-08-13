@@ -549,9 +549,9 @@ This project is a **simplified, conversion-focused rebuild** of the current Twin
 ## Hostinger deployment
 
 - Use **Node.js 20 or 22** (Next.js 16 requires Node ≥ 20.9).
+- Stay on **Next.js 16.2.12** until Hostinger’s glibc is ≥ 2.29. Next 16.3’s native SWC binary fails with `GLIBC_2.29 not found`.
 - Do not install with `--no-optional`. Linux SWC binaries are optional dependencies and are required for `next build`.
 - `.npmrc` tells pnpm to fetch Linux + Windows SWC packages even when the lockfile is updated on Windows.
-- If the native SWC binary still fails to load (older Hostinger glibc), `@next/swc-wasm-nodejs` is included as a fallback.
 
 ---
 

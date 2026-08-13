@@ -22,7 +22,6 @@
 		"@google-cloud/recaptcha-enterprise": "^6.4.2",
 		"@hookform/resolvers": "5.7.1",
 		"@iconify/react": "^6.0.2",
-		"@next/swc-wasm-nodejs": "16.3.0",
 		"@radix-ui/react-avatar": "^1.2.6",
 		"@tanstack/react-query": "^5.101.4",
 		"@zayne-labs/callapi": "^1.14.2",
@@ -33,7 +32,7 @@
 		"date-fns": "^4.4.0",
 		"embla-carousel-react": "^8.6.0",
 		"motion": "^13.1.0",
-		"next": "16.3.0",
+		"next": "16.2.12",
 		"radix-ui": "^1.6.7",
 		"react": "19.2.8",
 		"react-calendly": "^4.4.0",
@@ -50,12 +49,12 @@
 		"zustand": "^5.0.15"
 	},
 	"optionalDependencies": {
-		"@next/swc-linux-x64-gnu": "16.3.0",
-		"@next/swc-linux-x64-musl": "16.3.0"
+		"@next/swc-linux-x64-gnu": "16.2.12",
+		"@next/swc-linux-x64-musl": "16.2.12"
 	},
 	"devDependencies": {
 		"@eslint-react/eslint-plugin": "5.18.4",
-		"@next/eslint-plugin-next": "16.3.0",
+		"@next/eslint-plugin-next": "16.2.12",
 		"@tailwindcss/postcss": "4.3.3",
 		"@types/node": "26.2.0",
 		"@types/react": "19.2.18",
