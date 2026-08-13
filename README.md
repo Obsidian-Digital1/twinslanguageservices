@@ -546,6 +546,15 @@ This project is a **simplified, conversion-focused rebuild** of the current Twin
 
 ---
 
+## Hostinger deployment
+
+- Use **Node.js 20 or 22** (Next.js 16 requires Node ≥ 20.9).
+- Do not install with `--no-optional`. Linux SWC binaries are optional dependencies and are required for `next build`.
+- `.npmrc` tells pnpm to fetch Linux + Windows SWC packages even when the lockfile is updated on Windows.
+- If the native SWC binary still fails to load (older Hostinger glibc), `@next/swc-wasm-nodejs` is included as a fallback.
+
+---
+
 ## Bot protection (reCAPTCHA Enterprise)
 
 The contact form is protected with Google Cloud reCAPTCHA Enterprise (**Website • score**), verified server-side with CreateAssessment (not legacy SiteVerify).

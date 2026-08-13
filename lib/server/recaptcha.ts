@@ -150,9 +150,9 @@ export const readRecaptchaConfig = (
 	const projectId = env.GOOGLE_CLOUD_PROJECT_ID?.trim();
 	const siteKey = env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim();
 	const minScore = parseMinScore(env.RECAPTCHA_MIN_SCORE);
-	const apiKey =
-		env.GOOGLE_CLOUD_API_KEY?.trim()
-		|| env.GOOGLE_CLOUD_RECAPTCHA_API_KEY?.trim();
+	const apiKey = [env.GOOGLE_CLOUD_API_KEY, env.GOOGLE_CLOUD_RECAPTCHA_API_KEY]
+		.map((value) => value?.trim())
+		.find((value) => Boolean(value));
 	const serviceAccount = parseServiceAccountJson(env.GOOGLE_SERVICE_ACCOUNT_KEY);
 
 	if (!projectId || !siteKey || minScore === null) {
