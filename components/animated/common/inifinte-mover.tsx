@@ -43,7 +43,11 @@ function InfiniteMover(props: {
 				if (scroller.dataset.cloned !== "true") {
 					const scrollerContent = [...scroller.children];
 					scrollerContent.forEach((item) => {
-						scroller.append(item.cloneNode(true));
+						const clone = item.cloneNode(true);
+						if (clone instanceof HTMLElement) {
+							clone.setAttribute("aria-hidden", "true");
+						}
+						scroller.append(clone);
 					});
 					scroller.dataset.cloned = "true";
 				}
@@ -69,7 +73,7 @@ function InfiniteMover(props: {
 				ref={scrollerRef}
 				className={cnMerge(
 					"flex w-max min-w-full shrink-0 animate-scroll flex-nowrap gap-4 py-4",
-					pauseOnHover && "hover:paused"
+					pauseOnHover && "focus-within:paused hover:paused"
 				)}
 			>
 				{children}
