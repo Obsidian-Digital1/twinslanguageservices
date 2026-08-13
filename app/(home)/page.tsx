@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { InfiniteMover } from "@/components/animated/common/inifinte-mover";
 import { NavLink } from "@/components/common";
 import { IconBox } from "@/components/common/IconBox";
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,8 @@ const SERVICES = siteConfig.services;
 
 const PROCESS_STEPS = siteConfig.processSteps;
 
+const LANGUAGE_ORBIT = ["Hola", "Bonjour", "Olá", "Hello", "Kikuyu", "Luo", "Kalenjin"] as const;
+
 const REVIEWS = [
 	{
 		date: "March 2024",
@@ -61,6 +64,42 @@ const REVIEWS = [
 		name: "Maria L.",
 		rating: 5,
 		text: "Very dependable transcription for our business meetings. We've been using them for months now in Lancaster, and they never miss a beat. Professional and efficient.",
+	},
+	{
+		date: "Google Review",
+		name: "Mahamadou Hassane",
+		rating: 5,
+		text: "Their service was professional, fast, and reliable from start to finish. Communication was clear, and my documents were handled carefully and delivered on time.",
+	},
+	{
+		date: "Google Review",
+		name: "Dianchik",
+		rating: 5,
+		text: "Everything was done on time, they kept me updated on the progress, and they responded to my questions by email quickly.",
+	},
+	{
+		date: "Google Review",
+		name: "Olamitobi Olatokun",
+		rating: 5,
+		text: "The interpreter was professional, punctual, and made communication clear and effective. I highly recommend them for anyone needing reliable language support.",
+	},
+	{
+		date: "Google Review",
+		name: "Erslaan Faridi",
+		rating: 5,
+		text: "My experience with Twins Language Services was great. Very professional team that can be trusted. Needed documents translated for our company.",
+	},
+	{
+		date: "Google Review",
+		name: "Luisa M.",
+		rating: 5,
+		text: "This translation service is excellent! 10/10, it gives fast service, un dia para otro results, great communication and flexible hours.",
+	},
+	{
+		date: "Google Review",
+		name: "Sore Abdoul Hazise",
+		rating: 5,
+		text: "Everything was done perfectly with professionalism. They are good communicants, fast, reliable and good pricing. I found all I needed in one place.",
 	},
 ] as const;
 
@@ -121,24 +160,48 @@ function HeroSection() {
 
 			<div
 				aria-hidden="true"
-				className="pointer-events-none absolute top-[17%] right-[7%] z-4 hidden size-100
+				className="group/orbit pointer-events-auto absolute top-[17%] right-[7%] z-4 hidden size-100
 					xl:block"
 			>
 				<div className="absolute inset-0 rounded-full border border-twin-accent-main/12" />
 				<div className="absolute inset-12 rounded-full border border-dashed border-twin-accent-main/18" />
 
-				<motion.div
-					className="absolute inset-0"
-					animate={{ rotate: 360 }}
-					transition={{ duration: 42, ease: "linear", repeat: Infinity }}
-				>
+				<div className="absolute inset-0 animate-language-orbit group-hover/orbit:paused">
 					<span
 						className="absolute top-7 left-1/2 size-2.5 -translate-x-1/2 rounded-full
 							bg-twin-accent-main shadow-[0_0_24px_var(--color-twin-accent-main)]"
 					/>
-					<span className="absolute top-1/2 right-7 size-1.5 -translate-y-1/2 rounded-full bg-white/55" />
-					<span className="absolute bottom-7 left-1/2 size-2 -translate-x-1/2 rounded-full bg-twin-accent-lighter/70" />
-				</motion.div>
+					<span
+						className="absolute top-1/2 right-7 size-1.5 -translate-y-1/2 rounded-full bg-white/55"
+					/>
+					<span
+						className="absolute bottom-7 left-1/2 size-2 -translate-x-1/2 rounded-full
+							bg-twin-accent-lighter/70"
+					/>
+
+					{LANGUAGE_ORBIT.map((language, index) => (
+						<span
+							key={language}
+							className="absolute inset-0"
+							style={{ transform: `rotate(${(index * 360) / LANGUAGE_ORBIT.length}deg)` }}
+						>
+							<span className="absolute top-0 left-1/2 -translate-x-1/2">
+								<span
+									className="block"
+									style={{ transform: `rotate(-${(index * 360) / LANGUAGE_ORBIT.length}deg)` }}
+								>
+									<span
+										className="block animate-language-orbit-counter rounded-full border
+											border-white/10 bg-white/6 px-4 py-2 text-xs font-semibold tracking-wide
+											text-white/70 backdrop-blur-sm group-hover/orbit:paused"
+									>
+										{language}
+									</span>
+								</span>
+							</span>
+						</span>
+					))}
+				</div>
 
 				<motion.div
 					className="absolute inset-25 flex flex-col items-center justify-center rounded-full border
@@ -153,31 +216,6 @@ function HeroSection() {
 					</span>
 					<span className="mt-1 text-sm font-bold text-white">understood</span>
 				</motion.div>
-
-				<span
-					className="absolute top-9 left-2 rounded-full border border-white/10 bg-white/6 px-4 py-2
-						text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
-				>
-					Hola
-				</span>
-				<span
-					className="absolute top-24 right-0 rounded-full border border-white/10 bg-white/6 px-4 py-2
-						text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
-				>
-					Bonjour
-				</span>
-				<span
-					className="absolute right-8 bottom-12 rounded-full border border-white/10 bg-white/6 px-4
-						py-2 text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
-				>
-					Olá
-				</span>
-				<span
-					className="absolute bottom-17 left-0 rounded-full border border-white/10 bg-white/6 px-4 py-2
-						text-xs font-semibold tracking-wide text-white/70 backdrop-blur-sm"
-				>
-					Hello
-				</span>
 			</div>
 
 			<motion.div
@@ -611,54 +649,59 @@ function ReviewsSection() {
 							<span className="text-twin-accent-darker">across Lancaster County.</span>
 						</motion.h2>
 						<motion.div variants={fadeUp} className="flex items-center gap-2">
-							<div className="flex items-center gap-0.5 text-twin-accent-darker">
+							<div className="flex items-center gap-0.5 text-twin-primary-main">
 								{[...Array(5).keys()].map((i) => (
-									<IconBox key={i} icon="lucide:star" className="size-5 fill-current" />
+									<IconBox key={i} icon="material-symbols:star-rounded" className="size-5" />
 								))}
 							</div>
-							<span className="font-bold text-twin-primary-main/70">5.0 Rating on Google</span>
+							<span className="font-bold text-twin-primary-main/70">4.9 Rating on Google</span>
 						</motion.div>
 					</div>
 				</motion.div>
 
 				<motion.div
-					variants={staggerContainer(0.12)}
+					variants={fadeUp}
 					initial="hidden"
 					whileInView="show"
 					viewport={VP}
-					className="grid grid-cols-1 gap-6 md:grid-cols-3"
+					className="w-full"
 				>
-					{REVIEWS.map((review) => (
-						<motion.div
-							key={review.name}
-							variants={fadeUp}
-							className="flex flex-col justify-between rounded-3xl border border-twin-primary-main/6
-								bg-twin-white p-8 shadow-sm transition-all duration-500
-								hover:border-twin-primary-main/12 hover:shadow-xl"
-						>
-							<div className="flex flex-col gap-6">
-								<div className="flex items-center gap-0.5 text-twin-accent-darker">
-									{[...Array(review.rating).keys()].map((i) => (
-										<IconBox key={i} icon="lucide:star" className="size-4 fill-current" />
-									))}
-								</div>
-								<p className="text-[15.5px] leading-[1.7] text-twin-primary-main/80 italic">
-									&ldquo;{review.text}&rdquo;
-								</p>
-							</div>
-
-							<div
-								className="mt-8 flex items-center justify-between border-t
-									border-twin-primary-main/6 pt-6"
+					<InfiniteMover speed="slow" className="max-w-none">
+						{REVIEWS.map((review) => (
+							<li
+								key={review.name}
+								className="flex min-h-75 w-[min(86vw,27rem)] shrink-0 flex-col justify-between
+									rounded-3xl border border-twin-primary-main/6 bg-twin-white p-8 shadow-sm
+									transition-all duration-500 hover:border-twin-primary-main/12 hover:shadow-xl"
 							>
-								<div className="flex flex-col">
-									<span className="font-bold text-twin-primary-main">{review.name}</span>
-									<span className="text-[13px] text-twin-primary-main/50">{review.date}</span>
+								<div className="flex flex-col gap-6">
+									<div className="flex items-center gap-0.5 text-twin-primary-main">
+										{[...Array(review.rating).keys()].map((i) => (
+											<IconBox
+												key={i}
+												icon="material-symbols:star-rounded"
+												className="size-4"
+											/>
+										))}
+									</div>
+									<p className="text-[15.5px] leading-[1.7] text-twin-primary-main/80 italic">
+										&ldquo;{review.text}&rdquo;
+									</p>
 								</div>
-								<IconBox icon="logos:google-icon" className="size-5 opacity-40" />
-							</div>
-						</motion.div>
-					))}
+
+								<div
+									className="mt-8 flex items-center justify-between border-t
+										border-twin-primary-main/6 pt-6"
+								>
+									<div className="flex flex-col">
+										<span className="font-bold text-twin-primary-main">{review.name}</span>
+										<span className="text-[13px] text-twin-primary-main/50">{review.date}</span>
+									</div>
+									<IconBox icon="logos:google-icon" className="size-5 opacity-40" />
+								</div>
+							</li>
+						))}
+					</InfiniteMover>
 				</motion.div>
 
 				<motion.div
@@ -701,10 +744,13 @@ function CTASection() {
 		>
 			<div className="pointer-events-none absolute inset-0 z-0">
 				<div
-					className="absolute top-0 left-1/2 h-px w-2/3 -translate-x-1/2
-						bg-linear-to-r from-transparent via-twin-accent-main/35 to-transparent"
+					className="absolute top-0 left-1/2 h-px w-2/3 -translate-x-1/2 bg-linear-to-r
+						from-transparent via-twin-accent-main/35 to-transparent"
 				/>
-				<div className="absolute -top-32 left-1/2 size-96 -translate-x-1/2 rounded-full bg-twin-accent-main/12 blur-3xl" />
+				<div
+					className="absolute -top-32 left-1/2 size-96 -translate-x-1/2 rounded-full
+						bg-twin-accent-main/12 blur-3xl"
+				/>
 			</div>
 
 			<motion.div
@@ -736,7 +782,10 @@ function CTASection() {
 					</span>
 				</motion.h2>
 
-				<motion.p variants={fadeUp} className="max-w-130 text-lg leading-[1.7] text-twin-primary-main/70">
+				<motion.p
+					variants={fadeUp}
+					className="max-w-130 text-lg leading-[1.7] text-twin-primary-main/70"
+				>
 					Whether you need immediate interpretation or long-term translation support, we're ready to
 					deliver.
 				</motion.p>

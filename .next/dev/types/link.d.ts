@@ -32,13 +32,14 @@ declare namespace __next_route_internal_types__ {
     S extends `${string}${SearchOrHash}` ? never : S
 
   type StaticRoutes = 
-    | `/`
-    | `/about-us`
-    | `/api/contact`
-    | `/contact`
-    | `/privacy-policy`
-    | `/services`
-    | `/terms-and-conditions`
+    | `/` // ../../../app/(home)/page.tsx
+    | `/about-us` // ../../../app/(home)/about-us/page.tsx
+    | `/api/contact` // ../../../app/api/contact/route.ts
+    | `/booking` // ../../../app/(home)/booking/page.tsx
+    | `/contact` // ../../../app/(home)/contact/page.tsx
+    | `/privacy-policy` // ../../../app/(home)/privacy-policy/page.tsx
+    | `/services` // ../../../app/(home)/services/page.tsx
+    | `/terms-and-conditions` // ../../../app/(home)/terms-and-conditions/page.tsx
   type DynamicRoutes<T extends string = string> = never
 
   type RouteImpl<T> = 
@@ -120,7 +121,8 @@ declare module 'next/navigation' {
    * [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations).
    *
    * - In a Server Component, this will insert a meta tag to redirect the user to the target page.
-   * - In a Route Handler or Server Action, it will serve a 307/303 to the caller.
+   * - In a Route Handler, it will serve a 307 to the caller.
+   * - In a Server Action, it will perform a client-side navigation when JavaScript is available or serve a 303 for a progressive enhancement form submission.
    * - In a Server Action, type defaults to 'push' and 'replace' elsewhere.
    *
    * Read more: [Next.js Docs: redirect](https://nextjs.org/docs/app/api-reference/functions/redirect)
@@ -138,7 +140,8 @@ declare module 'next/navigation' {
    * [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations).
    *
    * - In a Server Component, this will insert a meta tag to redirect the user to the target page.
-   * - In a Route Handler or Server Action, it will serve a 308/303 to the caller.
+   * - In a Route Handler, it will serve a 308 to the caller.
+   * - In a Server Action, it will perform a client-side navigation when JavaScript is available or serve a 303 for a progressive enhancement form submission.
    *
    * Read more: [Next.js Docs: redirect](https://nextjs.org/docs/app/api-reference/functions/redirect)
    */

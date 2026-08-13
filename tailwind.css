@@ -150,8 +150,22 @@
 /* Animated Theme      */
 /*-------------------*/
 @theme inline {
+	--animate-language-orbit: language-orbit 52s linear infinite;
+	--animate-language-orbit-counter: language-orbit-counter 52s linear infinite;
 	--animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear
 		infinite;
+
+	@keyframes language-orbit {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes language-orbit-counter {
+		to {
+			transform: rotate(-360deg);
+		}
+	}
 
 	@keyframes scroll {
 		to {
@@ -242,21 +256,6 @@
 		font-size: 18px;
 		font-family: var(--font-body);
 		color: var(--color-twin-body-color);
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
-
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		scroll-behavior: auto !important;
-		transition-duration: 0.01ms !important;
 	}
 }
 

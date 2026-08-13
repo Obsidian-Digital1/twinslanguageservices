@@ -89,6 +89,7 @@ export function ContactForm() {
 					description: "We'll get back to you as soon as possible.",
 				});
 			},
+			throwOnError: true,
 		});
 	});
 
